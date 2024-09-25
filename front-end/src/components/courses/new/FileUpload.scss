@@ -1,0 +1,29 @@
+.FileUpload {
+  width: 75%;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  text-align: center;
+  p {
+    color: green;
+    min-height: 2em; // Added this to avoid content shifting when a message appears.
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    input[type="submit"] {
+      background-color: blue;
+      color: white;
+      display: block;
+      padding: 10px;
+      margin: 20px auto;
+    }
+  }
+}

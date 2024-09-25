@@ -1,0 +1,1163 @@
+[
+  {
+    "word": "snail",
+    "pronunciation": "/sneɪl/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "snail_noun_1",
+    "images": [1, 2, 3],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a small soft creature that moves very slowly and has a hard shell on its back",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "snail",
+    "pronunciation": "/sneɪl/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "snail_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "at a snail’s pace",
+        "registers": "",
+        "text": "extremely slowly",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "Traffic was moving at a snail’s pace." }
+      ]
+    }
+  },
+  {
+    "word": "weenie",
+    "pronunciation": "/ˈwiːni/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "informal",
+    "inflections": "",
+    "title": "weenie_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a type of sausage",
+        "synonyms": ["wiener", "hot dog"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [{ "type": "example", "text": "a weenie roast" }]
+    }
+  },
+  {
+    "word": "weenie",
+    "pronunciation": "/ˈwiːni/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "informal",
+    "inflections": "",
+    "title": "weenie_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "someone who is weak, afraid, or stupid – used especially by children",
+        "synonyms": ["wimp"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "hug",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "the action of putting your arms around someone and holding them tightly to show love or friendship",
+        "synonyms": ["embrace"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "Paul gave me a big hug." },
+        {
+          "type": "example",
+          "text": "Nesta greeted the visitors with hugs and kisses."
+        }
+      ]
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(hugged, hugging)",
+    "title": "hug_verb_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to put your arms around someone and hold them tightly to show love or friendship",
+        "synonyms": ["embrace"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "We stood there crying and hugging each other."
+        },
+        {
+          "type": "example",
+          "text": "She went to her daughter and hugged her tightly."
+        }
+      ]
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(hugged, hugging)",
+    "title": "hug_verb_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to put your arms around yourself",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "grammer", "text": "hug yourself" },
+        {
+          "type": "example",
+          "text": "She stood hugging herself against the cold."
+        },
+        { "type": "collocation", "text": "hug your knees/arms/legs etc" },
+        {
+          "type": "example",
+          "text": "Sarah sat on the floor, hugging her knees."
+        }
+      ]
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(hugged, hugging)",
+    "title": "hug_verb_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to move along the side, edge, top etc of something, staying very close to it",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "The small boats hugged the coast." }
+      ]
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(hugged, hugging)",
+    "title": "hug_verb_4",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "4",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "if clothes hug your body, they fit closely",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "collocation", "text": "body-/figure-hugging" },
+        { "type": "example", "text": "a figure-hugging dress" }
+      ]
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(hugged, hugging)",
+    "title": "hug_verb_5",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "5",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to hold something in your arms close to your chest",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "He was hugging a big pile of books." }
+      ]
+    }
+  },
+  {
+    "word": "hug",
+    "pronunciation": "/hʌɡ/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(hugged, hugging)",
+    "title": "hug_verb_6",
+    "images": [],
+    "geo": "British English",
+    "f2n": null,
+    "meaning": {
+      "index": "6",
+      "definition": {
+        "lexUnit": "hug yourself with joy/delight etc",
+        "registers": "",
+        "text": "to feel very pleased with yourself",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Kate hugged herself with pleasure after receiving the award."
+        }
+      ]
+    }
+  },
+  {
+    "word": "tree-hugger",
+    "pronunciation": "",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "informal",
+    "inflections": "",
+    "title": "tree-hugger",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "someone who wants to protect the environment, and who takes part in protests which some people think are silly – used to show disapproval",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "wagtail",
+    "pronunciation": "/ˈwæɡteɪl/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wagtail",
+    "images": [1, 2, 3],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a small European bird that moves its tail quickly up and down when it walks",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "dilly-dally",
+    "pronunciation": "/ˈdɪli ˌdæli/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "(dilly-dallied, dilly-dallying, dilly-dallies)",
+    "title": "dilly-dally",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to waste time, because you cannot decide about something",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "Don’t dilly-dally, just get on with it!" }
+      ]
+    }
+  },
+  {
+    "word": "bonus",
+    "pronunciation": "/ˈbəʊnəs $ ˈboʊ-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "bonus_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "money added to someone’s wages, especially as a reward for good work",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Long-term savers qualify for a cash bonus."
+        },
+        {
+          "type": "example",
+          "text": "Further additions to your pay may take the form of bonus payments."
+        },
+        { "type": "example", "text": "a Christmas bonus" },
+        { "type": "example", "text": "Each worker receives an annual bonus." },
+        { "type": "example", "text": "a £20,000 bonus" }
+      ]
+    }
+  },
+  {
+    "word": "bonus",
+    "pronunciation": "/ˈbəʊnəs $ ˈboʊ-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "bonus_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "something good that you did not expect in a situation",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "He promised to take me to the match, with the added bonus of an afternoon off school."
+        },
+        { "type": "grammer", "text": "bonus for" },
+        {
+          "type": "example",
+          "text": "Britain’s possession of North Sea oil has proved a bonus for British technology."
+        }
+      ]
+    }
+  },
+  {
+    "word": "bonus",
+    "pronunciation": "/ˈbəʊnəs $ ˈboʊ-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "bonus_noun_3",
+    "images": [],
+    "geo": "British English",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "no-claims bonus",
+        "registers": "",
+        "text": "in Britain, a reduction in the amount that you have to pay for car insurance, because you have not claimed any money during a particular period a reduction in the cost of your car insurance when you do not make a claim in a particular year",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "fungus",
+    "pronunciation": "/ˈfʌŋɡəs/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "(plural fungi /-dʒaɪ, -ɡaɪ/ or funguses)",
+    "title": "fungus",
+    "images": [1, 2, 3],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a simple type of plant that has no leaves or flowers and that grows on plants or other surfaces. mushrooms and mould are both fungi.",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "distress",
+    "pronunciation": "/dɪˈstres/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "distress_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a feeling of extreme unhappiness",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Luke’s behaviour caused his parents great distress."
+        },
+        { "type": "grammer", "text": "in distress" },
+        {
+          "type": "example",
+          "text": "The girl was crying and clearly in distress."
+        }
+      ]
+    }
+  },
+  {
+    "word": "distress",
+    "pronunciation": "/dɪˈstres/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "distress_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "suffering and problems caused by a lack of money, food etc",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "acute financial distress" },
+        { "type": "grammer", "text": "in distress" },
+        { "type": "example", "text": "charities that aid families in distress" }
+      ]
+    }
+  },
+  {
+    "word": "distress",
+    "pronunciation": "/dɪˈstres/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "distress_noun_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "formal",
+        "text": "great physical pain",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "distress",
+    "pronunciation": "/dɪˈstres/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "distress_noun_4",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "4",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a situation when a ship, aircraft etc is in danger and needs help",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "We picked up a distress signal 6 km away."
+        },
+        { "type": "grammer", "text": "in distress" },
+        { "type": "example", "text": "The ship is in distress." }
+      ]
+    }
+  },
+  {
+    "word": "wreck",
+    "pronunciation": "/rek/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wreck_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a car, plane, or train that has been damaged very badly, especially in a crash",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "He was still alive when they pulled him from the wreck."
+        }
+      ]
+    }
+  },
+  {
+    "word": "wreck",
+    "pronunciation": "/rek/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wreck_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a ship that has sunk",
+        "synonyms": ["shipwreck"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "grammer", "text": "wreck of" },
+        {
+          "type": "example",
+          "text": "Divers discovered the wreck of an old German warship."
+        }
+      ]
+    }
+  },
+  {
+    "word": "wreck",
+    "pronunciation": "/rek/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wreck_noun_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "informal",
+        "text": "someone who is very nervous, tired, or unhealthy",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "He looked a complete wreck." },
+        { "type": "collocation", "text": "nervous/emotional wreck" },
+        {
+          "type": "example",
+          "text": "The attack had left her an emotional wreck."
+        }
+      ]
+    }
+  },
+  {
+    "word": "wreck",
+    "pronunciation": "/rek/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wreck_noun_4",
+    "images": [],
+    "geo": "American English",
+    "f2n": null,
+    "meaning": {
+      "index": "4",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "an accident involving cars or other vehicles",
+        "synonyms": ["crash"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "collocation", "text": "car/train/plane wreck" },
+        { "type": "example", "text": "My father died in a car wreck." }
+      ]
+    }
+  },
+  {
+    "word": "wreck",
+    "pronunciation": "/rek/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wreck_noun_5",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "5",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a place that is very untidy",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "When you’re here, this place is a wreck!"
+        }
+      ]
+    }
+  },
+  {
+    "word": "wreck",
+    "pronunciation": "/rek/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "wreck_noun_6",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "6",
+      "definition": {
+        "lexUnit": "",
+        "registers": "informal",
+        "text": "an old car that is in a very bad condition",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "wasted",
+    "pronunciation": "/ˈweɪstɪd/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "wasted_adjective_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "wasted journey/trip/effort etc",
+        "registers": "",
+        "text": "a journey etc that does not achieve anything",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "I’m sorry you’ve had a wasted trip. Mr Newton isn’t here."
+        }
+      ]
+    }
+  },
+  {
+    "word": "wasted",
+    "pronunciation": "/ˈweɪstɪd/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "wasted_adjective_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "very thin and weak because of illness, old age etc",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [{ "type": "example", "text": "her thin, wasted body" }]
+    }
+  },
+  {
+    "word": "wasted",
+    "pronunciation": "/ˈweɪstɪd/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "wasted_adjective_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "informal",
+        "text": "very drunk or affected by drugs",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "ribbing",
+    "pronunciation": "/ˈrɪbɪŋ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "ribbing_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "friendly jokes and laughter about someone",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "He took a lot of ribbing from other members of the crew."
+        }
+      ]
+    }
+  },
+  {
+    "word": "ribbing",
+    "pronunciation": "/ˈrɪbɪŋ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "ribbing_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "raised lines, especially on a piece of woollen clothing",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "freak",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "unexpected and very unusual",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "a freak result" },
+        {
+          "type": "example",
+          "text": "He was crushed to death in a freak accident."
+        },
+        { "type": "collocation", "text": "freak wind/wave/storm etc" },
+        {
+          "type": "example",
+          "text": "The men drowned when a freak wave sank their boat."
+        }
+      ]
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "informal",
+    "inflections": "",
+    "title": "freak",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to become suddenly angry or afraid, especially so that you cannot control your behaviour",
+        "synonyms": ["flip"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "When Ben heard about the accident, he just freaked."
+        }
+      ]
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "freak_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "informal",
+        "text": "someone who is extremely interested in a particular subject so that other people think they are strange or unusual",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "a fitness freak" },
+        { "type": "example", "text": "a religious freak" },
+        { "type": "example", "text": "a computer freak" }
+      ]
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "freak_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "someone who is considered to be very strange because of the way they look, behave, or think",
+        "synonyms": ["weirdo"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "These glasses make me look like a freak."
+        },
+        {
+          "type": "example",
+          "text": "Women who studied engineering used to be considered freaks."
+        }
+      ]
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "freak_noun_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "a control freak",
+        "registers": "",
+        "text": "someone who always wants to control situations and other people",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "freak_noun_4",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "4",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "something in nature that is very unusual",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Due to some freak of nature, it snowed in June."
+        }
+      ]
+    }
+  },
+  {
+    "word": "freak",
+    "pronunciation": "/friːk/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "freak_noun_5",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "5",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "an unexpected and very unusual event",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "By some freak of fate, he walked away from the crash completely unhurt."
+        },
+        { "type": "example", "text": "April’s sales figures were a freak." }
+      ]
+    }
+  }
+]

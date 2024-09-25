@@ -1,0 +1,81 @@
+.WordAutoCompleteSearch {
+  width: 100%;
+  min-width: 250px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .search-suggestions-elements {
+    width: 100%;
+    max-width: 250px;
+    background-color: lightgoldenrodyellow;
+    margin: 5px auto;
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    button {
+      width: 100%;
+      background-color: snow;
+      padding: 10px;
+      border: none;
+      border-bottom: dashed 3px grey;
+      &:hover {
+        background-color: grey;
+      }
+    }
+  }
+}
+
+.auto-wrapper {
+  position: relative;
+  width: 100%;
+  /* overflow-y: scroll; */
+}
+
+.auto-li {
+  position: relative;
+  width: 100%;
+}
+
+.auto-b:focus {
+  /* display: block; */
+  background-color: grey;
+}
+.auto-b:hover {
+  display: block;
+  background-color: grey;
+}
+
+.auto-p {
+  position: absolute;
+  left: 100%;
+  bottom: 0%;
+  width: 250px;
+  margin-bottom: 0;
+  display: none;
+  border-style: solid;
+  /* border-width: 3px; */
+  border-radius: 5px;
+  background-color: cornsilk;
+  padding-left: 10px;
+}
+
+.auto-ul {
+  list-style-type: none;
+  margin: 0;
+  /* position: absolute; */
+  width: 100%;
+  padding-left: 2px;
+  /* direction: ltr; */
+  padding-right: 252px;
+
+  /* overflow-y: scroll; */
+}
+.auto-ul-wrapper {
+  position: absolute;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
+  /* direction: rtl; */
+  z-index: 1;
+}

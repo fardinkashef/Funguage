@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: arial, helvetica, sans-serif;
+  /* font-size: calc(1.2rem + 0.2vw); */
+  line-height: 1.5em;
+  background-color: #fffefd;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+label,
+input,
+textarea {
+  cursor: pointer;
+  font-size: inherit;
+}
+
+fieldset {
+  border: none;
+}

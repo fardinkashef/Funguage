@@ -1,0 +1,26 @@
+.SectionItem {
+  width: 15rem;
+  margin: 20px;
+  display: inline-block;
+  background-color: #fff9f0;
+  color: #6a4d79;
+  // color: #383838;
+  text-decoration: none;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  transition: border ease-in 0.2s;
+  img {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+  h3,
+  p {
+    padding: 10px;
+  }
+  h3 {
+    text-align: start;
+  }
+}
+.SectionItem:hover {
+  border-color: #4b6375;
+}

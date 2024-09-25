@@ -1,0 +1,39 @@
+.FileInput {
+  background-color: aliceblue;
+  width: 100%;
+  height: 200px;
+  border: 5px dashed black;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.2s ease all;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  i {
+    background-image: url("./icons/upload.svg");
+    width: 4rem;
+    height: 4rem;
+    background-size: contain;
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+.FileInput:hover {
+  background-color: lightgreen;
+}
+.FileInput:focus,
+.FileInput:focus-within {
+  outline: 5px solid lightgreen;
+  outline-offset: 5px;
+}

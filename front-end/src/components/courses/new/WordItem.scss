@@ -1,0 +1,35 @@
+.WordItem {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: solid;
+  border-color: darkblue;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  .search {
+    flex-grow: 1;
+    padding: 10px;
+    border-right: dashed grey;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .word-item-remove {
+    background-image: url(./icons/remove.svg);
+    background-color: transparent;
+    width: 3rem;
+    height: 3rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: dashed transparent;
+    border-radius: 50%;
+    &:hover {
+      border-color: red;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.NewCourseNavBar {
+  background-color: #363636;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 70px;
+  padding: 5px 25px;
+  .menu-button {
+    background-image: url("./icons/menu.svg");
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 5px;
+    background-color: yellow;
+    background-size: cover;
+    border: solid 2px black;
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  nav {
+    background-color: inherit;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    ul {
+      background-color: inherit;
+      list-style: none;
+      text-align: center;
+      li {
+        width: 100%;
+        cursor: pointer;
+        font-size: large;
+        &:hover {
+          background-color: bisque;
+        }
+        a {
+          text-decoration: none;
+          color: white;
+          display: block;
+          padding: 5px 0;
+        }
+      }
+    }
+  }
+  .hidden {
+    display: none;
+  }
+  .active {
+    background-color: brown;
+    font-weight: 500;
+  }
+  @media screen and (min-width: 650px) {
+    .menu-button {
+      display: none;
+    }
+    #nav {
+      display: block;
+      position: static;
+      width: fit-content;
+      ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        li {
+          background-color: inherit;
+          width: fit-content;
+          margin-left: 30px;
+          a:hover {
+            color: firebrick;
+          }
+        }
+      }
+    }
+    .active {
+      background-color: inherit;
+      color: darkorange;
+      border-bottom: solid 3px;
+    }
+  }
+}

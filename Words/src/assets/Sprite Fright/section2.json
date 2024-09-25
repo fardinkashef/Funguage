@@ -1,0 +1,784 @@
+[
+  {
+    "word": "species",
+    "pronunciation": "/ˈspiːʃiːz/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [{ "text": "W3", "title": "Top 3000 written words" }],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "(plural species)",
+    "title": "species",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a group of animals or plants whose members are similar and can breed together to produce young animals or plants",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Seven species of birds of prey have been observed."
+        },
+        {
+          "type": "example",
+          "text": "pandas and other endangered species (=ones that may soon no longer exist)"
+        }
+      ]
+    }
+  },
+  {
+    "word": "incredible",
+    "pronunciation": "/ɪnˈkredəbəl/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [{ "text": "S3", "title": "Top 3000 spoken words" }],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "incredible_adjective_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "extremely good, large, or great",
+        "synonyms": ["unbelievable"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "The view is just incredible." },
+        {
+          "type": "example",
+          "text": "There was blood everywhere and the pain was incredible."
+        }
+      ]
+    }
+  },
+  {
+    "word": "incredible",
+    "pronunciation": "/ɪnˈkredəbəl/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [{ "text": "S3", "title": "Top 3000 spoken words" }],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "incredible_adjective_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "too strange to be believed, or very difficult to believe",
+        "synonyms": ["unbelievable"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "It’s incredible that he survived the fall."
+        },
+        {
+          "type": "example",
+          "text": "It’s incredible how much Tom has changed since he met Sally."
+        },
+        {
+          "type": "example",
+          "text": "I find it almost incredible that no one noticed these errors."
+        }
+      ]
+    }
+  },
+  {
+    "word": "gnome",
+    "pronunciation": "/nəʊm $ noʊm/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "gnome_noun_1",
+    "images": [1, 2, 3],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a creature in children’s stories who looks like a little old man. Gnomes have pointed hats, live under the ground, and guard gold, jewels etc.",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "gnome",
+    "pronunciation": "/nəʊm $ noʊm/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "gnome_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a stone or plastic figure representing one of these creatures",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [{ "type": "example", "text": "a garden gnome" }]
+    }
+  },
+  {
+    "word": "shag",
+    "pronunciation": "/ʃæɡ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "shag_noun_1",
+    "images": [],
+    "geo": "British English",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "informal not polite",
+        "text": "an act of having sex with someone",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "shag",
+    "pronunciation": "/ʃæɡ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "shag_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a large black sea bird",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "shag",
+    "pronunciation": "/ʃæɡ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "shag_noun_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "strong-tasting tobacco with thick leaves cut into small thin pieces",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "shag",
+    "pronunciation": "/ʃæɡ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "informal  not polite",
+    "inflections": "(shagged, shagging)",
+    "title": "shag",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to have sex with someone",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "shag",
+    "pronunciation": "/ʃæɡ/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "shag",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "shag carpet/rug",
+        "registers": "",
+        "text": "a carpet or rug with a rough surface made from long threads of wool",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "mushroom",
+    "pronunciation": "/ˈmʌʃruːm, -rʊm/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [{ "text": "S3", "title": "Top 3000 spoken words" }],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "mushroom",
+    "images": [1, 2, 3],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "one of several kinds of fungus with stems and round tops, some of which can be eaten",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [{ "type": "example", "text": "mushroom soup" }]
+    }
+  },
+  {
+    "word": "mushroom",
+    "pronunciation": "/ˈmʌʃruːm, -rʊm/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "mushroom",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to grow and develop very quickly",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "New housing developments mushroomed on the edge of town."
+        }
+      ]
+    }
+  },
+  {
+    "word": "adorable",
+    "pronunciation": "/əˈdɔːrəbəl/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "adjective",
+    "register": "",
+    "inflections": "",
+    "title": "adorable",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "someone or something that is adorable is so attractive that they fill you with feelings of love",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "Oh what an adorable little baby!" }
+      ]
+    }
+  },
+  {
+    "word": "disrupt",
+    "pronunciation": "/dɪsˈrʌpt/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "disrupt",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to prevent something from continuing in its usual way by causing problems",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "Traffic was disrupted by a hoax bomb." },
+        {
+          "type": "example",
+          "text": "Climate change could disrupt the agricultural economy."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fortune",
+    "pronunciation": "/ˈfɔːtʃən $ ˈfɔːr-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [
+      { "text": "S3", "title": "Top 3000 spoken words" },
+      { "text": "W3", "title": "Top 3000 written words" }
+    ],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fortune_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a very large amount of money",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "He made a fortune selling property in Spain."
+        },
+        {
+          "type": "example",
+          "text": "My first painting sold for £25, a small fortune then for an art student."
+        },
+        {
+          "type": "example",
+          "text": "He died in poverty in 1947, but his art is worth a fortune."
+        },
+        { "type": "example", "text": "The carpet must have cost a fortune." },
+        {
+          "type": "example",
+          "text": "It is quite easy to decorate your house without spending a fortune."
+        },
+        {
+          "type": "example",
+          "text": "Her personal fortune was estimated at £37 million."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fortune",
+    "pronunciation": "/ˈfɔːtʃən $ ˈfɔːr-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [
+      { "text": "S3", "title": "Top 3000 spoken words" },
+      { "text": "W3", "title": "Top 3000 written words" }
+    ],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fortune_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "chance or luck, and the effect that it has on your life",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "I had the good fortune to work with a brilliant head of department."
+        },
+        {
+          "type": "example",
+          "text": "Sickness or ill fortune could reduce you to a needy situation."
+        },
+        {
+          "type": "example",
+          "text": "I felt it was useless to struggle against fortune."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fortune",
+    "pronunciation": "/ˈfɔːtʃən $ ˈfɔːr-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [
+      { "text": "S3", "title": "Top 3000 spoken words" },
+      { "text": "W3", "title": "Top 3000 written words" }
+    ],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fortune_noun_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "the good or bad things that happen in life",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "a downturn in the company’s fortunes" },
+        {
+          "type": "example",
+          "text": "This defeat marked a change in the team’s fortunes."
+        },
+        {
+          "type": "example",
+          "text": "The geographical position of the frontier fluctuated with the fortunes of war (=the things that can happen during a war)."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fortune",
+    "pronunciation": "/ˈfɔːtʃən $ ˈfɔːr-/",
+    "tooltip": { "text": "●●○", "title": "Core vocabulary: Medium-frequency" },
+    "frequency": [
+      { "text": "S3", "title": "Top 3000 spoken words" },
+      { "text": "W3", "title": "Top 3000 written words" }
+    ],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fortune_noun_4",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "4",
+      "definition": {
+        "lexUnit": "tell somebody’s fortune",
+        "registers": "",
+        "text": "to tell someone what will happen to them in the future by looking at their hands, using cards etc",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "habitat",
+    "pronunciation": "/ˈhæbətæt/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "habitat",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "the natural home of a plant or animal",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "watching monkeys in their natural habitat"
+        },
+        {
+          "type": "example",
+          "text": "The grassland is an important habitat for many wild flowers."
+        }
+      ]
+    }
+  },
+  {
+    "word": "Habitat",
+    "pronunciation": "/ˈhæbətæt/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "",
+    "register": "trademark",
+    "inflections": "",
+    "title": "Habitat",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a store that sells furniture and other things for the home. The stores are sometimes inside other, larger stores. Habitat products are known for being attractively designed and practical, and they are popular especially with middle-class people.",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "sprite",
+    "pronunciation": "/spraɪt/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "sprite",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a fairy",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "Sprite",
+    "pronunciation": "/spraɪt/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "",
+    "register": "trademark",
+    "inflections": "",
+    "title": "Sprite",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a type of sweet, clear, carbonated drink that has a lemon and lime taste",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "peppermint",
+    "pronunciation": "/ˈpepəˌmɪnt $ -ər-/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "peppermint_noun_1",
+    "images": [1, 2],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a plant with a strong taste and smell, often used in sweets",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "peppermint",
+    "pronunciation": "/ˈpepəˌmɪnt $ -ər-/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "peppermint_noun_2",
+    "images": [3, 4, 5],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a sweet with the taste of peppermint",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "moss",
+    "pronunciation": "/mɒs $ mɒːs/",
+    "tooltip": { "text": "●○○", "title": "Core vocabulary: Lower-frequency" },
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "moss",
+    "images": [1, 2, 3],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a very small green plant that grows in a thick soft furry mass on wet soil, trees, or rocks",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "geezer",
+    "pronunciation": "/ˈɡiːzə $ -ər/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "informal",
+    "inflections": "",
+    "title": "geezer_noun_1",
+    "images": [],
+    "geo": "British English",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a man",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [{ "type": "example", "text": "I know this geezer." }]
+    }
+  },
+  {
+    "word": "geezer",
+    "pronunciation": "/ˈɡiːzə $ -ər/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "informal",
+    "inflections": "",
+    "title": "geezer_noun_2",
+    "images": [],
+    "geo": "American English",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "an old man",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  }
+]

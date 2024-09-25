@@ -1,0 +1,76 @@
+.ReviewModal {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  z-index: 2;
+  min-height: 100%;
+  font-size: calc(1.2rem + 0.1vw);
+  .content {
+    background-color: #faebd7;
+    color: #383838;
+    width: calc(100% - 40px);
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    z-index: 2;
+    border-radius: 10px;
+    font-weight: 400;
+    position: relative;
+    .control {
+      position: sticky;
+      top: 0;
+      background-color: inherit;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0.5rem;
+      button.close {
+        background: transparent;
+        background-image: url(./word-modal/modal-icons/close.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 10px;
+        vertical-align: middle;
+        &:enabled:hover {
+          background-color: orange;
+        }
+      }
+      button[type="submit"] {
+        font-size: inherit;
+        background-color: green;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        &:hover:enabled {
+          background-color: lightgreen;
+          color: green;
+        }
+        &:disabled {
+          opacity: 0.5;
+          cursor: default;
+        }
+      }
+    }
+    // h3,
+    // h4 {
+    //   color: grey;
+    //   padding: 0 0.5rem;
+    // }
+    .check-item {
+      width: fit-content;
+      padding: 5px;
+      border: dashed 3px transparent;
+      &:hover {
+        border-color: grey;
+      }
+      input {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

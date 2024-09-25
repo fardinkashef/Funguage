@@ -1,0 +1,67 @@
+.TimeLine {
+  height: 7px;
+  margin-inline: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  .bar {
+    background-color: rgba(100, 100, 100, 0.5);
+    height: 3px;
+    width: 100%;
+    position: relative;
+    // For grey bar 👇:
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: calc(100% - var(--preview-position) * 100%);
+      background-color: rgb(150, 150, 150);
+      display: none;
+    }
+    // For red bar 👇:
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: calc(100% - var(--progress-position) * 100%);
+      background-color: red;
+    }
+    // The little red circle at the end of red bar 👇:
+    .thumb-indicator {
+      --scale: 0;
+      position: absolute;
+      transform: translateX(-50%) scale(var(--scale));
+      height: 200%;
+      aspect-ratio: 1 / 1; // Using aspect-ratio to set width equal to height
+      top: -50%;
+      left: calc(var(--progress-position) * 100%);
+      background-color: red;
+      border-radius: 50%;
+      transition: transform 150ms ease-in-out;
+    }
+  }
+}
+
+// On timeline hover, do these 👇:
+// 1.Increase the height of the bar
+// 2.Show grey bar
+// 3.Show thumb indicator
+
+.video-container.scrubbing .bar,
+.TimeLine:hover .bar {
+  height: 100%;
+}
+
+.video-container.scrubbing .bar::before,
+.TimeLine:hover .bar::before {
+  display: block;
+}
+
+.video-container.scrubbing .thumb-indicator,
+.TimeLine:hover .thumb-indicator {
+  --scale: 1;
+}

@@ -1,0 +1,81 @@
+.ImageInput {
+  background-color: #fff9f0;
+  width: 100%;
+  max-width: 15rem;
+  aspect-ratio: 1;
+  border: 5px dashed #b69870;
+  border-radius: 20px;
+  color: #383838;
+  position: relative;
+  transition: 0.2s ease all;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  i {
+    background-image: url("./icons/add.svg");
+    width: 6rem;
+    height: 6rem;
+    background-size: contain;
+  }
+  span {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-align: center;
+    color: darkgoldenrod;
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  .overlay {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    button {
+      display: none;
+      background-color: black;
+      background-image: url("./icons/remove.svg");
+      width: 3rem;
+      height: 3rem;
+      background-size: contain;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 100%;
+    }
+  }
+  .overlay:hover {
+    img {
+      opacity: 0.3;
+    }
+    button {
+      display: block;
+    }
+    button:hover {
+      background-color: cornsilk;
+    }
+  }
+}
+
+.ImageInput:hover,
+.ImageInput:focus,
+.ImageInput:focus-within {
+  background-color: #d7c0a1;
+  border-color: white;
+}

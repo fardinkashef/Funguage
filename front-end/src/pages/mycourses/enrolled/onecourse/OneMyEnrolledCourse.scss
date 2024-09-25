@@ -1,0 +1,51 @@
+.OneMyEnrolledCourse {
+  padding: 10px;
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 600px) {
+      flex-direction: row;
+    }
+    img {
+      width: 15rem;
+      aspect-ratio: 1;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      button {
+        width: 9rem;
+
+        color: white;
+        padding: 10px;
+        font-size: inherit;
+        border-radius: 5px;
+      }
+      button.enroll {
+        background-color: green;
+        &:hover {
+          background-color: lightgreen;
+        }
+      }
+      button.unsubscribe {
+        background-color: orange;
+        &:hover {
+          background-color: orangered;
+        }
+      }
+    }
+  }
+
+  hr {
+    margin: 20px 0;
+  }
+  h3 {
+    text-align: center;
+  }
+}

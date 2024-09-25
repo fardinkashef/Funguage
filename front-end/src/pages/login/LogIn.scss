@@ -1,0 +1,41 @@
+.LogIn {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 3rem;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    * {
+      font-size: inherit;
+    }
+    & > div {
+      width: 90%;
+    }
+    input {
+      display: block;
+      padding: 2px 5px;
+      width: 100%;
+    }
+    p {
+      color: red;
+    }
+    button {
+      background-color: cadetblue;
+      padding: 5px;
+      border-radius: 5px;
+      &:hover {
+        background-color: grey;
+      }
+    }
+  }
+  .switch-link {
+    font-size: 90%;
+  }
+}

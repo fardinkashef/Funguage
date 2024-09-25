@@ -1,0 +1,11 @@
+.NavBar {
+  z-index: 3;
+  @media screen and (min-width: 650px) {
+    .NavBarSmallScreen {
+      display: none;
+    }
+    .NavBarWideScreen {
+      display: flex;
+    }
+  }
+}

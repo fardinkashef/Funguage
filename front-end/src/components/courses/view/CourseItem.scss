@@ -1,0 +1,38 @@
+.CourseItem {
+  width: 15rem;
+  margin: 20px;
+  display: inline-block;
+  background-color: #fff9f0;
+  text-decoration: none;
+  color: #383838;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  transition: border ease-in 0.2s;
+  position: relative;
+  overflow: hidden;
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  .info {
+    h3,
+    p {
+      padding: 10px 5px;
+      font-size: 1.2rem;
+    }
+  }
+
+  .enrolled-tag {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background-color: green;
+    color: white;
+    transform: rotate(45deg);
+    width: 140px;
+    text-align: center;
+  }
+}
+.CourseItem:hover {
+  border-color: #4b6375;
+}

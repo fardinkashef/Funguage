@@ -1,0 +1,44 @@
+// @use "sass:math";
+$div-height: 20px; // The height of each one of the top div and bottom div
+$ellipse-height: 200px;
+$overlap-value: calc(
+  ((2 - sqrt(3)) / 4) * $ellipse-height
+); // The value in px which ellipse must overlap the top div or bottom div // Here the overlap-value equals 13.4 px .
+
+//* Note: The + and - operators must be surrounded by whitespace. For instance, calc(50% -8px) will be parsed as a percentage followed by a negative length—an invalid expression—while calc(50% - 8px) is a percentage followed by a subtraction operator and a length. Likewise, calc(8px + -50%) is treated as a length followed by an addition operator and a negative percentage. The * and / operators do not require whitespace, but adding it for consistency is both allowed and recommended. Note: It is permitted to nest calc() functions, in which case the inner ones are treated as simple parentheses.
+
+.Wave {
+  .top,
+  .bottom {
+    display: block;
+    position: relative;
+    height: $div-height;
+    width: 100%;
+    overflow: hidden;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 100%;
+      width: 100%;
+      height: $ellipse-height;
+      z-index: 2;
+    }
+  }
+  .top {
+    background-color: var(--top-color);
+    &::before {
+      background-color: var(--bottom-color);
+      left: -25%;
+      top: calc(20px - $overlap-value);
+    }
+  }
+  .bottom {
+    background-color: var(--bottom-color);
+    &::before {
+      background-color: var(--top-color);
+      right: -25%;
+      bottom: calc(20px - $overlap-value);
+    }
+  }
+}

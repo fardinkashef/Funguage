@@ -1,0 +1,28 @@
+.word-creation {
+  width: 100%;
+  min-height: 100%;
+  background-color: #e9d985;
+}
+
+.word-creation .top-info {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: coral;
+  border-radius: 10px;
+}
+
+.word-creation .top-info > * {
+  display: block;
+  width: 200px;
+  text-align: center;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+.word-creation .save {
+  display: block;
+  width: 150px;
+  margin: 5px auto;
+  background-color: green;
+  border-radius: 5px;
+}

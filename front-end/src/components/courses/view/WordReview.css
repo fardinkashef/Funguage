@@ -1,0 +1,80 @@
+.word-review {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: lightgoldenrodyellow;
+  border-radius: 10px;
+}
+.word-review button {
+  border: none;
+  background-color: inherit;
+  margin-right: 30px;
+  padding-left: 10px;
+  font-weight: 700;
+}
+.word-review button:hover {
+  color: blue;
+}
+.word-review .back {
+  display: block;
+  background-color: gold;
+  padding: 0px 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.word-review .back:hover {
+  color: black;
+  background-color: orange;
+}
+
+.word-review .back span {
+  font-size: 20px;
+}
+/* .word-review .sellectAll {
+  color: green;
+}
+.word-review .desellectAll {
+  color: green;
+} */
+.word-review .save {
+  display: block;
+  width: 200px;
+  margin: 0px auto;
+  padding: 5px 40px;
+  border-radius: 10px;
+  background-color: limegreen;
+  font-weight: 700;
+}
+.word-review .items {
+  margin: 5px 0;
+  padding-top: 5px;
+  background-color: burlywood;
+  border-radius: 5px;
+
+  /* max-height: 80vh; */
+  /* overflow: scroll; */
+  columns: 150px auto;
+}
+.word-review .items div {
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 150px;
+}
+.word-review .items .checked {
+  background-color: darkkhaki;
+}
+.word-review .items div:hover {
+  /* background-color: darkgrey; */
+  font-weight: 800;
+}
+.word-review .items div input {
+  cursor: pointer;
+}
+.word-review .items div label {
+  padding-left: 5px;
+  cursor: pointer;
+}
+.word-review .items div input:checked + label {
+  color: darkgreen;
+  font-weight: 800;
+}

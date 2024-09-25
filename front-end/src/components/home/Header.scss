@@ -1,0 +1,79 @@
+.Header {
+  background-color: snow;
+  padding: 20px;
+  padding-bottom: 50px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 70px;
+
+  .welcome {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    h2 {
+      margin-bottom: 10px;
+      line-height: 3rem;
+      span {
+        display: block;
+      }
+      .highlight {
+        font-size: 1.4em;
+        font-style: oblique;
+        font-weight: 500;
+      }
+      .highlight1 {
+        color: green;
+        @media screen and (min-width: 400px) {
+          display: inline;
+        }
+      }
+
+      .highlight2 {
+        color: #ff7300;
+        font-weight: 700;
+      }
+    }
+    h3 {
+      color: darkslategray;
+      span {
+        display: inline-block; // To prevent the span's words from getting seperated into two lines.
+        white-space: pre; // To preserve the first white-space inside it.
+      }
+    }
+    a {
+      background-color: #ff7300;
+      color: cornsilk;
+      padding: 10px 15px;
+      border-radius: 20px;
+      margin-top: 40px;
+      &:hover {
+        background-color: darkorange;
+      }
+    }
+  }
+  img {
+    width: 100%;
+    max-width: 500px;
+  }
+  @media screen and (min-width: 1000px) {
+    // font-size: calc(1.2rem + 0.2vw);
+    flex-direction: row;
+    height: calc(100vh - 70px);
+    margin-top: 0;
+    padding-bottom: 20px;
+    img {
+      width: 50%;
+    }
+
+    @media screen and (min-height: 700px) {
+      height: unset;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
+}

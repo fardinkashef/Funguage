@@ -1,0 +1,34 @@
+.MyCourseItem {
+  width: 15rem;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff9f0;
+  text-decoration: none;
+  color: #383838;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  transition: border ease-in 0.2s;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  .info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    p.description {
+      flex-grow: 1;
+    }
+    h3,
+    p {
+      padding: 10px 5px;
+      font-size: 1.2rem;
+    }
+  }
+}
+.MyCourseItem:hover {
+  border-color: #4b6375;
+}

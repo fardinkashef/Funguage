@@ -1,0 +1,14 @@
+.meanings {
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #bcd8c1;
+  border-radius: 10px;
+}
+.meanings .add {
+  display: block;
+  width: 150px;
+  margin: 5px auto;
+  background-color: orange;
+  border-radius: 5px;
+}

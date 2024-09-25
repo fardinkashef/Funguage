@@ -1,0 +1,31 @@
+.Footer {
+  background-color: black;
+  padding: 20px 10px;
+  color: whitesmoke;
+  .logo {
+    background-image: url(./assets/icons/logo.svg);
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    li {
+      a {
+        color: white;
+      }
+    }
+  }
+  p {
+    text-align: center;
+    a {
+      color: navajowhite;
+    }
+  }
+}

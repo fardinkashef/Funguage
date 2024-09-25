@@ -1,0 +1,19 @@
+.words-part {
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: lightgoldenrodyellow;
+  border: solid;
+  border-color: brown;
+  border-radius: 15px;
+}
+
+.words-part .add {
+  background-color: rgba(0, 0, 255, 0.476);
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 200px;
+  border-radius: 10px;
+  font-weight: 700;
+}

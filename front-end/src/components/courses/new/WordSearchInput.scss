@@ -1,0 +1,48 @@
+.WordSearchInput {
+  width: 100%;
+  min-height: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding: 5px;
+  border: solid;
+  border-color: coral;
+  border-radius: 20px;
+  .selected-item {
+    /* width: fit-content; */
+    padding: 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: azure;
+    border-radius: 10px;
+    margin: 2px;
+    span {
+      padding: 5px;
+      border-right: dashed 3px grey;
+    }
+  }
+  input {
+    width: 12rem;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    border-bottom: dashed 2px grey;
+    outline: none;
+    margin: 0 auto;
+  }
+  .word-search-input-remove {
+    background-image: url(./icons/remove.svg);
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: contain;
+    border: none;
+  }
+}
+.WordSearchInput:hover,
+.WordSearchInput:focus-within {
+  border-color: blue;
+}

@@ -1,0 +1,9 @@
+.Progress {
+  width: 100%;
+  border: solid 1px green;
+  border-radius: 5px;
+  .progress-bar {
+    background-color: green;
+    text-align: center;
+  }
+}

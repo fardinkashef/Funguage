@@ -1,0 +1,21 @@
+.CourseProfile {
+  width: 100%;
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  label,
+  input,
+  textarea {
+    width: 100%;
+    padding: 5px 10px;
+    font-family: inherit;
+  }
+  span {
+    color: grey;
+  }
+}

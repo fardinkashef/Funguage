@@ -1,0 +1,535 @@
+[
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "interjection",
+    "register": "informal",
+    "inflections": "",
+    "title": "fail",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "used for saying that someone has failed or done something badly",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to not succeed in achieving something",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "It looks likely that the peace talks will fail."
+        },
+        {
+          "type": "example",
+          "text": "Millions of people have tried to quit smoking and failed miserably (=been completely unsuccessful)."
+        },
+        {
+          "type": "example",
+          "text": "his efforts to save his failing marriage"
+        },
+        {
+          "type": "example",
+          "text": "If all else fails, you may be advised to have an operation."
+        },
+        { "type": "grammer", "text": "fail in" },
+        {
+          "type": "example",
+          "text": "He failed in his attempt to regain the world title."
+        },
+        { "type": "grammer", "text": "fail to do something" },
+        { "type": "example", "text": "Doctors failed to save the girl’s life." }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_2",
+    "images": [],
+    "geo": "",
+    "f2n": {
+      "heading": "Register",
+      "explanation": "Fail to do something is used mainly in writing and in formal contexts. In everyday English, people usually say do not do something instead",
+      "examples": []
+    },
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "to not do what is expected, needed, or wanted",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "The government are failing in their duty to protect people."
+        },
+        { "type": "grammer", "text": "fail to do something" },
+        { "type": "example", "text": "The letter failed to arrive." },
+        {
+          "type": "example",
+          "text": "Firms that fail to take advantage of the new technology will go out of business."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "a) to not pass a test or examination b) to decide that someone has not passed a test or examination",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "I failed my driving test the first time I took it."
+        },
+        {
+          "type": "example",
+          "text": "He failed maths but passed all his other subjects."
+        },
+        {
+          "type": "example",
+          "text": "Her work was so bad that I had no choice but to fail her."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_4",
+    "images": [],
+    "f2n": null,
+    "geo": "",
+    "meaning": {
+      "index": "4",
+      "definition": {
+        "lexUnit": "I fail to see/understand",
+        "registers": "formal",
+        "text": "used to show that you are annoyed by something that you do not accept or understand",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "I fail to see why you find it so amusing."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_5",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "5",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "if a company or business fails, it is unable to continue because of a lack of money",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_6",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "6",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "if a part of a machine or an organ in your body fails, it stops working",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        { "type": "example", "text": "The engine failed on take-off." },
+        {
+          "type": "example",
+          "text": "The hospital said that his kidneys were failing."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_7",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "7",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "if your sight, memory, health etc is failing, it is gradually getting weaker or is not as good as it was",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Failing eyesight forced him to retire early."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_8",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "8",
+      "definition": {
+        "lexUnit": "never fail to do something",
+        "registers": "",
+        "text": "to do something or happen so regularly that people expect it",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "My grandson never fails to phone me on my birthday."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_9",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "9",
+      "definition": {
+        "lexUnit": "your courage/willerve fails (you)",
+        "registers": "",
+        "text": "if your courage etc fails, or if it fails you, you suddenly do not have it when you need it",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "She had to leave immediately, before her courage failed her."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_10",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "10",
+      "definition": {
+        "lexUnit": "fail somebody",
+        "registers": "",
+        "text": "to not do what someone has trusted you to do",
+        "synonyms": ["let somebody down"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "I feel I’ve failed my children by not spending more time with them."
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_11",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "11",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "if crops fail, they do not grow or produce food, for example because of bad weather",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": { "text": "●●●", "title": "Core vocabulary: High-frequency" },
+    "frequency": [
+      { "text": "S2", "title": "Top 2000 spoken words" },
+      { "text": "W1", "title": "Top 1000 written words" }
+    ],
+    "partOfSpeech": "verb",
+    "register": "",
+    "inflections": "",
+    "title": "fail_verb_12",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "12",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "if the rains (=a lot of rain that falls at a particular time each year) fail, they do not come when expected or it does not rain enough",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": []
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fail_noun_1",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "1",
+      "definition": {
+        "lexUnit": "without fail",
+        "registers": "",
+        "text": "a) if you do something without fail, you always do it b) used to tell someone very firmly that they must do something",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "Tim visits his mother every day without fail."
+        },
+        {
+          "type": "example",
+          "text": "I want that work finished by tomorrow, without fail!"
+        }
+      ]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fail_noun_2",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "2",
+      "definition": {
+        "lexUnit": "",
+        "registers": "",
+        "text": "an unsuccessful result in a test or examination",
+        "synonyms": ["pass"],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [{ "type": "example", "text": "I got a fail in history." }]
+    }
+  },
+  {
+    "word": "fail",
+    "pronunciation": "/feɪl/",
+    "tooltip": null,
+    "frequency": [],
+    "partOfSpeech": "noun",
+    "register": "",
+    "inflections": "",
+    "title": "fail_noun_3",
+    "images": [],
+    "geo": "",
+    "f2n": null,
+    "meaning": {
+      "index": "3",
+      "definition": {
+        "lexUnit": "",
+        "registers": "informal",
+        "text": "an occasion when someone is not successful or does something badly",
+        "synonyms": [],
+        "oppositions": []
+      },
+      "translation": "",
+      "examples": [
+        {
+          "type": "example",
+          "text": "My parenting has included some spectacular fails."
+        }
+      ]
+    }
+  }
+]

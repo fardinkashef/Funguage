@@ -1,0 +1,127 @@
+.NavBarWideScreen {
+  display: none;
+  // font-size: calc(1rem + 0.2vw);
+  background-color: #363636;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 70px;
+  padding: 5px 25px;
+
+  .logo {
+    flex-grow: 1;
+    background-image: url(./icons/logo.svg);
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    margin-right: 2rem;
+  }
+
+  & > ul {
+    flex-grow: 1;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    li a,
+    li button {
+      background-color: inherit;
+      color: white;
+      font-size: inherit;
+      line-height: 2rem;
+      display: block;
+      padding: 5px 0;
+      cursor: pointer;
+      &:hover {
+        color: darkorange;
+        svg {
+          fill: darkorange;
+        }
+      }
+    }
+
+    li.login-signup {
+      // flex-grow: 1;
+      a {
+        width: fit-content;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border: solid 1px;
+        border-radius: 10px;
+      }
+    }
+    li.user-account {
+      // flex-grow: 1;
+      background-color: inherit;
+      position: relative;
+      * {
+        color: inherit;
+        font-size: inherit;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+        svg {
+          transition: transform 200ms ease-in-out;
+        }
+        svg.info-open {
+          transform: rotate(180deg);
+        }
+        &:hover svg {
+          fill: darkorange;
+        }
+      }
+      ul {
+        background-color: inherit;
+        color: white;
+        width: 8rem;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        padding: 1.5rem 0.5rem;
+        padding-bottom: 0.25rem;
+        transform: translateX(-25%);
+        li {
+          width: 100%;
+          * {
+            width: 100%;
+            text-align: center;
+          }
+        }
+        li:hover {
+          color: darkorange;
+        }
+      }
+      ul.info-closed {
+        display: none;
+      }
+    }
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .active,
+  li.login-signup a.active {
+    color: darkorange;
+    border: none;
+    border-bottom: solid 1px;
+    border-radius: 10px;
+
+    svg {
+      fill: darkorange;
+    }
+  }
+}
