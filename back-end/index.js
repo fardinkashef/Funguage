@@ -8,7 +8,7 @@ const myCoursesRoutes = require("./routes/myCourses-routes");
 const wordsRoutes = require("./routes/words-routes");
 const HttpError = require("./models/http-error");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");ko
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
