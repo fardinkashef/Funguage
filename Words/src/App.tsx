@@ -25,6 +25,7 @@
 // import TearsOfSteel1 from "./assets/Tears Of Steel/section1.json";
 // import TearsOfSteel2 from "./assets/Tears Of Steel/section2.json";
 //! Attention: When importing a .json file, the JSON content automatically gets parsed, so there's no need to use JSON.parse() and if we do, we get an error that the thing you want to parse is not a string.
+
 function App() {
   // console.log(JSON.stringify(TearsOfSteel2Words));
   // const x = JSON.stringify(Sintel2);
