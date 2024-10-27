@@ -1,12 +1,4 @@
-import {
-  Calendar,
-  Home,
-  Inbox,
-  Search,
-  Settings,
-  BookOpenCheck,
-  LibraryBig,
-} from "lucide-react";
+import { Home, LibraryBig, ChartNoAxesCombined } from "lucide-react";
 
 import {
   Sidebar,
@@ -18,52 +10,29 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 // Menu items.
 const items = [
   {
     title: "Home",
-    url: "#",
+    href: "/",
     icon: Home,
   },
+
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-  {
-    title: "Courses",
-    url: "#",
+    title: "My Courses",
+    href: "/teaching/my-courses",
     icon: LibraryBig,
   },
   {
-    title: "Enrolled",
-    url: "#",
-    icon: LibraryBig,
-  },
-  {
-    title: "Review",
-    url: "#",
-    icon: BookOpenCheck,
+    title: "Analytics",
+    href: "/teaching/analytics",
+    icon: ChartNoAxesCombined,
   },
 ];
 
-export default function SideBar() {
+export default function TeachingSideBar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
@@ -74,10 +43,10 @@ export default function SideBar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.href}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

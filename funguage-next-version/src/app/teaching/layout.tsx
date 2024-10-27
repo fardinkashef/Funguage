@@ -1,5 +1,5 @@
-import Navbar from "@/components/learning/LearningNavbar";
-import SideBar from "@/components/learning/LearningSideBar";
+import Navbar from "@/components/teaching/TeachingNavbar";
+import SideBar from "@/components/teaching/TeachingSideBar";
 
 import { SidebarProvider } from "@/components/ui/sidebar";
 

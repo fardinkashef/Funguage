@@ -1,7 +1,7 @@
 import { SidebarTrigger } from "../ui/sidebar";
-import { MenuSheet } from "./MenuSheet";
+import MenuSheet from "./TeachingMenuSheet";
 
-export default function Navbar() {
+export default function TeachingNavbar() {
   return (
     <div className="flex justify-between bg-yellow-400 p-4">
       <MenuSheet />
