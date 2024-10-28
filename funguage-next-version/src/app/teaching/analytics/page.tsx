@@ -1,3 +1,3 @@
-export default function Analytics() {
+export default function AnalyticsPage() {
   return <div>Analytics</div>;
 }

@@ -12,7 +12,7 @@ export default function LearingLayout({
     <div className="flex h-full">
       <SidebarProvider>
         <SideBar />
-        <main className="grow">
+        <main className="grow flex flex-col">
           <Navbar />
           {children}
         </main>

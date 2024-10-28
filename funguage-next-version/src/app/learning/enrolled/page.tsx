@@ -1,3 +1,3 @@
-export default function Enrolled() {
-  return <div>Enrolled</div>;
+export default function EnrolledPage() {
+  return <div>Enrolled Page</div>;
 }
