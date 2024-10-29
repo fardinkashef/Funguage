@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { createCourse } from "@/lib/server-actions/courses";
 
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
@@ -32,15 +33,14 @@ export default function CreatePage() {
   const router = useRouter();
   const { isSubmitting, isValid } = form.formState;
 
-  const submit: SubmitHandler<FormFields> = (data) => {
-    console.log(data);
-    toast.success("Course created");
-    router.push("/teaching/my-courses/1");
-
-    // try {
-    // } catch (error) {
-    //   toast.error("Something went wrong");
-    // }
+  const submit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      const response = await createCourse(data);
+      toast.success("Course created");
+      router.push(`/teaching/my-courses/${response.newCourseId}`);
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
 
   return (
@@ -69,6 +69,7 @@ export default function CreatePage() {
                   <FormDescription>
                     What will you teach in this course?
                   </FormDescription>
+                  <FormMessage />
                 </FormItem>
               )}
             />

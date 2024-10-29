@@ -1,31 +1,9 @@
-export type profile = {
-  firstName: string;
-  lastName: string;
-  age: string;
-  gender: "male" | "female" | undefined;
-  groupCode: string;
-  caseCode: string;
-};
-export type results = {
-  byEachQuestion: (boolean | null)[];
-  byEachEmotion: {
-    emotion: string;
-    emoji: string;
-    correct: number;
-    wrong: number;
-    missed: number;
-  }[];
-
-  byAnswerStatus: {
-    correct: number;
-    wrong: number;
-    missed: number;
-  };
-};
-export type subject = {
+export type course = {
   _id?: string;
-  id?: string;
-  profile: profile;
-  results: results;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  isPublished?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
-export type answers = (boolean | null)[];
