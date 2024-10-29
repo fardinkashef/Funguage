@@ -3,7 +3,7 @@
 import { connectToDatabase } from "@/lib/database/db-connection";
 import Course from "../database/models/course";
 import { course } from "../types";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 // export async function getScourses() {
 //   try {
@@ -55,24 +55,100 @@ export async function createCourse(newData: course) {
   }
 }
 
-export async function deleteCourse(id: string) {
-  let results;
+//* Updating functions 👇:
+
+// export async function updateCourse(courseId: string, newData: any) {
+//   let result;
+//   try {
+//     await connectToDatabase();
+//     result = await Course.findById(courseId);
+//   } catch (error) {
+//     console.log("This error happened while updating the data:", error);
+//     throw error;
+//   }
+
+//   if (!result) {
+//     const error = new Error("Could not find results for this id.");
+//     throw error;
+//   }
+
+//   try {
+//     console.log("newData", newData);
+
+//     await result.updateOne({ _id: courseId }, newData);
+//     // revalidatePath("/data");
+//   } catch (error) {
+//     console.log("This error happened while deleting the data:", error);
+//     throw error;
+//   }
+// }
+export async function updateCourseTitle(courseId: string, newTitle: string) {
+  let course;
   try {
     await connectToDatabase();
-    results = await Course.findById(id);
+    course = await Course.findById(courseId);
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+
+  if (!course) {
+    const error = new Error("Could not find courses for this id.");
+    throw error;
+  }
+
+  try {
+    course.title = newTitle;
+    await course.save();
+  } catch (error) {
+    console.log("This error happened while deleting the data:", error);
+    throw error;
+  }
+}
+export async function updateCourseDescription(courseId: string, newDescription: string) {
+  let course;
+  try {
+    await connectToDatabase();
+    course = await Course.findById(courseId);
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+
+  if (!course) {
+    const error = new Error("Could not find courses for this id.");
+    throw error;
+  }
+
+  try {
+    course.description = newDescription;
+    await course.save();
+  } catch (error) {
+    console.log("This error happened while deleting the data:", error);
+    throw error;
+  }
+}
+//* Updating functions 👆:
+
+
+export async function deleteCourse(id: string) {
+  let course;
+  try {
+    await connectToDatabase();
+    course = await Course.findById(id);
   } catch (error) {
     console.log("This error happened while deleting the data:", error);
     throw error;
   }
 
-  if (!results) {
-    const error = new Error("Could not find results for this id.");
+  if (!course) {
+    const error = new Error("Could not find courses for this id.");
     throw error;
   }
 
   try {
-    await results.deleteOne();
-    revalidatePath("/data");
+    await course.deleteOne();
+    // revalidatePath("/data");
   } catch (error) {
     console.log("This error happened while deleting the data:", error);
     throw error;

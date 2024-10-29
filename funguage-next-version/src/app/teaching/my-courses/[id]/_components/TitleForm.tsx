@@ -17,11 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { updateCourseTitle } from "@/lib/server-actions/courses";
 
 interface TitleFormProps {
-  initialData: {
-    title: string;
-  };
+  initialTitle: string;
   courseId: string;
 }
 
@@ -31,7 +30,7 @@ const formSchema = z.object({
   }),
 });
 
-export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
+export const TitleForm = ({ initialTitle, courseId }: TitleFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -40,13 +39,14 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: { title: initialTitle },
   });
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const submit = async (values: z.infer<typeof formSchema>) => {
     try {
+      await updateCourseTitle(courseId, values.title);
       toast.success("Course title updated");
       toggleEdit();
       router.refresh();
@@ -81,12 +81,12 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
         </Button>
       </div>
       {!isEditing && (
-        <p className="text-sm mt-2 dark:text-gray-300">{initialData?.title}</p>
+        <p className="text-sm mt-2 dark:text-gray-300">{initialTitle}</p>
       )}
       {isEditing && (
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(submit)}
             className="space-y-4 mt-4 dark:text-gray-300"
           >
             <FormField

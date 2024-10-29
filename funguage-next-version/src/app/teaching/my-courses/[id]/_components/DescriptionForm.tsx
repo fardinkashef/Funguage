@@ -15,14 +15,15 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { Editor } from "@/components/editor";
-import { Preview } from "@/components/preview";
+import { Button } from "@/components/ui/button";
+// import { cn } from "@/lib/utils";
+// import { Editor } from "@/components/editor";
+// import { Preview } from "@/components/preview";
+import { updateCourseDescription } from "@/lib/server-actions/courses";
 
 interface DescriptionFormProps {
-  initialData: Course;
+  initialDescription: string | undefined;
   courseId: string;
 }
 
@@ -33,7 +34,7 @@ const formSchema = z.object({
 });
 
 export const DescriptionForm = ({
-  initialData,
+  initialDescription,
   courseId,
 }: DescriptionFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -45,7 +46,7 @@ export const DescriptionForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      description: initialData?.description || "",
+      description: initialDescription || "",
     },
   });
 
@@ -53,8 +54,8 @@ export const DescriptionForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      //   await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated");
+      await updateCourseDescription(courseId, values.description);
+      toast.success("Course description updated");
       toggleEdit();
       router.refresh();
     } catch {
@@ -78,17 +79,9 @@ export const DescriptionForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <div
-          className={cn(
-            "text-sm mt-2",
-            !initialData.description && "text-slate-500 italic"
-          )}
-        >
-          {!initialData.description && "No description"}
-          {initialData.description && (
-            <Preview value={initialData.description} />
-          )}
-        </div>
+        <p className="text-sm mt-2 dark:text-gray-300">
+          {initialDescription || "No description"}
+        </p>
       )}
       {isEditing && (
         <Form {...form}>
@@ -102,7 +95,11 @@ export const DescriptionForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Editor {...field} />
+                    <Textarea
+                      disabled={isSubmitting}
+                      placeholder="e.g. 'This course is about'"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
