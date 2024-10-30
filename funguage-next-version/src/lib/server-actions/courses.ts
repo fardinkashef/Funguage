@@ -101,11 +101,14 @@ export async function updateCourseTitle(courseId: string, newTitle: string) {
     course.title = newTitle;
     await course.save();
   } catch (error) {
-    console.log("This error happened while deleting the data:", error);
+    console.log("This error happened while updating the data:", error);
     throw error;
   }
 }
-export async function updateCourseDescription(courseId: string, newDescription: string) {
+export async function updateCourseDescription(
+  courseId: string,
+  newDescription: string
+) {
   let course;
   try {
     await connectToDatabase();
@@ -124,12 +127,37 @@ export async function updateCourseDescription(courseId: string, newDescription: 
     course.description = newDescription;
     await course.save();
   } catch (error) {
-    console.log("This error happened while deleting the data:", error);
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+}
+export async function updateCourseImageUrl(
+  courseId: string,
+  newImageUrl: string
+) {
+  let course;
+  try {
+    await connectToDatabase();
+    course = await Course.findById(courseId);
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+
+  if (!course) {
+    const error = new Error("Could not find courses for this id.");
+    throw error;
+  }
+
+  try {
+    course.imageUrl = newImageUrl;
+    await course.save();
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
     throw error;
   }
 }
 //* Updating functions 👆:
-
 
 export async function deleteCourse(id: string) {
   let course;

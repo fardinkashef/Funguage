@@ -4,6 +4,7 @@ import { LayoutDashboard } from "lucide-react";
 import { redirect } from "next/navigation";
 import { TitleForm } from "./_components/TitleForm";
 import { DescriptionForm } from "./_components/DescriptionForm";
+import { ImageForm } from "./_components/ImageForm";
 
 type MyCoursePageProps = {
   params: { id: string };
@@ -49,7 +50,7 @@ export default async function MyCoursePage({ params }: MyCoursePageProps) {
             initialDescription={course.description}
             courseId={course._id}
           />
-          {/* <ImageForm initialData={course} courseId={course._id} /> */}
+          <ImageForm initialImageUrl={course.imageUrl} courseId={course._id} />
           {/* <CategoryForm
             initialData={course}
             courseId={course._id}
