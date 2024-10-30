@@ -7,3 +7,13 @@ export type course = {
   createdAt?: Date;
   updatedAt?: Date;
 };
+export type chapter = {
+  _id: string;
+  title: string;
+  description?: string;
+  videoUrl?: string;
+  isPublished?: boolean;
+  position?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+};
