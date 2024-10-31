@@ -7,7 +7,6 @@ import { Loader2, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Chapter, Course } from "@prisma/client";
 
 import {
   Form,
@@ -19,10 +18,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
-import { ChaptersList } from "./chapters-list";
+import { ChaptersList } from "./ChaptersList";
+import { chapter } from "@/lib/types";
+import { createChapter } from "@/lib/server-actions/chapters";
 
 interface ChaptersFormProps {
-  initialData: Course & { chapters: Chapter[] };
+  initialChapters: chapter[];
   courseId: string;
 }
 
@@ -30,7 +31,10 @@ const formSchema = z.object({
   title: z.string().min(1),
 });
 
-export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
+export default function ChaptersForm({
+  initialChapters,
+  courseId,
+}: ChaptersFormProps) {
   const [isCreating, setIsCreating] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -51,7 +55,7 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post(`/api/courses/${courseId}/chapters`, values);
+      await createChapter({ ...values, course: courseId });
       toast.success("Chapter created");
       toggleCreating();
       router.refresh();
@@ -64,9 +68,9 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
     try {
       setIsUpdating(true);
 
-      await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
-        list: updateData,
-      });
+      // await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
+      //   list: updateData,
+      // });
       toast.success("Chapters reordered");
       router.refresh();
     } catch {
@@ -127,18 +131,18 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
           </form>
         </Form>
       )}
-      {!isCreating && (
+      {!isCreating && initialChapters && (
         <div
           className={cn(
             "text-sm mt-2",
-            !initialData.chapters.length && "text-slate-500 italic"
+            !initialChapters.length && "text-slate-500 italic"
           )}
         >
-          {!initialData.chapters.length && "No chapters"}
+          {!initialChapters.length && "No chapters"}
           <ChaptersList
             onEdit={onEdit}
             onReorder={onReorder}
-            items={initialData.chapters || []}
+            items={(initialChapters as chapter[]) || []}
           />
         </div>
       )}
@@ -149,5 +153,4 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
       )}
     </div>
   );
-};
-export default ChaptersForm;
+}

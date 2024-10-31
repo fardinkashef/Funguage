@@ -6,7 +6,9 @@ const CourseSchema = new Schema(
     description: String,
     imageUrl: String,
     isPublished: Boolean,
-    //     usedDatabaseWordIds: [{ type: mongoose.Types.ObjectId, required: true }],
+    // chapters: [{ type: Schema.Types.ObjectId, ref: "Chapter" }],
+
+    //     usedDatabaseWordIds: [{ type: Schema.Types.ObjectId, required: true }],
     // creator: { type: String, required: true, ref: "User" },
   },
   { timestamps: true }

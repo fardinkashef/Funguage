@@ -1,10 +1,12 @@
 import { IconBadge } from "@/components/IconBadge";
 import { getCourseById } from "@/lib/server-actions/courses";
-import { LayoutDashboard } from "lucide-react";
+import { LayoutDashboard, ListChecks } from "lucide-react";
 import { redirect } from "next/navigation";
 import { TitleForm } from "./_components/TitleForm";
 import { DescriptionForm } from "./_components/DescriptionForm";
 import { ImageForm } from "./_components/ImageForm";
+import ChaptersForm from "./_components/ChaptersForm";
+import { getChapters } from "@/lib/server-actions/chapters";
 
 type MyCoursePageProps = {
   params: { id: string };
@@ -13,10 +15,12 @@ type MyCoursePageProps = {
 export default async function MyCoursePage({ params }: MyCoursePageProps) {
   const { id } = await params;
   const course = await getCourseById(id);
+  const chapters = await getChapters(id);
 
-  if (!course) {
+  if (!course || !course._id) {
     return redirect("/");
   }
+  console.log("This is the course:", course);
 
   const requiredFields = [course.title, course.description, course.imageUrl];
 
@@ -62,13 +66,13 @@ export default async function MyCoursePage({ params }: MyCoursePageProps) {
         </div>
         {/* 3 column 2*/}
         <div className="space-y-6">
-          {/* <div>
+          <div>
             <div className="flex items-center gap-x-2">
               <IconBadge icon={ListChecks} />
               <h2 className="text-xl">Course chapters</h2>
             </div>
-            <ChaptersForm initialData={course} courseId={course._id} />
-          </div> */}
+            <ChaptersForm initialChapters={chapters} courseId={course._id} />
+          </div>
         </div>
       </div>
     </div>

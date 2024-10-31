@@ -1,5 +1,5 @@
 export type course = {
-  _id: string;
+  _id?: string;
   title: string;
   description?: string;
   imageUrl?: string;
@@ -8,12 +8,13 @@ export type course = {
   updatedAt?: Date;
 };
 export type chapter = {
-  _id: string;
+  _id?: string;
   title: string;
   description?: string;
   videoUrl?: string;
   isPublished?: boolean;
   position?: number;
+  course?: string;
   createdAt?: Date;
   updatedAt?: Date;
 };

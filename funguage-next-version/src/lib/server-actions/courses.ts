@@ -1,7 +1,7 @@
 "use server";
 
 import { connectToDatabase } from "@/lib/database/db-connection";
-import Course from "../database/models/course";
+import Course from "../database/models/Course";
 import { course } from "../types";
 // import { revalidatePath } from "next/cache";
 
@@ -30,22 +30,25 @@ import { course } from "../types";
 export async function getCourseById(id: string) {
   try {
     await connectToDatabase();
-    const data = await Course.findById(id);
-    if (!data) {
+    const course = await Course.findById(id);
+    if (!course) {
       throw new Error("There's not any results to return.");
     }
-    const dataPOJO: course = JSON.parse(JSON.stringify(data));
-    return dataPOJO;
+    const coursePOJO: course = JSON.parse(JSON.stringify(course));
+    return coursePOJO;
   } catch (error) {
-    console.log("This error happened when getting all the results:", error);
+    console.log(
+      "This error happened when getting the course by its id:",
+      error
+    );
     throw error;
   }
 }
 
-export async function createCourse(newData: course) {
+export async function createCourse(courseData: course) {
   try {
     await connectToDatabase();
-    const newCourse = new Course(newData);
+    const newCourse = new Course(courseData);
     await newCourse.save();
     return { newCourseId: newCourse._id.toString() };
     // revalidatePath("/data");
