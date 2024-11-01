@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { ChaptersList } from "./ChaptersList";
 import { chapter } from "@/lib/types";
-import { createChapter } from "@/lib/server-actions/chapters";
+import { createChapter, reorderChapters } from "@/lib/server-actions/chapters";
 
 interface ChaptersFormProps {
   initialChapters: chapter[];
@@ -53,9 +53,13 @@ export default function ChaptersForm({
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const submit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await createChapter({ ...values, course: courseId });
+      await createChapter({
+        ...values,
+        course: courseId,
+        position: initialChapters.length + 1,
+      });
       toast.success("Chapter created");
       toggleCreating();
       router.refresh();
@@ -64,14 +68,13 @@ export default function ChaptersForm({
     }
   };
 
-  const onReorder = async (updateData: { id: string; position: number }[]) => {
+  const onReorder = async (
+    reorderingData: { id: string; position: number }[]
+  ) => {
     try {
       setIsUpdating(true);
-
-      // await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
-      //   list: updateData,
-      // });
-      toast.success("Chapters reordered");
+      await reorderChapters(reorderingData);
+      await toast.success("Chapters reordered");
       router.refresh();
     } catch {
       toast.error("Something went wrong");
@@ -80,8 +83,8 @@ export default function ChaptersForm({
     }
   };
 
-  const onEdit = (id: string) => {
-    router.push(`/teacher/courses/${courseId}/chapters/${id}`);
+  const onEdit = (chapterId: string) => {
+    router.push(`/teaching/my-courses/${courseId}/chapters/${chapterId}`);
   };
   return (
     <div className="relative mt-6 border bg-slate-100 rounded-md p-4 dark:bg-gray-800">
@@ -105,10 +108,7 @@ export default function ChaptersForm({
       </div>
       {isCreating && (
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 mt-4"
-          >
+          <form onSubmit={form.handleSubmit(submit)} className="space-y-4 mt-4">
             <FormField
               control={form.control}
               name="title"
@@ -142,7 +142,7 @@ export default function ChaptersForm({
           <ChaptersList
             onEdit={onEdit}
             onReorder={onReorder}
-            items={(initialChapters as chapter[]) || []}
+            items={initialChapters || []}
           />
         </div>
       )}

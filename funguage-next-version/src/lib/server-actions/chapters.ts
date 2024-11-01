@@ -9,7 +9,9 @@ import Chapter from "../database/models/Chapter";
 export async function getChapters(courseId: string) {
   try {
     await connectToDatabase();
-    const data = await Chapter.find({ course: courseId });
+    const data = await Chapter.find({ course: courseId }).sort({
+      position: 1,
+    });
     if (!data) {
       throw new Error("There's not any results to return.");
     }
@@ -27,12 +29,12 @@ export async function getChapters(courseId: string) {
 export async function getChapterById(id: string) {
   try {
     await connectToDatabase();
-    const data = await Chapter.findById(id);
-    if (!data) {
+    const chapter = await Chapter.findById(id);
+    if (!chapter) {
       throw new Error("There's not any results to return.");
     }
-    const dataPOJO: chapter = JSON.parse(JSON.stringify(data));
-    return dataPOJO;
+    const chapterPOJO: chapter = JSON.parse(JSON.stringify(chapter));
+    return chapterPOJO;
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;
@@ -149,6 +151,22 @@ export async function deleteChapter(id: string) {
   try {
     await chapter.deleteOne();
     // revalidatePath("/data");
+  } catch (error) {
+    console.log("This error happened while deleting the data:", error);
+    throw error;
+  }
+}
+
+export async function reorderChapters(
+  reorderingData: { id: string; position: number }[]
+) {
+  try {
+    await connectToDatabase();
+    for (const item of reorderingData) {
+      const chapter = await Chapter.findById(item.id);
+      chapter.position = item.position;
+      await chapter.save();
+    }
   } catch (error) {
     console.log("This error happened while deleting the data:", error);
     throw error;

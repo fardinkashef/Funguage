@@ -49,7 +49,7 @@ export const ChaptersList = ({
     setChapters(items);
 
     const bulkUpdateData = updatedChapters.map((chapter) => ({
-      id: chapter._id,
+      id: chapter._id as string,
       position: items.findIndex((item) => item._id === chapter._id),
     }));
 
@@ -67,7 +67,7 @@ export const ChaptersList = ({
             {chapters.map((chapter, index) => (
               <Draggable
                 key={chapter._id}
-                draggableId={chapter._id}
+                draggableId={chapter._id as string}
                 index={index}
               >
                 {(provided) => (
@@ -121,7 +121,7 @@ export const ChaptersList = ({
                         {chapter.isPublished ? "Published" : "Draft"}
                       </Badge>
                       <Pencil
-                        onClick={() => onEdit(chapter._id)}
+                        onClick={() => onEdit(chapter._id as string)}
                         className="w-4 h-4 cursor-pointer hover:opacity-75 transition"
                       />
                     </div>

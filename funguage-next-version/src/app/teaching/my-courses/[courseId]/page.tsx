@@ -9,13 +9,13 @@ import ChaptersForm from "./_components/ChaptersForm";
 import { getChapters } from "@/lib/server-actions/chapters";
 
 type MyCoursePageProps = {
-  params: { id: string };
+  params: { courseId: string };
 };
 
 export default async function MyCoursePage({ params }: MyCoursePageProps) {
-  const { id } = await params;
-  const course = await getCourseById(id);
-  const chapters = await getChapters(id);
+  const { courseId } = await params;
+  const course = await getCourseById(courseId);
+  const chapters = await getChapters(courseId);
 
   if (!course || !course._id) {
     return redirect("/");
