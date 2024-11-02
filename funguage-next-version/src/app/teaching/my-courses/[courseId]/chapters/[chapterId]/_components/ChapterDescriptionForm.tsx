@@ -1,7 +1,6 @@
 "use client";
 
 import * as z from "zod";
-import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
@@ -16,28 +15,25 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { updateChapterDescription } from "@/lib/server-actions/chapters";
 
-interface ChapterTitleFormProps {
-  initialData: {
-    title: string;
-  };
+type ChapterDescriptionFormProps = {
+  initialDescription: string | undefined;
   courseId: string;
   chapterId: string;
 };
 
 const formSchema = z.object({
-  title: z.string().min(1, {
-    message: "Title is required",
-  }),
+  description: z.string().min(1),
 });
 
-export const ChapterTitleForm = ({
-  initialData,
+export default function ChapterDescriptionForm({
+  initialDescription,
   courseId,
-  chapterId
-}: ChapterTitleFormProps) => {
+  chapterId,
+}: ChapterDescriptionFormProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -46,67 +42,56 @@ export const ChapterTitleForm = ({
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {
+      description: initialDescription || "",
+    },
   });
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const submit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-      toast.success("Chapter title updated");
+      updateChapterDescription(chapterId, values.description);
+      toast.success("Chapter updated");
       toggleEdit();
       router.refresh();
-    } catch (error : any) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          toast.error(`Server responded with ${error.response.status} error`);
-        } else if (error.request) {
-          // The request was made but no response was received
-          toast.error("No response received from server");
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          toast.error(`Error: ${error.message}`);
-        }
-      }
+    } catch {
+      toast.error("Something went wrong");
+    }
   };
 
   return (
-    <div className="mt-6 bg-slate-100 rounded-md p-4 dark:bg-gray-800">
+    <div className="mt-6 border bg-slate-100 rounded-md p-4 dark:bg-gray-800">
       <div className="font-medium flex items-center justify-between">
-        Course Title
+        Chapter description
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit title
+              Edit description
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
         <p className="text-sm mt-2 dark:text-gray-300">
-          {initialData?.title}
+          {initialDescription || "No description"}
         </p>
       )}
       {isEditing && (
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 mt-4 dark:text-gray-300"
-          >
+          <form onSubmit={form.handleSubmit(submit)} className="space-y-4 mt-4">
             <FormField
               control={form.control}
-              name="title"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <Textarea
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web development'"
+                      placeholder="e.g. 'This chapter is about...'"
                       {...field}
                     />
                   </FormControl>
@@ -115,10 +100,7 @@ export const ChapterTitleForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button
-                disabled={!isValid || isSubmitting}
-                type="submit"
-              >
+              <Button disabled={!isValid || isSubmitting} type="submit">
                 Save
               </Button>
             </div>
@@ -126,6 +108,5 @@ export const ChapterTitleForm = ({
         </Form>
       )}
     </div>
-  )
+  );
 }
-

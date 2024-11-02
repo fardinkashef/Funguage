@@ -4,10 +4,10 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
 import { IconBadge } from "@/components/IconBadge";
-import { ChapterTitleForm } from "./_components/chatper-title-form";
-import { ChapterDescriptionForm } from "./_components/chapter-description-form";
+import ChapterTitleForm from "./_components/ChapterTitleForm";
+import ChapterDescriptionForm from "./_components/ChapterDescriptionForm";
 import { ChapterAccessForm } from "./_components/chapter-access-form";
-import { ChapterVideoForm } from "./_components/chapter-video-form";
+import ChapterVideoForm from "./_components/ChapterVideoForm";
 import { Banner } from "@/components/Banner";
 import { ChapterActions } from "./_components/chatper-actions";
 import { getChapterById } from "@/lib/server-actions/chapters";
@@ -69,12 +69,12 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
               Complete all fields {completionText}
             </span>
           </div>
-          <ChapterActions
+          {/* <ChapterActions
             disabled={!isComplete}
             courseId={params.courseId}
             chapterId={params.chapterId}
             isPublished={chapter.isPublished}
-          />
+          /> */}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div className="space-y-4">
@@ -84,12 +84,12 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
                 <h2 className="text-xl font-medium">Customize your chapter</h2>
               </div>
               <ChapterTitleForm
-                initialData={chapter}
+                initialTitle={chapter.title}
                 courseId={params.courseId}
                 chapterId={params.chapterId}
               />
               <ChapterDescriptionForm
-                initialData={chapter}
+                initialDescription={chapter.description}
                 courseId={params.courseId}
                 chapterId={params.chapterId}
               />
@@ -98,11 +98,11 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
               <IconBadge icon={Eye} />
               <h2 className="text-xl font-medium">Access Settings</h2>
             </div>
-            <ChapterAccessForm
+            {/* <ChapterAccessForm
               initialData={chapter}
               courseId={params.courseId}
               chapterId={params.chapterId}
-            />
+            /> */}
           </div>
           <div className="space-y-4">
             <div className="flex items-center gap-x-2">
@@ -110,7 +110,7 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
               <h2 className="text-xl font-medium">Add a video</h2>
             </div>
             <ChapterVideoForm
-              initialData={chapter}
+              initialVideoUrl={chapter.videoUrl}
               courseId={params.courseId}
               chapterId={params.chapterId}
             />
