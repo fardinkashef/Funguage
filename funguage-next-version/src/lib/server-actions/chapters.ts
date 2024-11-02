@@ -124,7 +124,7 @@ export async function updateChapterVideoUrl(
   }
 
   try {
-    chapter.VideoUrl = newVideoUrl;
+    chapter.videoUrl = newVideoUrl;
     await chapter.save();
   } catch (error) {
     console.log("This error happened while updating the data:", error);

@@ -5,13 +5,14 @@ import MuxPlayer from "@mux/mux-player-react";
 import { Pencil, PlusCircle, Video } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { FileUpload } from "@/components/file-upload";
+import { FileUpload } from "@/components/FileUpload";
+import { updateChapterVideoUrl } from "@/lib/server-actions/chapters";
+import { useRouter } from "next/navigation";
 
 interface ChapterVideoFormProps {
-  initialData: Chapter & { muxData?: MuxData | null };
+  initialVideoUrl: string;
   courseId: string;
   chapterId: string;
 }
@@ -21,28 +22,24 @@ const formSchema = z.object({
 });
 
 export default function ChapterVideoForm({
-  initialData,
+  initialVideoUrl,
   courseId,
   chapterId,
 }: ChapterVideoFormProps) {
   const [isEditing, setIsEditing] = useState(false);
 
+  const router = useRouter();
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const submit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(
-        `/api/courses/${courseId}/chapters/${chapterId}`,
-        values
-      );
-      toast.success("Chapter updated");
+      await updateChapterVideoUrl(chapterId, values.videoUrl);
+      await toast.success("Chapter updated");
       toggleEdit();
-      //router.refresh();
-      const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
-      const url = `${baseUrl}/teacher/courses/${courseId}/chapters/${chapterId}`;
-      window.location.assign(url);
+      router.refresh();
+      // const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+      // const url = `${baseUrl}/teacher/courses/${courseId}/chapters/${chapterId}`;
+      // window.location.assign(url);
     } catch {
       toast.error("Something went wrong");
     }
@@ -54,13 +51,13 @@ export default function ChapterVideoForm({
         Chapter video
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
-          {!isEditing && !initialData.videoUrl && (
+          {!isEditing && !initialVideoUrl && (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
               Add a video
             </>
           )}
-          {!isEditing && initialData.videoUrl && (
+          {!isEditing && initialVideoUrl && (
             <>
               <Pencil className="h-4 w-4 mr-2" />
               Edit video
@@ -69,13 +66,15 @@ export default function ChapterVideoForm({
         </Button>
       </div>
       {!isEditing &&
-        (!initialData.videoUrl ? (
+        (!initialVideoUrl ? (
           <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md  dark:bg-gray-800 dark:text-slate-300">
             <Video className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
-            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+            {/* <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} /> */}
+            {/* <h2>This is initialVideoUrl: {initialVideoUrl}</h2> */}
+            <video src={initialVideoUrl} controls></video>
           </div>
         ))}
       {isEditing && (
@@ -84,7 +83,7 @@ export default function ChapterVideoForm({
             endpoint="chapterVideo"
             onChange={(url) => {
               if (url) {
-                onSubmit({ videoUrl: url });
+                submit({ videoUrl: url });
               }
             }}
           />
@@ -93,7 +92,7 @@ export default function ChapterVideoForm({
           </div>
         </div>
       )}
-      {initialData.videoUrl && !isEditing && (
+      {initialVideoUrl && !isEditing && (
         <div className="text-xs text-muted-foreground mt-2">
           Videos can take a few minutes to process. Refresh the page if video
           does not appear.

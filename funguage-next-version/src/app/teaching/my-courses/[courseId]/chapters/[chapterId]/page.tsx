@@ -19,7 +19,7 @@ type ChapterIdPageProps = {
   };
 };
 
-const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
+export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
   const { courseId, chapterId } = await params;
   //   const { userId } = auth();
 
@@ -54,7 +54,7 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
         <div className="flex items-center justify-between">
           <div className="w-full">
             <Link
-              href={`/teacher/courses/${params.courseId}`}
+              href={`/teacher/courses/${courseId}`}
               className="flex items-center text-sm hover:opacity-75 transition mb-6"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -71,8 +71,8 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
           </div>
           {/* <ChapterActions
             disabled={!isComplete}
-            courseId={params.courseId}
-            chapterId={params.chapterId}
+            courseId={courseId}
+            chapterId={chapterId}
             isPublished={chapter.isPublished}
           /> */}
         </div>
@@ -85,13 +85,13 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
               </div>
               <ChapterTitleForm
                 initialTitle={chapter.title}
-                courseId={params.courseId}
-                chapterId={params.chapterId}
+                courseId={courseId}
+                chapterId={chapterId}
               />
               <ChapterDescriptionForm
                 initialDescription={chapter.description}
-                courseId={params.courseId}
-                chapterId={params.chapterId}
+                courseId={courseId}
+                chapterId={chapterId}
               />
             </div>
             <div className="flex items-center gap-x-2">
@@ -100,8 +100,8 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
             </div>
             {/* <ChapterAccessForm
               initialData={chapter}
-              courseId={params.courseId}
-              chapterId={params.chapterId}
+              courseId={courseId}
+              chapterId={chapterId}
             /> */}
           </div>
           <div className="space-y-4">
@@ -111,14 +111,12 @@ const ChapterIdPage: React.FC<ChapterIdPageProps> = async ({ params }) => {
             </div>
             <ChapterVideoForm
               initialVideoUrl={chapter.videoUrl}
-              courseId={params.courseId}
-              chapterId={params.chapterId}
+              courseId={courseId}
+              chapterId={chapterId}
             />
           </div>
         </div>
       </div>
     </>
   );
-};
-
-export default ChapterIdPage;
+}
