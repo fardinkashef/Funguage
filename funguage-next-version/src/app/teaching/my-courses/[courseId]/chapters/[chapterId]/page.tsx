@@ -11,6 +11,7 @@ import ChapterVideoForm from "./_components/ChapterVideoForm";
 import { Banner } from "@/components/Banner";
 import { ChapterActions } from "./_components/chatper-actions";
 import { getChapterById } from "@/lib/server-actions/chapters";
+import ChapterSubtitleForm from "./_components/ChapterSubtitleForm";
 
 type ChapterIdPageProps = {
   params: {
@@ -111,6 +112,11 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
             </div>
             <ChapterVideoForm
               initialVideoUrl={chapter.videoUrl}
+              courseId={courseId}
+              chapterId={chapterId}
+            />
+            <ChapterSubtitleForm
+              initialSubtitle={chapter.subtitle}
               courseId={courseId}
               chapterId={chapterId}
             />

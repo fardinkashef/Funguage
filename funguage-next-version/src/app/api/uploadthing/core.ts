@@ -17,10 +17,10 @@ export const ourFileRouter = {
   courseImage: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
     // .middleware(() => handleAuth())
     .onUploadComplete(() => {}),
-  courseAttachment: f(["text", "image", "video", "audio", "pdf"])
+  chapterVideo: f({ video: { maxFileSize: "256MB", maxFileCount: 1 } })
     // .middleware(() => handleAuth())
     .onUploadComplete(() => {}),
-  chapterVideo: f({ video: { maxFileCount: 1, maxFileSize: "256MB" } })
+  chapterSubtitle: f({ text: { maxFileSize: "256KB", maxFileCount: 1 } })
     // .middleware(() => handleAuth())
     .onUploadComplete(() => {}),
 } satisfies FileRouter;

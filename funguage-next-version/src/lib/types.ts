@@ -12,6 +12,10 @@ export type chapter = {
   title: string;
   description?: string;
   videoUrl?: string;
+  subtitle: {
+    url: string;
+    name: string;
+  };
   isPublished?: boolean;
   position?: number;
   course?: string;

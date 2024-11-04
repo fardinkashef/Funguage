@@ -5,6 +5,10 @@ const ChapterSchema = new Schema(
     title: { type: String, required: true },
     description: String,
     videoUrl: String,
+    subtitle: {
+      url: String,
+      name: String,
+    },
     isPublished: Boolean,
     position: Number,
     course: { type: Schema.Types.ObjectId, ref: "Course" },

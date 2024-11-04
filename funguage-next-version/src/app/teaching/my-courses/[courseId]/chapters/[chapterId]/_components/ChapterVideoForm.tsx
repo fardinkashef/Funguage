@@ -12,7 +12,7 @@ import { updateChapterVideoUrl } from "@/lib/server-actions/chapters";
 import { useRouter } from "next/navigation";
 
 interface ChapterVideoFormProps {
-  initialVideoUrl: string;
+  initialVideoUrl: string | undefined;
   courseId: string;
   chapterId: string;
 }
