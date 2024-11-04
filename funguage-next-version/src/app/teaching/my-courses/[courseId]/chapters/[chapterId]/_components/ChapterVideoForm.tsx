@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import MuxPlayer from "@mux/mux-player-react";
+// import MuxPlayer from "@mux/mux-player-react";
 import { Pencil, PlusCircle, Video } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 
 interface ChapterVideoFormProps {
   initialVideoUrl: string | undefined;
-  courseId: string;
   chapterId: string;
 }
 
@@ -23,7 +22,6 @@ const formSchema = z.object({
 
 export default function ChapterVideoForm({
   initialVideoUrl,
-  courseId,
   chapterId,
 }: ChapterVideoFormProps) {
   const [isEditing, setIsEditing] = useState(false);

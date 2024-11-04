@@ -131,6 +131,32 @@ export async function updateChapterVideoUrl(
     throw error;
   }
 }
+export async function updateChapterSubtitle(
+  chapterId: string,
+  newSubtitle: { url: string; name: string }
+) {
+  let chapter;
+  try {
+    await connectToDatabase();
+    chapter = await Chapter.findById(chapterId);
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+
+  if (!chapter) {
+    const error = new Error("Could not find chapters for this id.");
+    throw error;
+  }
+
+  try {
+    chapter.subtitle = newSubtitle;
+    await chapter.save();
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+}
 //* Updating functions 👆:
 
 export async function deleteChapter(id: string) {

@@ -112,12 +112,10 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
             </div>
             <ChapterVideoForm
               initialVideoUrl={chapter.videoUrl}
-              courseId={courseId}
               chapterId={chapterId}
             />
             <ChapterSubtitleForm
               initialSubtitle={chapter.subtitle}
-              courseId={courseId}
               chapterId={chapterId}
             />
           </div>

@@ -1,16 +1,16 @@
 "use client";
 import * as z from "zod";
-import { PlusCircle, File, Loader2, X, Pencil } from "lucide-react";
+import { PlusCircle, File, Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/FileUpload";
+import { updateChapterSubtitle } from "@/lib/server-actions/chapters";
 
 type ChapterSubtitleFormProps = {
   initialSubtitle: { url: string; name: string } | undefined;
-  courseId: string;
   chapterId: string;
 };
 
@@ -21,11 +21,9 @@ const formSchema = z.object({
 
 export default function ChapterSubtitleForm({
   initialSubtitle,
-  courseId,
   chapterId,
 }: ChapterSubtitleFormProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
@@ -33,25 +31,15 @@ export default function ChapterSubtitleForm({
 
   const submit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post(`/api/courses/${courseId}/attachments`, values);
+      updateChapterSubtitle(chapterId, {
+        url: values.url,
+        name: values.originalFilename,
+      });
       toast.success("Course updated");
       toggleEdit();
       router.refresh();
     } catch {
       toast.error("Something went wrong");
-    }
-  };
-
-  const onDelete = async (id: string) => {
-    try {
-      setDeletingId(id);
-      await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
-      toast.success("Attachment deleted");
-      router.refresh();
-    } catch {
-      toast.error("Something went wrong");
-    } finally {
-      setDeletingId(null);
     }
   };
 
