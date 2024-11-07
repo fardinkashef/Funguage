@@ -12,6 +12,7 @@ import { Banner } from "@/components/Banner";
 import { ChapterActions } from "./_components/chatper-actions";
 import { getChapterById } from "@/lib/server-actions/chapters";
 import ChapterSubtitleForm from "./_components/ChapterSubtitleForm";
+import WordsForm from "./_components/WordsForm";
 
 type ChapterIdPageProps = {
   params: {
@@ -86,7 +87,6 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
               </div>
               <ChapterTitleForm
                 initialTitle={chapter.title}
-                courseId={courseId}
                 chapterId={chapterId}
               />
               <ChapterDescriptionForm
@@ -118,6 +118,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
               initialSubtitle={chapter.subtitle}
               chapterId={chapterId}
             />
+            <WordsForm />
           </div>
         </div>
       </div>

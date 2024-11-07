@@ -1,7 +1,6 @@
 "use client";
 
 import * as z from "zod";
-import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
@@ -22,7 +21,6 @@ import { updateChapterTitle } from "@/lib/server-actions/chapters";
 
 interface ChapterTitleFormProps {
   initialTitle: string;
-  courseId: string;
   chapterId: string;
 }
 
@@ -34,7 +32,6 @@ const formSchema = z.object({
 
 export default function ChapterTitleForm({
   initialTitle,
-  courseId,
   chapterId,
 }: ChapterTitleFormProps) {
   const [isEditing, setIsEditing] = useState(false);
