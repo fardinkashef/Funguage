@@ -6,13 +6,11 @@ import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
 import { IconBadge } from "@/components/IconBadge";
 import ChapterTitleForm from "./_components/ChapterTitleForm";
 import ChapterDescriptionForm from "./_components/ChapterDescriptionForm";
-import { ChapterAccessForm } from "./_components/chapter-access-form";
 import ChapterVideoForm from "./_components/ChapterVideoForm";
 import { Banner } from "@/components/Banner";
-import { ChapterActions } from "./_components/chatper-actions";
 import { getChapterById } from "@/lib/server-actions/chapters";
 import ChapterSubtitleForm from "./_components/ChapterSubtitleForm";
-import WordsForm from "./_components/WordsForm";
+import Words from "./_components/Words";
 
 type ChapterIdPageProps = {
   params: {
@@ -30,6 +28,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
   //   }
 
   const chapter = await getChapterById(chapterId);
+  // const databaseWords = await getWords();
 
   if (!chapter) {
     return redirect("/");
@@ -42,7 +41,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
 
   const completionText = `(${completedFields}/${totalFields})`;
 
-  const isComplete = requiredFields.every(Boolean);
+  // const isComplete = requiredFields.every(Boolean);
 
   return (
     <>
@@ -118,7 +117,12 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
               initialSubtitle={chapter.subtitle}
               chapterId={chapterId}
             />
-            <WordsForm />
+            {chapter.subtitle.url && (
+              <Words
+                subtitleSrc={chapter.subtitle.url}
+                wordsPairList={chapter.wordsPairList}
+              />
+            )}
           </div>
         </div>
       </div>

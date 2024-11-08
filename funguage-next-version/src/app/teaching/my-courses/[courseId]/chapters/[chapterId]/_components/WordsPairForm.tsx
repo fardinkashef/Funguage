@@ -11,20 +11,22 @@ const options = [
 ];
 
 type WordsPairFormProps = {
-  initialWordsPair: wordsPair;
+  initialWordsPair?: wordsPair;
   subtitleWords: subtitleWord[];
   databaseWords: databaseWord[];
 };
 
 export default function WordsPairForm({
   initialWordsPair = { subtitleWordList: [], databaseWordList: [] },
+  subtitleWords,
+  databaseWords,
 }: WordsPairFormProps) {
-  const [subtitleWordList, setSubtitleWordList] = useState<
-    readonly { value: string; label: string }[]
-  >([]);
-  const [databaseWordList, setDatabaseWordList] = useState<
-    readonly { value: string; label: string }[]
-  >([]);
+  const [subtitleWordList, setSubtitleWordList] = useState(
+    initialWordsPair.subtitleWordList
+  );
+  const [databaseWordList, setDatabaseWordList] = useState(
+    initialWordsPair.databaseWordList
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,9 +38,9 @@ export default function WordsPairForm({
       <Select
         defaultValue={initialWordsPair.subtitleWordList}
         isMulti
-        options={options}
-        // getOptionLabel={option => option.title}
-        // getOptionValue={option => option}
+        options={subtitleWords}
+        getOptionLabel={(option) => option.title}
+        getOptionValue={(option) => option}
         name="subtitle"
         onChange={setSubtitleWordList}
         // styles={colourStyles}
@@ -46,9 +48,9 @@ export default function WordsPairForm({
       <Select
         defaultValue={initialWordsPair.databaseWordList}
         isMulti
-        options={options}
-        // getOptionLabel={option => option.title}
-        // getOptionValue={option => option._id}
+        options={databaseWords}
+        getOptionLabel={(option) => option.title}
+        getOptionValue={(option) => option._id}
         name="database"
         onChange={setDatabaseWordList}
 

@@ -39,6 +39,11 @@ export type wordsPair = {
   subtitleWordList: subtitleWord[];
   databaseWordList: databaseWord[];
 };
+// cue 👇:
+export type cue = {
+  id: string;
+  text: string;
+};
 
 // course 👇:
 export type course = {
