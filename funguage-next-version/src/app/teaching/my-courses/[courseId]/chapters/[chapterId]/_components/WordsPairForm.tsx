@@ -4,11 +4,11 @@ import { databaseWord, subtitleWord, wordsPair } from "@/lib/types";
 import { useState } from "react";
 import Select from "react-select";
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+// const options = [
+//   { value: "chocolate", label: "Chocolate" },
+//   { value: "strawberry", label: "Strawberry" },
+//   { value: "vanilla", label: "Vanilla" },
+// ];
 
 type WordsPairFormProps = {
   initialWordsPair?: wordsPair;
@@ -50,7 +50,7 @@ export default function WordsPairForm({
         isMulti
         options={databaseWords}
         getOptionLabel={(option) => option.title}
-        getOptionValue={(option) => option._id}
+        getOptionValue={(option) => option._id as string}
         name="database"
         onChange={setDatabaseWordList}
 

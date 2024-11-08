@@ -119,6 +119,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
             />
             {chapter.subtitle.url && (
               <Words
+                videoUrl={chapter.videoUrl}
                 subtitleSrc={chapter.subtitle.url}
                 wordsPairList={chapter.wordsPairList}
               />

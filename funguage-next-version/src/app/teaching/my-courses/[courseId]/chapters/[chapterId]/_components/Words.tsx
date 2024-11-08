@@ -8,9 +8,14 @@ import { getWords } from "@/lib/server-actions/words";
 type WordsProps = {
   subtitleSrc: string;
   wordsPairList: wordsPair[];
+  videoUrl: string;
 };
 
-export default function Words({ subtitleSrc, wordsPairList }: WordsProps) {
+export default function Words({
+  subtitleSrc,
+  wordsPairList,
+  videoUrl,
+}: WordsProps) {
   const [databaseWords, setDatabaseWords] = useState<databaseWord[]>([]);
   const [subtitleWords, setSubtitleWords] = useState<subtitleWord[]>([]);
   const [cues, setCues] = useState<cue[]>([]);
@@ -28,10 +33,9 @@ export default function Words({ subtitleSrc, wordsPairList }: WordsProps) {
   );
   useEffect(
     function () {
-      if (!subtitleSrc) return;
       //* When using document.getElementById("some-id"), we need to assert the type. See "Type Assertions" pdf file in my notes 👇:
       const video = document.getElementById("video") as HTMLVideoElement;
-      const track = document.getElementById("track") as HTMLTrackElement;
+      //   const track = document.getElementById("track") as HTMLTrackElement;
       const wordFilter = [
         "",
         ".",
@@ -46,44 +50,41 @@ export default function Words({ subtitleSrc, wordsPairList }: WordsProps) {
         "is",
         "-",
       ];
-      console.log("track", track);
 
-      track.addEventListener(`load`, () => {
-        if (!video.textTracks[0].cues) return;
+      if (!video.textTracks[0].cues) return;
 
-        let allWords: subtitleWord[] = [];
-        const allCues = [];
-        for (let i = 0; i < video.textTracks[0].cues.length; i++) {
-          //* TS complains that "Property 'text' does not exist on type 'TextTrackCue'." so I asserted the more specific type of VTTCue 👇:
-          const cue = video.textTracks[0].cues[i] as VTTCue;
-          let text = cue.text;
-          text = text
-            .replaceAll(".", " .")
-            .replaceAll(". . .", "...")
-            .replaceAll(",", " ,")
-            .replaceAll("?", " ?")
-            .replaceAll("\n", " ");
+      let allWords: subtitleWord[] = [];
+      const allCues = [];
+      for (let i = 0; i < video.textTracks[0].cues.length; i++) {
+        //* TS complains that "Property 'text' does not exist on type 'TextTrackCue'." so I asserted the more specific type of VTTCue 👇:
+        const cue = video.textTracks[0].cues[i] as VTTCue;
+        let text = cue.text;
+        text = text
+          .replaceAll(".", " .")
+          .replaceAll(". . .", "...")
+          .replaceAll(",", " ,")
+          .replaceAll("?", " ?")
+          .replaceAll("\n", " ");
 
-          allCues.push({ id: cue.id, text: text });
-          let cueWords = text.split(" ");
-          cueWords = cueWords.map((word) => word.trim());
-          cueWords = cueWords.filter((word) => !wordFilter.includes(word));
+        allCues.push({ id: cue.id, text: text });
+        let cueWords = text.split(" ");
+        cueWords = cueWords.map((word) => word.trim());
+        cueWords = cueWords.filter((word) => !wordFilter.includes(word));
 
-          const currentCueSubtitleWords = cueWords.map((word, index) => {
-            return {
-              title: word,
-              cueId: cue.id,
-              orderNumber:
-                cueWords.slice(0, index).filter((cueWord) => cueWord === word)
-                  .length + 1,
-            };
-          });
+        const currentCueSubtitleWords = cueWords.map((word, index) => {
+          return {
+            title: word,
+            cueId: cue.id,
+            orderNumber:
+              cueWords.slice(0, index).filter((cueWord) => cueWord === word)
+                .length + 1,
+          };
+        });
 
-          allWords = [...allWords, ...currentCueSubtitleWords];
-        }
-        setSubtitleWords(allWords);
-        setCues(allCues);
-      });
+        allWords = [...allWords, ...currentCueSubtitleWords];
+      }
+      setSubtitleWords(allWords);
+      setCues(allCues);
     },
     [subtitleSrc]
   );
@@ -91,18 +92,22 @@ export default function Words({ subtitleSrc, wordsPairList }: WordsProps) {
 
   return (
     <div>
-      <video className="hidden" id="video" controls preload="metadata">
+      <video
+        src={videoUrl}
+        className="hidden"
+        id="video"
+        controls
+        preload="metadata"
+        crossOrigin="anonymous"
+      >
         <track
           label="English"
           kind="subtitles"
           srcLang="en"
-          // src="media/friends.s01e01_720p_bluray_x264-sujaidr.vtt"
           src={subtitleSrc}
+          //   src="/Sintel1.vtt"
           default
           id="track"
-          onLoad={() =>
-            console.log("i'm looooooooooooooooooooadedddddddddddddd")
-          }
         />
       </video>
 

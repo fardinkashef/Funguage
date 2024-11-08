@@ -72,7 +72,11 @@ export default function ChapterVideoForm({
           <div className="relative aspect-video mt-2">
             {/* <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} /> */}
             {/* <h2>This is initialVideoUrl: {initialVideoUrl}</h2> */}
-            <video src={initialVideoUrl} controls></video>
+            <video
+              src={initialVideoUrl}
+              controls
+              crossOrigin="anonymous"
+            ></video>
           </div>
         ))}
       {isEditing && (
