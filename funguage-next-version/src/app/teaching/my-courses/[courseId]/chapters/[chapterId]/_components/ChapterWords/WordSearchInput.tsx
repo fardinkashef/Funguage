@@ -22,15 +22,15 @@ function WordSearchInput({
   };
 
   return (
-    <div className="WordSearchInput w-full min-h-6 flex justify-start items-center gap-1 flex-wrap p-1 rounded-sm">
+    <div className="grow w-full flex items-center gap-2 flex-wrap p-1 rounded-sm">
       {selectedItems.map((selectedItem, index) => (
         <div
-          className="selected-item px-0 py-1 flex justify-between items-center rounded m-1"
+          className="flex justify-between items-center m-1 border-solid border-gray-500 border-2 rounded-sm"
           key={selectedItem.title}
         >
           <span className="p-1 border-r-2">{selectedItem.title}</span>
           <button
-            className="word-search-input-remove"
+            className="text-xs"
             onClick={() => handleRemoveSelectedItem(index)}
             key={selectedItem.title}
           >

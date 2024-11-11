@@ -82,7 +82,7 @@ WordAutoCompleteSearchProps) {
   return (
     <div
       ref={ref}
-      className="w-full max-w-80 relative flex flex-col items-center"
+      className="w-full max-w-80 flex items-center gap-2 p-2 relative border-solid border-gray-500 border-2 outline-none rounded-sm focus:border-blue-500"
     >
       <WordSearchInput
         value={value}
@@ -91,7 +91,16 @@ WordAutoCompleteSearchProps) {
         setSelectedItems={setSelectedItems}
         placeHolder={type === "subtitle" ? "subtitle word" : "database word"}
       />
-      <div className="w-full max-w-64 mx-auto my-2 absolute top-full z-10">
+      {/* divider: 👇 */}
+      <div className="bg-gray-500 self-stretch w-0.5" />
+      {/* caret: 👇 */}
+      <div className="border-solid border-4 border-transparent border-t-gray-500  translate-x-0 translate-y-1/4" />
+      {/* options: 👇 */}
+      <div
+        className={`w-full my-2 absolute top-full left-0 z-10 border-solid border-gray-500 border-2 rounded-sm ${
+          searchSuggestions.length === 0 ? "hidden" : ""
+        }`}
+      >
         {searchSuggestions.map((item, index) => {
           let tooltipContent: string | (string | ReactNode)[];
           if (type === "database") {
@@ -125,7 +134,7 @@ WordAutoCompleteSearchProps) {
               key={index}
             >
               <button
-                className="w-full bg-slate-400 p-2 border-none hover:bg-gray-500"
+                className="w-full bg-white p-2 border-none hover:bg-gray-500"
                 onClick={handleSelectSuggetion}
               >
                 {"orderNumber" in item && item.orderNumber > 1
