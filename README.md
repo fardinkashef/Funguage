@@ -2,48 +2,42 @@
 
 This is Funguage! A web application designed for language learning through video content. Users can click on subtitle words to access definitions, examples, images, and additional information. They can also save words to their personal collection of learned vocabulary and review them later.
 
-## Motivation
+## 🔥 Motivation
 
 Many people struggle to learn a new language using traditional methods like textbooks or flashcards. These methods can be boring, ineffective, and don’t always use real language material. I wanted to create a way to learn a language through engaging video content. Personally, I improved my English significantly by watching the ‘Friends’ series, and I wanted to make it easier for others to have a similar experience. I wanted to eliminate the need for learners to write down each new word and look it up later, which can be time-consuming and cumbersome. Instead, I aimed to make this process as simple as clicking on a subtitle word.
 
-## Demo
+## 👀 Demo
 
 Navigate to [Funguage](https://funguage.onrender.com/) and enjoy!
 
-## Usage
+## 🚀 Quick Start For Developers
 
-you can use bullet points to mention sth like these:
-
-- Go to courses tab and select a course
-- Select a section
-- Click on a colored word
-
-or just simply link to a video in your website which shows how to use it:
-
-for example: visit this link and watch a video demenstrating website features.
-
-## Contributing
-
-sth like how to clone repositroy :
+First go to your projects folder and clone the repository by running this command in your terminal:
 
 ```
-git clone blah blah
+git clone https://github.com/fardinkashef/EF-test.git
 ```
 
-and how to install dependencies:
+The app was previously developed for usage in Persian, also using React for front-end and Node.js for back-end, so there are a couple of folders I need you to ignore. First a folder named "FER-test-Persian" in the root directory of the repo and two folders named "front-end" and "back-end" in "FER-test-English" folder, just ignore them all! Recently, I re-developed this web app using Next.js, and there's a folder named "NextJSVersion". So, first change your directory to this folder:
+
+```
+cd EF-test/FER-test-English/NextJSVersion
+```
+
+So you're in the Next.js project. Now install the dependencies:
 
 ```
 npm install
 ```
 
-or
-
-```
-yarn
-```
-
-how to run the development server for example:
+Now run this command to start the development server:
 
 ```
 npm run dev
+```
+
+Finally open your browser and navigate to this URL to visit the website:
+
+```
+http://localhost:3000
 ```
