@@ -1,6 +1,6 @@
 # Funguage
 
-This is Funguage! A web application designed for language learning through video content. Users can click on subtitle words to access definitions, examples, images, and additional information. They can also save words to their personal collection of learned vocabulary and review them later.
+This is Funguage! A web application developed for language learning through video content. Users can click on subtitle words to access definitions, examples, images, and additional information. They can also save words to their personal collection of learned vocabulary and review them later.
 
 ## 🔥 Motivation
 
@@ -15,16 +15,40 @@ Navigate to [Funguage](https://funguage.onrender.com/) and enjoy!
 First go to your projects folder and clone the repository by running this command in your terminal:
 
 ```
-git clone https://github.com/fardinkashef/EF-test.git
+git clone https://github.com/fardinkashef/Funguage.git
 ```
 
-The app was previously developed for usage in Persian, also using React for front-end and Node.js for back-end, so there are a couple of folders I need you to ignore. First a folder named "FER-test-Persian" in the root directory of the repo and two folders named "front-end" and "back-end" in "FER-test-English" folder, just ignore them all! Recently, I re-developed this web app using Next.js, and there's a folder named "NextJSVersion". So, first change your directory to this folder:
+I've developed this website using React for front-end and Node.js for back-end, so there are two folders named "front-end" and "back-end" in the root directory of the repository.
+
+### Running back-end app:
+
+So, first change your directory to the back-end folder:
 
 ```
-cd EF-test/FER-test-English/NextJSVersion
+cd Funguage/back-end
 ```
 
-So you're in the Next.js project. Now install the dependencies:
+Next install the dependencies:
+
+```
+npm install
+```
+
+Now run this command to start the back-end server:
+
+```
+npm start
+```
+
+### Running front-end app:
+
+Next, change your directory to the front-end folder:
+
+```
+cd ../front-end
+```
+
+then install the dependencies:
 
 ```
 npm install
@@ -39,5 +63,5 @@ npm run dev
 Finally open your browser and navigate to this URL to visit the website:
 
 ```
-http://localhost:3000
+http://localhost:5173
 ```
