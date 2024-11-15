@@ -1,7 +1,7 @@
 "use server";
 
 import { connectToDatabase } from "@/lib/database/db-connection";
-import { chapter } from "../types";
+import { chapter, wordsPair } from "../types";
 import Chapter from "../database/models/Chapter";
 
 // import { revalidatePath } from "next/cache";
@@ -157,6 +157,33 @@ export async function updateChapterSubtitle(
     throw error;
   }
 }
+export async function updateChapterWords(
+  chapterId: string,
+  newChapterWords: wordsPair[]
+) {
+  let chapter;
+  try {
+    await connectToDatabase();
+    chapter = await Chapter.findById(chapterId);
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+
+  if (!chapter) {
+    const error = new Error("Could not find chapters for this id.");
+    throw error;
+  }
+
+  try {
+    chapter.wordsPairList = newChapterWords;
+    await chapter.save();
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+}
+
 //* Updating functions 👆:
 
 export async function deleteChapter(id: string) {

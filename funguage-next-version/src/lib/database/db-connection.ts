@@ -17,6 +17,7 @@ export const connectToDatabase = async () => {
     await mongoose.connect(process.env.MONGODB_URL, {
       // dbName: "funguage",
       dbName: "funguage-local",
+      enableUtf8Validation: false,
     });
 
     isConnected = true;

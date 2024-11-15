@@ -9,6 +9,7 @@ const ChapterSchema = new Schema(
       url: String,
       name: String,
     },
+    wordsPairList: Array,
     isPublished: Boolean,
     position: Number,
     course: { type: Schema.Types.ObjectId, ref: "Course" },

@@ -4,15 +4,20 @@ import { useEffect, useState } from "react";
 import { cue, databaseWord, subtitleWord, wordsPair } from "@/lib/types";
 import { getWords } from "@/lib/server-actions/words";
 import WordItem from "./WordItem";
+import { Button } from "@/components/ui/button";
+import { updateChapterWords } from "@/lib/server-actions/chapters";
+import toast from "react-hot-toast";
 
 type ChapterWordsProps = {
   subtitleSrc: string;
   initialWordsPairList: wordsPair[];
+  chapterId: string;
 };
 
 export default function ChapterWords({
   subtitleSrc,
   initialWordsPairList,
+  chapterId,
 }: ChapterWordsProps) {
   const [databaseWords, setDatabaseWords] = useState<databaseWord[]>([]);
   const [subtitleWords, setSubtitleWords] = useState<subtitleWord[]>([]);
@@ -52,6 +57,15 @@ export default function ChapterWords({
     const list = [...wordsPairList];
     list.splice(index, 1);
     setWordsPairList([...list]);
+  };
+  const handleSaveWords = async () => {
+    console.log("wordsPairList", wordsPairList);
+    try {
+      await updateChapterWords(chapterId, wordsPairList);
+      toast.success("Chapter words updated");
+    } catch (error) {
+      console.log("This error happened while updating chapter words:", error);
+    }
   };
   // Handlers 👆
   useEffect(
@@ -122,7 +136,10 @@ export default function ChapterWords({
     },
     [subtitleSrc]
   );
-  console.log("subtitleWords", subtitleWords);
+  console.log(
+    "subtitleWords",
+    `${subtitleWords.length ? " okay" : " not loaded"}`
+  );
 
   return (
     <>
@@ -169,12 +186,14 @@ export default function ChapterWords({
             key={index}
           />
         ))}
-        <button
-          className="block bg-slate-500 mx-auto my-2 p-2 w-48 rounded"
-          onClick={handleAddWordPair}
-        >
-          Add a word
-        </button>
+        <div className="flex justify-center gap-4">
+          <Button className="bg-slate-500" onClick={handleAddWordPair}>
+            Add a word
+          </Button>
+          <Button className="bg-slate-500" onClick={handleSaveWords}>
+            Save changes
+          </Button>
+        </div>
       </div>
     </>
   );
