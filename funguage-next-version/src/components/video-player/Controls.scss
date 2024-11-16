@@ -1,0 +1,121 @@
+.Controls {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  color: white;
+  &.show {
+    opacity: 1;
+    transition: opacity 150ms ease-in-out;
+  }
+  &.hide {
+    opacity: 0;
+  }
+  progress {
+    display: block;
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    color: #dd3b00; /* Internet Explorer uses this value as the progress bar's value colour */
+    &::-moz-progress-bar {
+      background-color: #dd3b00;
+    }
+    /* Chrome requires its own rule for this, otherwise it ignores it */
+    &::-webkit-progress-value {
+      background-color: #dd3b00;
+    }
+  }
+  .controls-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
+
+    & > button,
+    .volume-container button,
+    .PlayBackRate .icon {
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 30px;
+      width: 30px;
+      font-size: 1.1rem;
+      opacity: 0.85;
+      transition: opacity 150ms ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .volume-container {
+      display: flex;
+      align-items: center;
+      .volume-slider {
+        width: 0;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: width 150ms ease-in-out, transform 150ms ease-in-out;
+      }
+
+      &:hover .volume-slider
+      // ,.volume-slider:focus-within
+      {
+        width: 100px;
+        transform: scaleX(1);
+      }
+    }
+    .duration-container {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-grow: 1;
+    }
+    button[data-state="play"] {
+      background-image: url("./icons/play.svg");
+    }
+    button[data-state="pause"] {
+      background-image: url("./icons/pause.svg");
+    }
+    button[data-state="stop"] {
+      background-image: url("./icons/stop.svg");
+    }
+    button[data-volume-level="high"] {
+      background-image: url("./icons/volume_high.svg");
+    }
+    button[data-volume-level="low"] {
+      background-image: url("./icons/volume_low.svg");
+    }
+    button[data-volume-level="muted"] {
+      background-image: url("./icons/volume_muted.svg");
+    }
+    button.checklist {
+      background-image: url("./icons/checklist.svg");
+    }
+    button[data-state="go-theater"] {
+      background-image: url("./icons/theater.svg");
+    }
+    button[data-state="cancel-theater"] {
+      background-image: url("./icons/theater_exit.svg");
+    }
+    button[data-state="go-fullscreen"] {
+      background-image: url("./icons/fullscreen.svg");
+    }
+    button[data-state="cancel-fullscreen"] {
+      background-image: url("./icons/fullscreen_exit.svg");
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    width: 100%;
+    aspect-ratio: 6 / 1;
+    z-index: -1;
+    pointer-events: none;
+  }
+}

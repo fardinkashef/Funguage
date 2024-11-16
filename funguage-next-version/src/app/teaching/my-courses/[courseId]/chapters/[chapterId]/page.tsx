@@ -11,6 +11,7 @@ import { Banner } from "@/components/Banner";
 import { getChapterById } from "@/lib/server-actions/chapters";
 import ChapterSubtitleForm from "./_components/ChapterSubtitleForm";
 import ChapterWords from "./_components/ChapterWords/ChapterWords";
+import VideoPlayer from "@/components/video-player/VideoPlayer";
 
 type ChapterIdPageProps = {
   params: {
@@ -122,10 +123,15 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
                 subtitleSrc={chapter.subtitle.url}
                 initialWordsPairList={chapter.wordsPairList}
                 chapterId={chapterId}
-                />
+              />
             )}
           </div>
         </div>
+        <VideoPlayer
+          wordsPairList={chapter.wordsPairList}
+          videoSrc={chapter.videoUrl}
+          subtitleSrc={chapter.subtitle.url}
+        />
       </div>
     </>
   );
