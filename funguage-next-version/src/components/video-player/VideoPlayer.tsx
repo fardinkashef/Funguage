@@ -11,13 +11,13 @@ import ReviewModal from "./ReviewModal";
 import { wordsPair } from "@/lib/types";
 
 type VideoPlayerProps = {
+  videoSrc: string;
+  subtitleSrc: string;
+  //////
   wordsPairList: wordsPair[];
   setWordsPairList?: (newWordsPairList: wordsPair[]) => void;
   reviewWordIds?: string[];
   setReviewWordIds?: (newReviewWordIds: string[]) => void;
-  ///////////
-  videoSrc: string;
-  subtitleSrc: string;
 };
 
 const VideoPlayer = ({

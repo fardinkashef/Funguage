@@ -1,23 +1,33 @@
 "use client";
 
 import * as z from "zod";
-// import MuxPlayer from "@mux/mux-player-react";
-import { Pencil, PlusCircle, Video } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
-import { Button } from "@/components/ui/button";
-import { FileUpload } from "@/components/FileUpload";
-import { updateChapterVideoUrl } from "@/lib/server-actions/chapters";
 import { useRouter } from "next/navigation";
 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { updateChapterVideoUrl } from "@/lib/server-actions/chapters";
+
 interface ChapterVideoFormProps {
-  initialVideoUrl: string | undefined;
+  initialVideoUrl: string;
   chapterId: string;
 }
 
 const formSchema = z.object({
-  videoUrl: z.string().min(1),
+  videoUrl: z.string().min(1, {
+    message: "Title is required",
+  }),
 });
 
 export default function ChapterVideoForm({
@@ -26,79 +36,85 @@ export default function ChapterVideoForm({
 }: ChapterVideoFormProps) {
   const [isEditing, setIsEditing] = useState(false);
 
-  const router = useRouter();
   const toggleEdit = () => setIsEditing((current) => !current);
+
+  const router = useRouter();
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { videoUrl: initialVideoUrl },
+  });
+
+  const { isSubmitting, isValid } = form.formState;
 
   const submit = async (values: z.infer<typeof formSchema>) => {
     try {
       await updateChapterVideoUrl(chapterId, values.videoUrl);
-      await toast.success("Chapter updated");
+      toast.success("Chapter title updated");
       toggleEdit();
       router.refresh();
-      // const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
-      // const url = `${baseUrl}/teacher/courses/${courseId}/chapters/${chapterId}`;
-      // window.location.assign(url);
-    } catch {
-      toast.error("Something went wrong");
+    } catch (error: any) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        toast.error(`Server responded with ${error.response.status} error`);
+      } else if (error.request) {
+        // The request was made but no response was received
+        toast.error("No response received from server");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        toast.error(`Error: ${error.message}`);
+      }
     }
   };
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4  dark:bg-gray-800 dark:text-slate-300">
+    <div className="mt-6 bg-slate-100 rounded-md p-4 dark:bg-gray-800">
       <div className="font-medium flex items-center justify-between">
-        Chapter video
+        Chapter Video URL
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing && <>Cancel</>}
-          {!isEditing && !initialVideoUrl && (
-            <>
-              <PlusCircle className="h-4 w-4 mr-2" />
-              Add a video
-            </>
-          )}
-          {!isEditing && initialVideoUrl && (
+          {isEditing ? (
+            <>Cancel</>
+          ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit video
+              Edit Video URL
             </>
           )}
         </Button>
       </div>
-      {!isEditing &&
-        (!initialVideoUrl ? (
-          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md  dark:bg-gray-800 dark:text-slate-300">
-            <Video className="h-10 w-10 text-slate-500" />
-          </div>
-        ) : (
-          <div className="relative aspect-video mt-2">
-            {/* <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} /> */}
-            {/* <h2>This is initialVideoUrl: {initialVideoUrl}</h2> */}
-            <video
-              src={initialVideoUrl}
-              controls
-              crossOrigin="anonymous"
-            ></video>
-          </div>
-        ))}
-      {isEditing && (
-        <div>
-          <FileUpload
-            endpoint="chapterVideo"
-            onChange={(url) => {
-              if (url) {
-                submit({ videoUrl: url });
-              }
-            }}
-          />
-          <div className="text-xs text-muted-foreground mt-4">
-            Upload this chapter&apos;s video
-          </div>
-        </div>
+      {!isEditing && (
+        <p className="text-sm mt-2 dark:text-gray-300">{initialVideoUrl}</p>
       )}
-      {initialVideoUrl && !isEditing && (
-        <div className="text-xs text-muted-foreground mt-2">
-          Videos can take a few minutes to process. Refresh the page if video
-          does not appear.
-        </div>
+      {isEditing && (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(submit)}
+            className="space-y-4 mt-4 dark:text-gray-300"
+          >
+            <FormField
+              control={form.control}
+              name="videoUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      disabled={isSubmitting}
+                      placeholder="e.g. 'Advanced web development'"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="flex items-center gap-x-2">
+              <Button disabled={!isValid || isSubmitting} type="submit">
+                Save
+              </Button>
+            </div>
+          </form>
+        </Form>
       )}
     </div>
   );

@@ -40,6 +40,7 @@ export default function CreatePage() {
       router.push(`/teaching/my-courses/${response.newCourseId}`);
     } catch (error) {
       toast.error("Something went wrong");
+      console.log(error);
     }
   };
 

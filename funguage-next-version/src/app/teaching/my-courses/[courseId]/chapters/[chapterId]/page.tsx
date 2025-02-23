@@ -95,11 +95,11 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
                 chapterId={chapterId}
               />
             </div>
-            <div className="flex items-center gap-x-2">
+            {/* <div className="flex items-center gap-x-2">
               <IconBadge icon={Eye} />
               <h2 className="text-xl font-medium">Access Settings</h2>
             </div>
-            {/* <ChapterAccessForm
+            <ChapterAccessForm
               initialData={chapter}
               courseId={courseId}
               chapterId={chapterId}
@@ -118,7 +118,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
               initialSubtitle={chapter.subtitle}
               chapterId={chapterId}
             />
-            {chapter.subtitle.url && (
+            {chapter?.subtitle?.url && (
               <ChapterWords
                 subtitleSrc={chapter.subtitle.url}
                 initialWordsPairList={chapter.wordsPairList}
@@ -127,11 +127,11 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
             )}
           </div>
         </div>
-        <VideoPlayer
+        {/* <VideoPlayer
           wordsPairList={chapter.wordsPairList}
           videoSrc={chapter.videoUrl}
           subtitleSrc={chapter.subtitle.url}
-        />
+        /> */}
       </div>
     </>
   );
