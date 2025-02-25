@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import "./VideoPlayer.scss";
-// import Hls from "hls.js";
+import Hls from "hls.js";
 import Controls from "./Controls";
 import Subtitles from "./Subtitles";
 import WordModal from "./word-modal/WordModal";
@@ -13,21 +13,13 @@ import { wordsPair } from "@/lib/types";
 type VideoPlayerProps = {
   videoSrc: string;
   subtitleSrc: string;
-  //////
   wordsPairList: wordsPair[];
-  setWordsPairList?: (newWordsPairList: wordsPair[]) => void;
-  reviewWordIds?: string[];
-  setReviewWordIds?: (newReviewWordIds: string[]) => void;
 };
 
 const VideoPlayer = ({
-  wordsPairList,
-  setWordsPairList,
-  reviewWordIds,
-  setReviewWordIds,
-  /////////
   videoSrc,
   subtitleSrc,
+  wordsPairList,
 }: VideoPlayerProps) => {
   // STATES:
   //? Why define a state variable for video time? Why not just use videoRef.current.currentTime? Answer: We're gonna use this time to update the progress bar. The videoRef.current.currentTime value gets updated regularly but it doesn't re-render the component so the updated time value won't be passed to progress element and the progress element will stay the same until component re-render by another cause (I've checked it and saw it).
@@ -340,26 +332,20 @@ const VideoPlayer = ({
   }, []);
 
   ////////////// HLS.js player
-  // React.useEffect(() => {
-  //   (function () {
-  //     const videoElement = videoRef.current;
+  useEffect(() => {
+    (function () {
+      const videoElement = videoRef.current;
+      if (!videoElement) return;
 
-  //     if (Hls.isSupported()) {
-  //       const hls = new Hls();
-  //       hls.loadSource(
-  //         import.meta.env.VITE_BACKEND_URL +
-  //           // `/courses-data/friends/section1/playlist/output_playlist.m3u8`
-  //           `/playlist/output_playlist.m3u8`
-  //       );
-  //       hls.attachMedia(videoElement);
-  //     } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
-  //       videoElement.src =
-  //         import.meta.env.VITE_BACKEND_URL +
-  //         // `/courses-data/friends/section1/playlist/output_playlist.m3u8`;
-  //         `/playlist/output_playlist.m3u8`;
-  //     }
-  //   })();
-  // }, []);
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(videoElement);
+      } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
+        videoElement.src = videoSrc;
+      }
+    })();
+  }, []);
 
   ////////////////////////
 
@@ -368,7 +354,7 @@ const VideoPlayer = ({
   //* Note: In a Vite React project, local video files must be placed in public directory otherwise they won't get loaded.
   //* Note: PLEASE PAY ATTENTION THAT FOR THE EXPRESS.JS TO SERVE STATIC FILES, THE VIDEO OR SUBTITLE SRC MUST BE SOME THING LIKE THE STRING BELOW:
   //  <source src="http://localhost:5000/api/static-files/courses-data/A/section_1/A1.mp4" />
-  // AS YOU SEE THE PART "/api" IS NEEDED AND THE "epress.static" METHOD SHOULD BE USED LIKE THIS:
+  // AS YOU SEE THE PART "/api" IS NEEDED AND THE "express.static" METHOD SHOULD BE USED LIKE THIS:
   // app.use("/api/static-files", express.static("static-files"));
   //* Note: About the AUDIO PLAYER: This audio player is not sth we see in the UI (pay attention to the hidden attribute assigned to it), it just plays the pronunciation audio in the background when needed.
 

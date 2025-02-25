@@ -8,15 +8,11 @@ import { course } from "../types";
 export async function getCourses() {
   try {
     await connectToDatabase();
-    const data = await Course.find();
-    if (!data) {
+    const courses = await Course.find().lean();
+    if (!courses) {
       throw new Error("There's not any results to return.");
     }
-
-    //* From Mongoose docs: By default, Mongoose queries return an instance of the Mongoose Document class. Documents are much heavier than vanilla JavaScript objects, because they have a lot of internal state for change tracking. Enabling the lean option tells Mongoose to skip instantiating a full Mongoose document and just give you the POJO (plain old JavaScript objects): Results.find().lean()
-    //* The above solution didn't work for me here so I used the way we handle this problem in a MERN app. There in Express app we do "res.json(data)" to send data, so we convert the data into json and then in client side in React app we do JSON.parse (axios does this automatically), so I did the same thing here. I saw this solution in StackOverFlow bur I think there must be a better way to handle this problem here in Next.js.
-    const dataPOJO = JSON.parse(JSON.stringify(data));
-    return dataPOJO;
+    return courses;
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;
