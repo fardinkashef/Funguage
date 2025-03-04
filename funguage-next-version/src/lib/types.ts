@@ -74,3 +74,16 @@ export type chapter = {
   createdAt?: Date;
   updatedAt?: Date;
 };
+
+// user 👇:
+export type user = {
+  _id?: string;
+  email: string;
+  username: string;
+  password: string;
+  enrolledCourses: string[];
+  //   createdCourses: string[],
+  learntWordsIds: string[];
+  createdAt?: Date;
+  updatedAt?: Date;
+};

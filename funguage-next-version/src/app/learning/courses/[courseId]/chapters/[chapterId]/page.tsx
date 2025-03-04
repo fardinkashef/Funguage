@@ -7,6 +7,8 @@ type ChapterPageProps = {
 export default async function ChapterPage({ params }: ChapterPageProps) {
   const { chapterId } = await params;
   const chapter = await getChapterById(chapterId);
+  console.log("chaper", chapter);
+
   return (
     <div>
       <VideoPlayer

@@ -57,7 +57,7 @@ const VideoPlayer = ({
   const AmericanAudioRef = useRef<HTMLAudioElement>(null);
   const BritishAudioRef = useRef<HTMLAudioElement>(null);
 
-  ///////////////////
+  //* Event handlers 👇:
 
   const handleWordClick = (INDEX: number) => {
     if (!videoRef.current) return;
@@ -329,7 +329,7 @@ const VideoPlayer = ({
         setCurrentPairList(currentItems);
       }
     });
-  }, []);
+  }, [wordsPairList]);
 
   ////////////// HLS.js player
   useEffect(() => {
