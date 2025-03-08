@@ -1,5 +1,14 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { getUser } from "./lib/server-actions/users";
+import { loginFormSchema } from "./lib/zodSchemas";
+import { ZodError } from "zod";
+
+declare module "next-auth" {
+  interface User {
+    _id?: string;
+  }
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -11,23 +20,42 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        let user = null;
+        try {
+          // Validate user input data
+          const { email, password } = await loginFormSchema.parseAsync(
+            credentials
+          );
+          // logic to verify if the user exists
+          const user = await getUser(email, password);
+          if (!user) {
+            console.log("Invalid credentials");
+            return null;
+          }
 
-        // logic to salt and hash password
-        const pwHash = saltAndHashPassword(credentials.password);
-
-        // logic to verify if the user exists
-        user = await getUserFromDb(credentials.email, pwHash);
-
-        if (!user) {
-          // No user found, so this is their first attempt to login
-          // Optionally, this is also the place you could do a user registration
-          throw new Error("Invalid credentials.");
+          // return the user data
+          return user;
+        } catch (error) {
+          if (error instanceof ZodError) {
+            // Return `null` to indicate that the credentials are invalid
+            return null;
+          }
         }
-
-        // return user object with their profile data
-        return user;
       },
     }),
   ],
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        // User is available during sign-in
+        token._id = user._id;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      session.user._id = token._id as string;
+      return session;
+    },
+  },
+
+  pages: { signIn: "/login" },
 });

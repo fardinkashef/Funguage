@@ -29,3 +29,19 @@ export const registerFormSchema = z
   });
 
 export type RegisterFormFields = z.infer<typeof registerFormSchema>;
+
+export const loginFormSchema = z.object({
+  email: z
+    .string({
+      required_error:
+        "You must fill in your email address to complete registration.",
+    })
+    .email({
+      message: "Please provide a valid email address.",
+    }),
+  password: z.string({
+    required_error: "You must fill in this field.",
+  }),
+});
+
+export type LoginFormFields = z.infer<typeof loginFormSchema>;
