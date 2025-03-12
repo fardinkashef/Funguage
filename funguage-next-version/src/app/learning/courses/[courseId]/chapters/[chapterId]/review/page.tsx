@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import WordsCheckForm from "@/components/WordsCheckForm";
 import { getChapterById } from "@/lib/server-actions/chapters";
 import { getUserByID } from "@/lib/server-actions/users";
 import { getWords } from "@/lib/server-actions/words";
@@ -27,5 +28,10 @@ export default async function ChapterReviewPage({
   const newDBWords = await getWords(newDBWordIds);
   // console.log("this is the number:", newDBWords.length);
 
-  return <div>ChapterReviewPage</div>;
+  return (
+    <div>
+      <h2>ChapterReviewPage</h2>
+      <WordsCheckForm words={newDBWords} />
+    </div>
+  );
 }
