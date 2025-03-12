@@ -5,7 +5,7 @@ export type subtitleWord = {
   orderNumber: number;
 };
 export type databaseWord = {
-  _id?: string;
+  _id: string;
   word: string;
   pronunciation: string;
   tooltip: { text: string; title: string } | null;
@@ -52,6 +52,7 @@ export type course = {
   description?: string;
   imageUrl?: string;
   isPublished?: boolean;
+  usedDatabaseWordIds?: string[];
   createdAt?: Date;
   updatedAt?: Date;
 };

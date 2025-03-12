@@ -3,6 +3,7 @@
 import { connectToDatabase } from "@/lib/database/db-connection";
 import { chapter, wordsPair } from "../types";
 import Chapter from "../database/models/Chapter";
+import { extractDBWordIDs } from "../utils";
 
 // import { revalidatePath } from "next/cache";
 
@@ -177,6 +178,7 @@ export async function updateChapterWords(
 
   try {
     chapter.wordsPairList = newChapterWords;
+    chapter.usedDatabaseWordIds = extractDBWordIDs(newChapterWords);
     await chapter.save();
   } catch (error) {
     console.log("This error happened while updating the data:", error);

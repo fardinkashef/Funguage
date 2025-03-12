@@ -59,7 +59,6 @@ export default function ChapterWords({
     setWordsPairList([...list]);
   };
   const handleSaveWords = async () => {
-    console.log("wordsPairList", wordsPairList);
     try {
       await updateChapterWords(chapterId, wordsPairList);
       toast.success("Chapter words updated");

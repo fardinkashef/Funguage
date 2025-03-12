@@ -13,8 +13,7 @@ const ChapterSchema = new Schema(
     isPublished: Boolean,
     position: Number,
     course: { type: Schema.Types.ObjectId, ref: "Course" },
-
-    //     usedDatabaseWordIds: [{ type: Schema.Types.ObjectId, required: true }],
+    usedDatabaseWordIds: [{ type: Schema.Types.ObjectId, required: true }],
   },
   { timestamps: true }
 );

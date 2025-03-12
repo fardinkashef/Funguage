@@ -64,39 +64,39 @@ app.use((err, req, res, next) => {
 });
 
 //* For connecting to MongoDB Atlas use this block of code 👇:
-// mongoose.set("strictQuery", true);
-// mongoose
-//   .connect(
-//     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mgycx.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
-//   )
-// .connect(
-//   `mongodb+srv://Fardin:fardin72@cluster0.mgycx.mongodb.net/funguage?retryWrites=true&w=majority&appName=Cluster0`
-// )
-// .then(() => {
-//   app.listen(process.env.PORT || 5000, () =>
-//     console.log("connected to port")
-//   );
-//   // app.listen(5000);
-//   // console.log("connected to port 5000");
-//   // app.listen(5000, "0.0.0.0", () => console.log("connected to port 5000"));
-// })
-// .catch((err) => {
-//   console.log("Mongo DB Error: \n", err);
-// });
-
-//* For connecting to MongoDB locally use this block of code 👇:
-
-// mongoose.set("strictQuery", true);
+mongoose.set("strictQuery", true);
 mongoose
-  .connect("mongodb://0.0.0.0:27017/funguage-react-version")
+  .connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mgycx.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
+  )
+  .connect(
+    `mongodb+srv://Fardin:fardin72@cluster0.mgycx.mongodb.net/funguage?retryWrites=true&w=majority&appName=Cluster0`
+  )
   .then(() => {
-    // app.listen(process.env.PORT || 5000);
+    app.listen(process.env.PORT || 5000, () =>
+      console.log("connected to port")
+    );
     // app.listen(5000);
     // console.log("connected to port 5000");
-    app.listen(5000, "0.0.0.0", () =>
-      console.log("connected to local port 5000")
-    );
+    // app.listen(5000, "0.0.0.0", () => console.log("connected to port 5000"));
   })
   .catch((err) => {
     console.log("Mongo DB Error: \n", err);
   });
+
+//* For connecting to MongoDB locally use this block of code 👇:
+
+// mongoose.set("strictQuery", true);
+// mongoose
+//   .connect("mongodb://0.0.0.0:27017/funguage-react-version")
+//   .then(() => {
+//     // app.listen(process.env.PORT || 5000);
+//     // app.listen(5000);
+//     // console.log("connected to port 5000");
+//     app.listen(5000, "0.0.0.0", () =>
+//       console.log("connected to local port 5000")
+//     );
+//   })
+//   .catch((err) => {
+//     console.log("Mongo DB Error: \n", err);
+//   });

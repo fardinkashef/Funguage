@@ -7,8 +7,7 @@ const CourseSchema = new Schema(
     imageUrl: String,
     isPublished: Boolean,
     // chapters: [{ type: Schema.Types.ObjectId, ref: "Chapter" }],
-
-    //     usedDatabaseWordIds: [{ type: Schema.Types.ObjectId, required: true }],
+    // usedDatabaseWordIds: [{ type: Schema.Types.ObjectId, required: true }],
     // creator: { type: String, required: true, ref: "User" },
   },
   { timestamps: true }

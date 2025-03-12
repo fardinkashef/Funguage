@@ -21,8 +21,8 @@ const items = [
   },
 
   {
-    title: "Courses",
-    href: "/learning/courses",
+    title: "Browse",
+    href: "/learning/browse",
     icon: LibraryBig,
   },
   {

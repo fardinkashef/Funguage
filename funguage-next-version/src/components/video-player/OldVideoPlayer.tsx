@@ -300,36 +300,36 @@ const VideoPlayer = ({
       setVideoDuration(videoRef.current.duration);
     });
   }, []);
-  //////////////////////////////////
+  ////////////////////////////////
   /////////////////////////////////
   //* Handling subtitles 👇:
 
-  // Turn off all subtitles:
-  // useEffect(function () {
-  //   if (!videoRef.current) return;
+  //   Turn off all subtitles:
+  useEffect(function () {
+    if (!videoRef.current) return;
 
-  //   for (let i = 0; i < videoRef.current.textTracks.length; i++) {
-  //     videoRef.current.textTracks[i].mode = "hidden";
-  //   }
-  // }, []);
+    for (let i = 0; i < videoRef.current.textTracks.length; i++) {
+      videoRef.current.textTracks[i].mode = "hidden";
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   if (!trackRef.current) return;
+  useEffect(() => {
+    if (!trackRef.current) return;
 
-  //   trackRef.current.addEventListener("cuechange", (event) => {
-  //     const activeCues = (event.target as HTMLTrackElement).track.activeCues;
-  //     if (!activeCues) return;
-  //     const currentCue = activeCues[0] as VTTCue;
+    trackRef.current.addEventListener("cuechange", (event) => {
+      const activeCues = (event.target as HTMLTrackElement).track.activeCues;
+      if (!activeCues) return;
+      const currentCue = activeCues[0] as VTTCue;
 
-  //     if (currentCue) {
-  //       setActiveCue(currentCue);
-  //       const currentItems = wordsPairList.filter(
-  //         (item) => item.subtitleWordList[0].cueId === currentCue.id
-  //       );
-  //       setCurrentPairList(currentItems);
-  //     }
-  //   });
-  // }, [wordsPairList]);
+      if (currentCue) {
+        setActiveCue(currentCue);
+        const currentItems = wordsPairList.filter(
+          (item) => item.subtitleWordList[0].cueId === currentCue.id
+        );
+        setCurrentPairList(currentItems);
+      }
+    });
+  }, [wordsPairList]);
 
   ////////////// HLS.js player
   useEffect(() => {
@@ -347,37 +347,7 @@ const VideoPlayer = ({
     })();
   }, [videoSrc]);
 
-  useEffect(() => {
-    if (!videoRef.current) return;
-
-    videoRef.current.addEventListener("loadeddata", () => {
-      if (!videoRef.current) return;
-
-      const trackEl = document.createElement("track");
-      // trackEl.setAttribute("kind", "captions");
-      trackEl.setAttribute("kind", "subtitles");
-      trackEl.setAttribute("label", "English");
-      trackEl.setAttribute("srcLang", "en");
-      trackEl.setAttribute("src", subtitleSrc);
-
-      videoRef.current.appendChild(trackEl);
-
-      trackEl.track.addEventListener("cuechange", () => {
-        const activeCues = trackEl.track.activeCues;
-        if (!activeCues) return;
-        const currentCue = activeCues[0] as VTTCue;
-
-        if (currentCue) {
-          setActiveCue(currentCue);
-          const currentItems = wordsPairList.filter(
-            (item) => item.subtitleWordList[0].cueId === currentCue.id
-          );
-          setCurrentPairList(currentItems);
-        }
-      }); // Don't need if using native caption display.
-      trackEl.track.mode = "hidden"; // Enable the track with "hidden", or "showing" if using native captions display.
-    });
-  }, []);
+  ////////////////////////
 
   ///////////////
   //* Note: When I tried to load video and subtitle from my Node js backend, the video loaded but vtt file did not. The solution was adding crossOrigin="anonymous" to video element.
@@ -423,7 +393,7 @@ const VideoPlayer = ({
           src={videoSrc}
           // src="https://funguage.arvanvod.ir/MaqPbZPWlo/WG31Vk0p78/origin_T8UmVBv948dm2oyt2T6uYDqio2UAtkVZk4D3dsjp.mp4"
         />
-        {/* <track
+        <track
           label="English"
           kind="subtitles"
           srcLang="en"
@@ -431,7 +401,7 @@ const VideoPlayer = ({
           // src={import.meta.env.VITE_BACKEND_URL + "/playlist/friends1.vtt"}
           default
           ref={trackRef}
-        /> */}
+        />
       </video>
       {/* //! Subtitle part: */}
       <Subtitles

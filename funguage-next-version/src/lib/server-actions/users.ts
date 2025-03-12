@@ -8,6 +8,7 @@ import {
   registerFormSchema,
 } from "../zodSchemas";
 import bcrypt from "bcrypt";
+import { user } from "../types";
 
 export async function register(values: RegisterFormFields) {
   // Validate the input values (this is server side validation).
@@ -52,7 +53,21 @@ export async function getUser(email: string, password: string) {
     if (!isPasswordValid) return null;
     return user;
   } catch (error) {
-    console.log("This error happened when getting an admin:", error);
+    console.log("This error happened when getting a user from DB:", error);
+    throw error;
+  }
+}
+export async function getUserByID(_id: string) {
+  try {
+    await connectToDatabase();
+    const user = await User.findOne({ _id });
+    if (!user) {
+      return null;
+    }
+
+    return user as user;
+  } catch (error) {
+    console.log("This error happened when getting a user from DB:", error);
     throw error;
   }
 }
