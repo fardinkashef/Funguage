@@ -66,9 +66,9 @@ app.use((err, req, res, next) => {
 //* For connecting to MongoDB Atlas use this block of code 👇:
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mgycx.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
-  )
+  // .connect(
+  //   `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mgycx.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
+  // )
   .connect(
     `mongodb+srv://Fardin:fardin72@cluster0.mgycx.mongodb.net/funguage?retryWrites=true&w=majority&appName=Cluster0`
   )
