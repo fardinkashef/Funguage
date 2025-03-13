@@ -2,17 +2,20 @@
 
 import { connectToDatabase } from "@/lib/database/db-connection";
 import Word from "../database/models/Word";
+import { databaseWord } from "../types";
 
 // import { revalidatePath } from "next/cache";
 
 export async function getWords(ids: string[]) {
   try {
     await connectToDatabase();
-    const words = await Word.find({ _id: { $in: ids } }).lean();
+    const words = (await Word.find({
+      _id: { $in: ids },
+    }).lean()) as databaseWord[];
     if (!words) {
       throw new Error("There's not any results to return.");
     }
-    return words;
+    return words.map((word) => ({ ...word, _id: word._id.toString() }));
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;

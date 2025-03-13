@@ -23,6 +23,9 @@ import {
 } from "@/components/ui/tooltip";
 
 import { databaseWord } from "@/lib/types";
+import { addToUserWords } from "@/lib/server-actions/users";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 // const items = [
 //   {
@@ -57,7 +60,15 @@ const FormSchema = z.object({
   }),
 });
 
-export default function WordsCheckForm({ words }: { words: databaseWord[] }) {
+export default function WordsCheckForm({
+  words,
+  userId,
+}: {
+  words: databaseWord[];
+  userId: string;
+}) {
+  const router = useRouter();
+
   const wordsForm = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -65,9 +76,10 @@ export default function WordsCheckForm({ words }: { words: databaseWord[] }) {
     },
   });
 
-  function submit(data: z.infer<typeof FormSchema>) {
-    console.log("this is the data:", data);
-    // Todo: define a server action to save this array of db words ids to user's learntWordIds
+  async function submit(data: z.infer<typeof FormSchema>) {
+    await addToUserWords(userId, data.words);
+    toast.success("New words added to your words bank!");
+    router.refresh();
   }
 
   return (

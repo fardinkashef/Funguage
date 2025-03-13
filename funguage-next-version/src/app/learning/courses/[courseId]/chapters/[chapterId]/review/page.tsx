@@ -23,15 +23,14 @@ export default async function ChapterReviewPage({
 
   const chapter = await getChapterById(chapterId);
   const newDBWordIds = chapter.usedDatabaseWordIds.filter(
-    (dbWordId) => !(dbWordId in userData.learntWordsIds)
+    (dbWordId) => !userData.learntWordsIds.includes(dbWordId)
   );
   const newDBWords = await getWords(newDBWordIds);
-  // console.log("this is the number:", newDBWords.length);
 
   return (
     <div>
       <h2>ChapterReviewPage</h2>
-      <WordsCheckForm words={newDBWords} />
+      <WordsCheckForm words={newDBWords} userId={user._id as string} />
     </div>
   );
 }
