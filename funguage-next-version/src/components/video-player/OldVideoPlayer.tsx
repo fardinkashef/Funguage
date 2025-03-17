@@ -5,9 +5,7 @@ import Hls from "hls.js";
 import Controls from "./Controls";
 import Subtitles from "./Subtitles";
 import WordModal from "./word-modal/WordModal";
-import ReviewModal from "./ReviewModal";
-// Todo: Fix this. I commented out this line for now:
-// import { useAuthContext } from "@/shared/context/AuthContext";
+
 import { wordsPair } from "@/lib/types";
 
 type VideoPlayerProps = {
@@ -16,11 +14,11 @@ type VideoPlayerProps = {
   wordsPairList: wordsPair[];
 };
 
-const VideoPlayer = ({
+export default function VideoPlayer({
   videoSrc,
   subtitleSrc,
   wordsPairList,
-}: VideoPlayerProps) => {
+}: VideoPlayerProps) {
   // STATES:
   //? Why define a state variable for video time? Why not just use videoRef.current.currentTime? Answer: We're gonna use this time to update the progress bar. The videoRef.current.currentTime value gets updated regularly but it doesn't re-render the component so the updated time value won't be passed to progress element and the progress element will stay the same until component re-render by another cause (I've checked it and saw it).
   //? Doing so, doesn't make a lot of re-renders to crash the app or at least lower the performance? Answer: Not exactly. I checked and the time update event is fired about 3 or 4 times in a second. So I think it is okay.
@@ -34,7 +32,6 @@ const VideoPlayer = ({
   const [fullscreen, setFullscreen] = useState(false);
   const [activeCue, setActiveCue] = useState<VTTCue | null>(null);
   const [showWordModal, setShowWordModal] = useState(false);
-  const [showReviewModal, setShowReviewModal] = useState(false);
 
   const [AmericanPronunciationAudioSrc, setAmericanPronunciationAudioSrc] =
     useState<string | null>(null);
@@ -53,7 +50,7 @@ const VideoPlayer = ({
   // REFERENCES:
   const VideoPlayerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const trackRef = useRef<HTMLTrackElement>(null);
+  // const trackRef = useRef<HTMLTrackElement>(null);
   const AmericanAudioRef = useRef<HTMLAudioElement>(null);
   const BritishAudioRef = useRef<HTMLAudioElement>(null);
 
@@ -72,19 +69,6 @@ const VideoPlayer = ({
     setCurrentPairIndex(INDEX);
   };
 
-  const handleWordsReviewClick = () => {
-    if (!videoRef.current) return;
-    // Todo: Fix this. I commented out this line for now 👇:
-    // if (!loggedIn) alert("You need to log in to use this feature.");
-    if (!videoRef.current.paused) {
-      videoRef.current.pause();
-      setVideoPreviouslyPaused(false);
-    } else {
-      setVideoPreviouslyPaused(true);
-    }
-    setShowReviewModal(true);
-  };
-  //////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
   // Event handlers for control buttons
@@ -162,14 +146,7 @@ const VideoPlayer = ({
     }
     setShowWordModal(false);
   };
-  const handleCloseWordsReviewModal = () => {
-    if (!videoPreviouslyPaused) {
-      if (!videoRef.current) return;
 
-      videoRef.current.play();
-    }
-    setShowReviewModal(false);
-  };
   const handleTimeUpdate = (
     event: React.SyntheticEvent<HTMLVideoElement, Event>
   ) => {
@@ -300,36 +277,36 @@ const VideoPlayer = ({
       setVideoDuration(videoRef.current.duration);
     });
   }, []);
-  ////////////////////////////////
+  //////////////////////////////////
   /////////////////////////////////
   //* Handling subtitles 👇:
 
-  //   Turn off all subtitles:
-  useEffect(function () {
-    if (!videoRef.current) return;
+  // Turn off all subtitles:
+  // useEffect(function () {
+  //   if (!videoRef.current) return;
 
-    for (let i = 0; i < videoRef.current.textTracks.length; i++) {
-      videoRef.current.textTracks[i].mode = "hidden";
-    }
-  }, []);
+  //   for (let i = 0; i < videoRef.current.textTracks.length; i++) {
+  //     videoRef.current.textTracks[i].mode = "hidden";
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (!trackRef.current) return;
+  // useEffect(() => {
+  //   if (!trackRef.current) return;
 
-    trackRef.current.addEventListener("cuechange", (event) => {
-      const activeCues = (event.target as HTMLTrackElement).track.activeCues;
-      if (!activeCues) return;
-      const currentCue = activeCues[0] as VTTCue;
+  //   trackRef.current.addEventListener("cuechange", (event) => {
+  //     const activeCues = (event.target as HTMLTrackElement).track.activeCues;
+  //     if (!activeCues) return;
+  //     const currentCue = activeCues[0] as VTTCue;
 
-      if (currentCue) {
-        setActiveCue(currentCue);
-        const currentItems = wordsPairList.filter(
-          (item) => item.subtitleWordList[0].cueId === currentCue.id
-        );
-        setCurrentPairList(currentItems);
-      }
-    });
-  }, [wordsPairList]);
+  //     if (currentCue) {
+  //       setActiveCue(currentCue);
+  //       const currentItems = wordsPairList.filter(
+  //         (item) => item.subtitleWordList[0].cueId === currentCue.id
+  //       );
+  //       setCurrentPairList(currentItems);
+  //     }
+  //   });
+  // }, [wordsPairList]);
 
   ////////////// HLS.js player
   useEffect(() => {
@@ -347,7 +324,37 @@ const VideoPlayer = ({
     })();
   }, [videoSrc]);
 
-  ////////////////////////
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    videoRef.current.addEventListener("loadeddata", () => {
+      if (!videoRef.current) return;
+
+      const trackEl = document.createElement("track");
+      // trackEl.setAttribute("kind", "captions");
+      trackEl.setAttribute("kind", "subtitles");
+      trackEl.setAttribute("label", "English");
+      trackEl.setAttribute("srcLang", "en");
+      trackEl.setAttribute("src", subtitleSrc);
+
+      videoRef.current.appendChild(trackEl);
+
+      trackEl.track.addEventListener("cuechange", () => {
+        const activeCues = trackEl.track.activeCues;
+        if (!activeCues) return;
+        const currentCue = activeCues[0] as VTTCue;
+
+        if (currentCue) {
+          setActiveCue(currentCue);
+          const currentItems = wordsPairList.filter(
+            (item) => item.subtitleWordList[0].cueId === currentCue.id
+          );
+          setCurrentPairList(currentItems);
+        }
+      }); // Don't need if using native caption display.
+      trackEl.track.mode = "hidden"; // Enable the track with "hidden", or "showing" if using native captions display.
+    });
+  }, []);
 
   ///////////////
   //* Note: When I tried to load video and subtitle from my Node js backend, the video loaded but vtt file did not. The solution was adding crossOrigin="anonymous" to video element.
@@ -393,7 +400,7 @@ const VideoPlayer = ({
           src={videoSrc}
           // src="https://funguage.arvanvod.ir/MaqPbZPWlo/WG31Vk0p78/origin_T8UmVBv948dm2oyt2T6uYDqio2UAtkVZk4D3dsjp.mp4"
         />
-        <track
+        {/* <track
           label="English"
           kind="subtitles"
           srcLang="en"
@@ -401,7 +408,7 @@ const VideoPlayer = ({
           // src={import.meta.env.VITE_BACKEND_URL + "/playlist/friends1.vtt"}
           default
           ref={trackRef}
-        />
+        /> */}
       </video>
       {/* //! Subtitle part: */}
       <Subtitles
@@ -426,7 +433,7 @@ const VideoPlayer = ({
         videoDuration={videoDuration}
         playBackRate={playBackRate}
         handleSetPlayBackRate={handleSetPlayBackRate}
-        handleWordsReviewClick={handleWordsReviewClick}
+        // handleWordsReviewClick={handleWordsReviewClick}
       />
       {/* //! Audio player part: */}
       {AmericanPronunciationAudioSrc && (
@@ -458,21 +465,6 @@ const VideoPlayer = ({
           playPronunciation={playPronunciation}
         />
       )}
-      {/* //! ReviewModal part: */}
-      {/* {showReviewModal &&
-        reviewWordIds &&
-        setReviewWordIds &&
-        setWordsPairList && (
-          <ReviewModal
-            wordsPairList={wordsPairList}
-            setWordsPairList={setWordsPairList}
-            reviewWordIds={reviewWordIds}
-            setReviewWordIds={setReviewWordIds}
-            handleCloseModal={handleCloseWordsReviewModal}
-          />
-        )} */}
     </figure>
   );
-};
-
-export default VideoPlayer;
+}

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./TimeLine.scss";
 
-function TimeLine({
+export default function OldTimeLine({
   videoTime,
   handleSetVideoTime,
   videoDuration,
@@ -88,7 +88,7 @@ function TimeLine({
       ref={TimeLineRef}
       style={{
         "--preview-position": previewPosition,
-        "--progress-position": (videoTime - 10) / videoDuration,
+        "--progress-position": videoTime / videoDuration,
       }}
     >
       <div className="bar">
@@ -98,5 +98,3 @@ function TimeLine({
     </div>
   );
 }
-
-export default TimeLine;

@@ -21,7 +21,6 @@ type ControlsProps = {
   handleTheater: () => void;
   playBackRate: number;
   handleSetPlayBackRate: (rate: number) => void;
-  handleWordsReviewClick: () => void;
 };
 
 function Controls({
@@ -40,7 +39,6 @@ function Controls({
   handleTheater,
   playBackRate,
   handleSetPlayBackRate,
-  handleWordsReviewClick,
 }: ControlsProps) {
   // Format video duration 👇:
   const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
@@ -106,8 +104,6 @@ function Controls({
           <div>{formatDuration(videoTime)}</div>/
           <div>{formatDuration(videoDuration)}</div>
         </div>
-        {/* Check the words */}
-        <button className="checklist" onClick={handleWordsReviewClick} />
 
         {/* Playback rate */}
         <PlayBackRate

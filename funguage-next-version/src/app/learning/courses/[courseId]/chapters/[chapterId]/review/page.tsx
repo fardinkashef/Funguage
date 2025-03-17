@@ -29,7 +29,6 @@ export default async function ChapterReviewPage({
 
   return (
     <div>
-      <h2>ChapterReviewPage</h2>
       <WordsCheckForm words={newDBWords} userId={user._id as string} />
     </div>
   );

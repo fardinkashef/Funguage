@@ -15,12 +15,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 import { databaseWord } from "@/lib/types";
 import { addToUserWords } from "@/lib/server-actions/users";
@@ -75,7 +69,6 @@ export default function WordsCheckForm({
       words: [],
     },
   });
-
   async function submit(data: z.infer<typeof FormSchema>) {
     await addToUserWords(userId, data.words);
     toast.success("New words added to your words bank!");
@@ -106,7 +99,7 @@ export default function WordsCheckForm({
                     return (
                       <FormItem
                         key={word._id}
-                        className="flex flex-row items-start space-x-3 space-y-0"
+                        className="flex flex-row items-start space-x-3 space-y-0 min-h-12 border-solid border-2"
                       >
                         <FormControl>
                           <Checkbox
@@ -123,16 +116,8 @@ export default function WordsCheckForm({
                           />
                         </FormControl>
                         <FormLabel className="font-normal">
-                          {/* {word.title} */}
-                          {/* //Todo: Remove the following tooltip and also remove it from ui folder. The problem is mobile users can't use it. we need another idea. it's okay to use tooltip in WordsPart when creating a course because users won't be able to access it but here it's not acceptable. we need a better solution. maybe a collapsible component. */}
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger> {word.title}</TooltipTrigger>
-                              <TooltipContent>
-                                <p>{word.meaning.definition.text}</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
+                          <h2>{word.title}</h2>
+                          <p>{word.meaning.definition.text}</p>
                         </FormLabel>
                       </FormItem>
                     );
