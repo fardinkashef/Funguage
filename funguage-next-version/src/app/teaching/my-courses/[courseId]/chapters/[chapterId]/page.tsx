@@ -14,10 +14,10 @@ import ChapterWords from "./_components/ChapterWords/ChapterWords";
 import VideoPlayer from "@/components/video-player/VideoPlayer";
 
 type ChapterIdPageProps = {
-  params: {
+  params: Promise<{
     courseId: string;
     chapterId: string;
-  };
+  }>;
 };
 
 export default async function ChapterIdPage({ params }: ChapterIdPageProps) {

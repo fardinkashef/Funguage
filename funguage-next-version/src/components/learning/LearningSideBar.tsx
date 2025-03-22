@@ -31,8 +31,13 @@ const items = [
     icon: SquareLibrary,
   },
   {
-    title: "Review",
-    href: "/learning/review",
+    title: "Flash Card Review",
+    href: "/learning/review/flashcard",
+    icon: BookOpenCheck,
+  },
+  {
+    title: "Clip Review",
+    href: "/learning/review/clip",
     icon: BookOpenCheck,
   },
 ];

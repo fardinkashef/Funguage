@@ -6,6 +6,19 @@ import { databaseWord } from "../types";
 
 // import { revalidatePath } from "next/cache";
 
+export async function getAllWords() {
+  try {
+    await connectToDatabase();
+    const words = (await Word.find().lean()) as databaseWord[];
+    if (!words) {
+      throw new Error("There's not any results to return.");
+    }
+    return words.map((word) => ({ ...word, _id: word._id.toString() }));
+  } catch (error) {
+    console.log("This error happened when getting all the results:", error);
+    throw error;
+  }
+}
 export async function getWords(ids: string[]) {
   try {
     await connectToDatabase();

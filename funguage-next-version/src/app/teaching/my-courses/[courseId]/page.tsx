@@ -9,7 +9,7 @@ import ChaptersForm from "./_components/ChaptersForm";
 import { getChapters } from "@/lib/server-actions/chapters";
 
 type MyCoursePageProps = {
-  params: { courseId: string };
+  params: Promise<{ courseId: string }> ;
 };
 
 export default async function MyCoursePage({ params }: MyCoursePageProps) {

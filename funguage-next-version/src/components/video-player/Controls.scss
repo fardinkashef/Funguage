@@ -80,6 +80,9 @@
     button[data-state="pause"] {
       background-image: url("./icons/pause.svg");
     }
+    button[data-state="replay"] {
+      background-image: url("./icons/replay.svg");
+    }
     button[data-state="stop"] {
       background-image: url("./icons/stop.svg");
     }

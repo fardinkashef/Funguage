@@ -6,7 +6,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 type ChapterPageProps = {
-  params: { chapterId: string; courseId: string };
+  params: Promise<{ chapterId: string; courseId: string }>;
 };
 export default async function ChapterPage({ params }: ChapterPageProps) {
   const { chapterId, courseId } = await params;

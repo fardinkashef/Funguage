@@ -42,6 +42,24 @@ export async function getChapterById(id: string) {
   }
 }
 
+export async function getChaptersByWordID(wordID: string) {
+  try {
+    await connectToDatabase();
+    const chapters = await Chapter.find(
+      {
+        usedDatabaseWordIds: wordID,
+      },
+      { _id: 0 }
+    ).lean();
+    if (!chapters) {
+      throw new Error("There's not any results to return.");
+    }
+    return chapters;
+  } catch (error) {
+    console.log("This error happened when getting all the results:", error);
+    throw error;
+  }
+}
 export async function createChapter(chapterData: chapter) {
   try {
     await connectToDatabase();

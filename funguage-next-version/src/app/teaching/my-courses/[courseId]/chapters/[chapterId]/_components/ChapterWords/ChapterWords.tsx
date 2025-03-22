@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cue, databaseWord, subtitleWord, wordsPair } from "@/lib/types";
-import { getWords } from "@/lib/server-actions/words";
+import { getAllWords } from "@/lib/server-actions/words";
 import WordItem from "./WordItem";
 import { Button } from "@/components/ui/button";
 import { updateChapterWords } from "@/lib/server-actions/chapters";
@@ -70,7 +70,7 @@ export default function ChapterWords({
   useEffect(
     function () {
       async function handleDatabaseWords() {
-        const words = await getWords();
+        const words = await getAllWords();
         setDatabaseWords(words);
       }
       handleDatabaseWords();
@@ -102,6 +102,7 @@ export default function ChapterWords({
 
       let allWords: subtitleWord[] = [];
       const allCues = [];
+
       for (let i = 0; i < video.textTracks[0].cues.length; i++) {
         //* TS complains that "Property 'text' does not exist on type 'TextTrackCue'." so I asserted the more specific type of VTTCue 👇:
         const cue = video.textTracks[0].cues[i] as VTTCue;
@@ -122,6 +123,20 @@ export default function ChapterWords({
           return {
             title: word,
             cueId: cue.id,
+            cueStartTime: cue.startTime,
+            cueEndTime: cue.endTime,
+            previousCueStartTime:
+              i === 0 ? null : video.textTracks[0].cues[i - 1].startTime,
+            previousCueEndTime:
+              i === 0 ? null : video.textTracks[0].cues[i - 1].endTime,
+            nextCueStartTime:
+              i === video.textTracks[0].cues.length - 1
+                ? null
+                : video.textTracks[0].cues[i + 1].startTime,
+            nextCueEndTime:
+              i === video.textTracks[0].cues.length - 1
+                ? null
+                : video.textTracks[0].cues[i + 1].endTime,
             orderNumber:
               cueWords.slice(0, index).filter((cueWord) => cueWord === word)
                 .length + 1,
@@ -134,10 +149,6 @@ export default function ChapterWords({
       setCues(allCues);
     },
     [subtitleSrc]
-  );
-  console.log(
-    "subtitleWords",
-    `${subtitleWords.length ? " okay" : " not loaded"}`
   );
 
   return (

@@ -2,8 +2,15 @@
 export type subtitleWord = {
   title: string;
   cueId: string;
+  cueStartTime: number;
+  cueEndTime: number;
+  previousCueStartTime: number | null;
+  previousCueEndTime: number | null;
+  nextCueStartTime: number | null;
+  nextCueEndTime: number | null;
   orderNumber: number;
 };
+
 export type databaseWord = {
   _id: string;
   word: string;

@@ -15,12 +15,15 @@ type ControlsProps = {
   fullscreen: boolean;
   handleToggleFullscreen: () => void;
   videoTime: number;
+  videoEnded: boolean;
+  startTime: number | null;
   handleSetVideoTime: (time: number) => void;
   videoDuration: number;
   theater: boolean;
   handleTheater: () => void;
   playBackRate: number;
   handleSetPlayBackRate: (rate: number) => void;
+  handleReplay: () => void;
 };
 
 function Controls({
@@ -33,12 +36,15 @@ function Controls({
   fullscreen,
   handleToggleFullscreen,
   videoTime,
+  videoEnded,
+  startTime,
   handleSetVideoTime,
   videoDuration,
   theater,
   handleTheater,
   playBackRate,
   handleSetPlayBackRate,
+  handleReplay,
 }: ControlsProps) {
   // Format video duration 👇:
   const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
@@ -62,6 +68,7 @@ function Controls({
       {/* Time line */}
       <TimeLine
         videoTime={videoTime}
+        startTime={startTime}
         handleSetVideoTime={handleSetVideoTime}
         videoDuration={videoDuration}
         paused={paused}
@@ -73,8 +80,11 @@ function Controls({
         <button
           id="playpause"
           type="button"
-          data-state={`${paused ? "play" : "pause"}`}
-          onClick={handleTogglePlayPause}
+          data-state={`${videoEnded ? "replay" : paused ? "play" : "pause"}`}
+          onClick={() => {
+            if (videoEnded) return handleReplay();
+            handleTogglePlayPause();
+          }}
         />
         {/* Stop */}
         <button

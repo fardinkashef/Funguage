@@ -9,7 +9,7 @@ export default async function CourseLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { courseId: string };
+  params: Promise<{ courseId: string }>;
 }) {
   const { courseId } = await params;
   return (

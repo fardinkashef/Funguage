@@ -9,6 +9,7 @@
     height: 3px;
     width: 100%;
     position: relative;
+    overflow: hidden;
     // For grey bar 👇:
     &::before {
       content: "";

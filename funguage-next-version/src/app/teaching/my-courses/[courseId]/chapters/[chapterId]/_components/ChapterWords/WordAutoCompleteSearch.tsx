@@ -40,15 +40,10 @@ WordAutoCompleteSearchProps) {
     });
   }, [value, itemsToSearchIn]);
 
-  const handleSelectSuggetion = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    const newSelectedItem = itemsToSearchIn.find(
-      (item) => item.title === (event.target as HTMLButtonElement).textContent
-    );
+  const handleSelectSuggetion = (selectedSuggestion) => {
     setValue("");
-    if (!newSelectedItem) return;
-    const newSelectedItems = [...selectedItems, newSelectedItem];
+    if (!selectedSuggestion) return;
+    const newSelectedItems = [...selectedItems, selectedSuggestion];
     setSelectedItems(newSelectedItems);
   };
 
@@ -107,9 +102,10 @@ WordAutoCompleteSearchProps) {
             tooltipContent = (item as databaseWord).meaning.definition.text;
           } else {
             if (!cues) return;
-            const cueText = cues.filter(
+            const cue = cues.filter(
               (cue) => cue.id === (item as subtitleWord).cueId
-            )[0].text;
+            )[0];
+            const cueText = cue.text;
             tooltipContent = cueText
               .split(`${item.title}`)
               .map((phrase, index, array) => {
@@ -135,7 +131,7 @@ WordAutoCompleteSearchProps) {
             >
               <button
                 className="w-full bg-white p-2 border-none hover:bg-gray-500"
-                onClick={handleSelectSuggetion}
+                onClick={() => handleSelectSuggetion(item)}
               >
                 {"orderNumber" in item && item.orderNumber > 1
                   ? `${item.title} (${item.orderNumber})`

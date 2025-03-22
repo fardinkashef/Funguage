@@ -12,12 +12,16 @@ type VideoPlayerProps = {
   videoSrc: string;
   subtitleSrc: string;
   wordsPairList: wordsPair[];
+  startTime?: number | null;
+  endTime?: number | null;
 };
 
 export default function VideoPlayer({
   videoSrc,
   subtitleSrc,
   wordsPairList,
+  startTime = null,
+  endTime = null,
 }: VideoPlayerProps) {
   // STATES:
   //? Why define a state variable for video time? Why not just use videoRef.current.currentTime? Answer: We're gonna use this time to update the progress bar. The videoRef.current.currentTime value gets updated regularly but it doesn't re-render the component so the updated time value won't be passed to progress element and the progress element will stay the same until component re-render by another cause (I've checked it and saw it).
@@ -26,6 +30,9 @@ export default function VideoPlayer({
   const [videoDuration, setVideoDuration] = useState(0);
   const [volumeLevel, setVolumeLevel] = useState("high");
   const [paused, setPaused] = useState(true);
+  //*I need to change the play pause icon to replay icon when video is ended but videoRef.current.ended is not enough because I can't use it when playing clips, right? So I defined this state variable
+  const [videoEnded, setVideoEnded] = useState(false);
+
   // const [miniPlayer, setMiniPlayer] = useState(false);
   const [theater, setTheater] = useState(false);
   //* I don't use fullscreen state variable anywhere. I just update it after fullscreen change in order for component to be re-rendered and UI gets updated (to update fullscreen button icon) 👇:
@@ -100,7 +107,12 @@ export default function VideoPlayer({
       videoRef.current.play();
     else videoRef.current.pause();
   };
-
+  const handleReplay = () => {
+    if (!videoRef.current) return;
+    videoRef.current.currentTime = startTime || 0;
+    videoRef.current.play();
+    setVideoEnded(false);
+  };
   // The Media API has no 'stop()' function, so pause the video and reset its time and the progress bar
   const handleStop = () => {
     if (!videoRef.current) return;
@@ -150,7 +162,15 @@ export default function VideoPlayer({
   const handleTimeUpdate = (
     event: React.SyntheticEvent<HTMLVideoElement, Event>
   ) => {
-    setVideoTime((event.target as HTMLVideoElement).currentTime);
+    const currentTime = (event.target as HTMLVideoElement).currentTime;
+    if (endTime && currentTime > endTime) {
+      if (!videoRef.current) return;
+      videoRef.current.pause();
+      setVideoEnded(true);
+    } else {
+      if (videoEnded) setVideoEnded(false);
+    }
+    setVideoTime(currentTime);
   };
 
   const handleSetVideoTime = (time: number) => {
@@ -243,6 +263,7 @@ export default function VideoPlayer({
     if (accent === "Am") AmericanAudioRef.current.play();
     else BritishAudioRef.current.play();
   };
+
   ///////////
 
   useEffect(function () {
@@ -268,19 +289,22 @@ export default function VideoPlayer({
   //   });
   // }, []);
   ////////////////////////////
-  useEffect(function () {
-    if (!videoRef.current) return;
-
-    videoRef.current.addEventListener("loadeddata", () => {
+  useEffect(
+    function () {
       if (!videoRef.current) return;
 
-      // setVideoDuration(videoRef.current.duration);
+      videoRef.current.addEventListener("loadeddata", () => {
+        if (!videoRef.current) return;
 
-      setVideoDuration(15);
-      videoRef.current.currentTime = 10;
-      setVideoTime(10);
-    });
-  }, []);
+        if (startTime && endTime) {
+          setVideoDuration(endTime - startTime);
+          videoRef.current.currentTime = startTime;
+          setVideoTime(startTime);
+        } else setVideoDuration(videoRef.current.duration);
+      });
+    },
+    [startTime, endTime]
+  );
   //////////////////////////////////
   /////////////////////////////////
   //* Handling subtitles 👇:
@@ -358,7 +382,7 @@ export default function VideoPlayer({
       }); // Don't need if using native caption display.
       trackEl.track.mode = "hidden"; // Enable the track with "hidden", or "showing" if using native captions display.
     });
-  }, []);
+  }, [subtitleSrc, wordsPairList]);
 
   ///////////////
   //* Note: When I tried to load video and subtitle from my Node js backend, the video loaded but vtt file did not. The solution was adding crossOrigin="anonymous" to video element.
@@ -399,6 +423,8 @@ export default function VideoPlayer({
         onVolumeChange={handleVolumeChange}
         onLoadedData={handleLoadedData}
         muted
+        // src={videoSrc}
+        // autoPlay
       >
         <source
           src={videoSrc}
@@ -433,10 +459,13 @@ export default function VideoPlayer({
         fullscreen={fullscreen}
         handleToggleFullscreen={handleToggleFullscreen}
         videoTime={videoTime}
+        videoEnded={videoRef.current?.ended || videoEnded}
+        startTime={startTime}
         handleSetVideoTime={handleSetVideoTime}
         videoDuration={videoDuration}
         playBackRate={playBackRate}
         handleSetPlayBackRate={handleSetPlayBackRate}
+        handleReplay={handleReplay}
         // handleWordsReviewClick={handleWordsReviewClick}
       />
       {/* //! Audio player part: */}

@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 export default async function ChapterReviewPage({
   params,
 }: {
-  params: { chapterId: string; courseId: string };
+  params: Promise<{ chapterId: string; courseId: string }>;
 }) {
   const { chapterId, courseId } = await params;
 

@@ -3,6 +3,7 @@ import "./TimeLine.scss";
 
 function TimeLine({
   videoTime,
+  startTime,
   handleSetVideoTime,
   videoDuration,
   paused,
@@ -49,7 +50,9 @@ function TimeLine({
   };
   const handleTimeLineClick = (event) => {
     const percent = getPercentage(event);
-    handleSetVideoTime(percent * videoDuration);
+    handleSetVideoTime(
+      startTime ? startTime + percent * videoDuration : percent * videoDuration
+    );
   };
   ////////////
   useEffect(
@@ -88,7 +91,9 @@ function TimeLine({
       ref={TimeLineRef}
       style={{
         "--preview-position": previewPosition,
-        "--progress-position": (videoTime - 10) / videoDuration,
+        "--progress-position": startTime
+          ? (videoTime - startTime) / videoDuration
+          : videoTime / videoDuration,
       }}
     >
       <div className="bar">
