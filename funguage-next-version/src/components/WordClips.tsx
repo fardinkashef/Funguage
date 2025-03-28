@@ -25,9 +25,14 @@ export default function WordClips({ clips }) {
         endTime={clip.endTime}
         // I added this key prop because, otherwise, React would c  onsider this component the same on clipNumber change.
         key={clipNumber}
+        handlePreviousVideo={
+          clipNumber === 0 ? undefined : handlePreviousButtonClick
+        }
+        handleNextVideo={
+          clipNumber === clips.length - 1 ? undefined : handleNextButtonClick
+        }
       />
-      <button onClick={handleNextButtonClick}>next</button>
-      <button onClick={handlePreviousButtonClick}>previous</button>
+
       <p>{clipNumber}</p>
     </div>
   );

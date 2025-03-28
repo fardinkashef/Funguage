@@ -1,4 +1,4 @@
-import { Home } from "lucide-react";
+import { SquarePlay } from "lucide-react";
 
 import {
   Sidebar,
@@ -21,10 +21,10 @@ export default async function CoursePageSideBar({
   const chapters = await getChapters(courseId);
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="offcanvas">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Course Page</SidebarGroupLabel>
+          <SidebarGroupLabel>Course Name</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {chapters.map((chapter) => (
@@ -33,7 +33,7 @@ export default async function CoursePageSideBar({
                     <Link
                       href={`/learning/courses/${courseId}/chapters/${chapter._id}`}
                     >
-                      <Home />
+                      <SquarePlay />
                       <span>{chapter.title}</span>
                     </Link>
                   </SidebarMenuButton>

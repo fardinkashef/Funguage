@@ -13,14 +13,12 @@ export default async function FlashCardReview() {
   const userData = (await getUserByID(user._id as string)) as user;
   const dbWords = await getWords(userData.learntWordsIds);
   return (
-    <div>
-      <ul>
-        {dbWords.map((dbWord: databaseWord) => (
-          <li key={dbWord._id}>
-            <FlashCard dbWord={dbWord} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="p-8 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-6">
+      {dbWords.map((dbWord: databaseWord) => (
+        <li key={dbWord._id}>
+          <FlashCard dbWord={dbWord} />
+        </li>
+      ))}
+    </ul>
   );
 }

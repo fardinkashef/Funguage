@@ -7,6 +7,10 @@ import Subtitles from "./Subtitles";
 import WordModal from "./word-modal/WordModal";
 
 import { wordsPair } from "@/lib/types";
+import LoadingModal from "./LoadingModal";
+
+import { ChevronRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 type VideoPlayerProps = {
   videoSrc: string;
@@ -14,6 +18,8 @@ type VideoPlayerProps = {
   wordsPairList: wordsPair[];
   startTime?: number | null;
   endTime?: number | null;
+  handlePreviousVideo?: () => void;
+  handleNextVideo?: () => void;
 };
 
 export default function VideoPlayer({
@@ -22,6 +28,8 @@ export default function VideoPlayer({
   wordsPairList,
   startTime = null,
   endTime = null,
+  handlePreviousVideo,
+  handleNextVideo,
 }: VideoPlayerProps) {
   // STATES:
   //? Why define a state variable for video time? Why not just use videoRef.current.currentTime? Answer: We're gonna use this time to update the progress bar. The videoRef.current.currentTime value gets updated regularly but it doesn't re-render the component so the updated time value won't be passed to progress element and the progress element will stay the same until component re-render by another cause (I've checked it and saw it).
@@ -39,6 +47,7 @@ export default function VideoPlayer({
   const [fullscreen, setFullscreen] = useState(false);
   const [activeCue, setActiveCue] = useState<VTTCue | null>(null);
   const [showWordModal, setShowWordModal] = useState(false);
+  const [showLoadingModal, setShowLoadingModal] = useState(true);
 
   const [AmericanPronunciationAudioSrc, setAmericanPronunciationAudioSrc] =
     useState<string | null>(null);
@@ -196,11 +205,11 @@ export default function VideoPlayer({
     }
     setVolumeLevel(volumeLevel);
   };
-  const handleLoadedData = () => {
-    if (!videoRef.current) return;
+  // const handleLoadedData = () => {
+  //   if (!videoRef.current) return;
 
-    setVideoDuration(videoRef.current.duration);
-  };
+  //   setVideoDuration(videoRef.current.duration);
+  // };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     console.log("key dooown");
 
@@ -294,12 +303,13 @@ export default function VideoPlayer({
       if (!videoRef.current) return;
 
       videoRef.current.addEventListener("loadeddata", () => {
+        setShowLoadingModal(false);
         if (!videoRef.current) return;
 
         if (startTime && endTime) {
           setVideoDuration(endTime - startTime);
-          videoRef.current.currentTime = startTime;
-          setVideoTime(startTime);
+          // videoRef.current.currentTime = startTime;
+          // setVideoTime(startTime);
         } else setVideoDuration(videoRef.current.duration);
       });
     },
@@ -338,19 +348,23 @@ export default function VideoPlayer({
 
   ////////////// HLS.js player
   useEffect(() => {
-    (function () {
-      const videoElement = videoRef.current;
-      if (!videoElement) return;
+    if (!videoRef.current) return;
 
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(videoElement);
-      } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
-        videoElement.src = videoSrc;
-      }
-    })();
-  }, [videoSrc]);
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(videoRef.current);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        if (!videoRef.current) return;
+        if (startTime && endTime) {
+          videoRef.current.currentTime = startTime;
+          setVideoTime(startTime);
+        }
+      });
+    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
+      videoRef.current.src = videoSrc;
+    }
+  }, [videoSrc, startTime, endTime]);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -392,6 +406,18 @@ export default function VideoPlayer({
   // AS YOU SEE THE PART "/api" IS NEEDED AND THE "express.static" METHOD SHOULD BE USED LIKE THIS:
   // app.use("/api/static-files", express.static("static-files"));
   //* Note: About the AUDIO PLAYER: This audio player is not sth we see in the UI (pay attention to the hidden attribute assigned to it), it just plays the pronunciation audio in the background when needed.
+  const handleCanPlay = () => {
+    // console.log("handlecanplay");
+
+    setShowLoadingModal(false); // Video is ready to play
+  };
+
+  const handleWaiting = () => {
+    console.log("handlewaiting");
+
+    setShowLoadingModal(true); // Video is buffering/loading
+  };
+  console.log("video duration:", videoDuration);
 
   return (
     <figure
@@ -403,6 +429,8 @@ export default function VideoPlayer({
     >
       {/* //! Video part: */}
       <video
+        onCanPlay={handleCanPlay}
+        onWaiting={handleWaiting}
         crossOrigin="anonymous"
         id="video"
         className="video"
@@ -421,7 +449,7 @@ export default function VideoPlayer({
           setPaused(videoRef.current.paused);
         }}
         onVolumeChange={handleVolumeChange}
-        onLoadedData={handleLoadedData}
+        // onLoadedData={handleLoadedData}
         muted
         // src={videoSrc}
         // autoPlay
@@ -468,6 +496,25 @@ export default function VideoPlayer({
         handleReplay={handleReplay}
         // handleWordsReviewClick={handleWordsReviewClick}
       />
+      {/* //! Navigation to next or previous video when playing clips */}
+      <div>
+        {handlePreviousVideo && (
+          <button
+            className="absolute top-0 left-0 bg-black bg-opacity-30 h-full rounded-r-full"
+            onClick={handlePreviousVideo}
+          >
+            <ChevronLeft color="#FFF" size={48} />
+          </button>
+        )}
+        {handleNextVideo && (
+          <button
+            className="absolute top-0 right-0 bg-black bg-opacity-30 h-full rounded-l-full"
+            onClick={handleNextVideo}
+          >
+            <ChevronRight color="#FFF" size={48} />
+          </button>
+        )}
+      </div>
       {/* //! Audio player part: */}
       {AmericanPronunciationAudioSrc && (
         <audio
@@ -498,6 +545,7 @@ export default function VideoPlayer({
           playPronunciation={playPronunciation}
         />
       )}
+      {showLoadingModal && <LoadingModal />}
     </figure>
   );
 }

@@ -2,14 +2,15 @@
   margin: 20px auto;
   background-color: black;
   width: 90%;
-  max-width: 1000px;
+  aspect-ratio: 16/9;
+  max-width: 800px;
   display: flex;
   justify-content: center;
   position: relative;
   // video part:
   video {
     width: 100%;
-    // height: 100%;
+    height: 100%;
   }
   &:hover .Controls
   // TODO: We need the following line to show controls when the user navigates on video player using tab. The problem though, is by adding this line, when user clicks on one of video control buttons, the focus pseudo class sticks to that button and as the result, controls will be displayed event without hovering and being paused trigers and we will have to click outside of the video container to remove the focus on the botton and so hide controls 👇: 

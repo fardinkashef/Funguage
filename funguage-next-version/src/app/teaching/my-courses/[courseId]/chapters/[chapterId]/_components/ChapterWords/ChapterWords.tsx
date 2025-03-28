@@ -12,12 +12,14 @@ type ChapterWordsProps = {
   subtitleSrc: string;
   initialWordsPairList: wordsPair[];
   chapterId: string;
+  courseId: string;
 };
 
 export default function ChapterWords({
   subtitleSrc,
   initialWordsPairList,
   chapterId,
+  courseId,
 }: ChapterWordsProps) {
   const [databaseWords, setDatabaseWords] = useState<databaseWord[]>([]);
   const [subtitleWords, setSubtitleWords] = useState<subtitleWord[]>([]);
@@ -60,7 +62,7 @@ export default function ChapterWords({
   };
   const handleSaveWords = async () => {
     try {
-      await updateChapterWords(chapterId, wordsPairList);
+      await updateChapterWords(chapterId, wordsPairList, courseId);
       toast.success("Chapter words updated");
     } catch (error) {
       console.log("This error happened while updating chapter words:", error);

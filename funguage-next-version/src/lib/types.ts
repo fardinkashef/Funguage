@@ -95,3 +95,9 @@ export type user = {
   createdAt?: Date;
   updatedAt?: Date;
 };
+
+export type sessionUser = {
+  _id: string;
+  username: string;
+  email: string;
+};

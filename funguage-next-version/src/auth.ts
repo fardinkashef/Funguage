@@ -7,6 +7,7 @@ import { ZodError } from "zod";
 declare module "next-auth" {
   interface User {
     _id?: string;
+    username?: string;
   }
 }
 
@@ -48,11 +49,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         // User is available during sign-in
         token._id = user._id;
+        token.username = user.username;
       }
       return token;
     },
     session({ session, token }) {
       session.user._id = token._id as string;
+      session.user.username = token.username as string;
       return session;
     },
   },

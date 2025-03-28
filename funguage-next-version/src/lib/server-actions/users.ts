@@ -1,5 +1,5 @@
 "use server";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { connectToDatabase } from "../database/db-connection";
 import User from "../database/models/User";
 import {
@@ -36,6 +36,14 @@ export async function login(values: LoginFormFields) {
   // Server side validation for login form is done in authorize method. Check auth.ts file
   try {
     await signIn("credentials", { ...values, redirect: false });
+    return { success: true };
+  } catch (error) {
+    console.log("This error happened while signing in:", error);
+  }
+}
+export async function logout() {
+  try {
+    await signOut({ redirect: false });
     return { success: true };
   } catch (error) {
     console.log("This error happened while signing in:", error);

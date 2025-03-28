@@ -81,6 +81,11 @@ function TimeLine({
   );
 
   /////////////
+  let progressPosition: number;
+  if (!videoDuration) progressPosition = 0;
+  else if (videoDuration && startTime)
+    progressPosition = (videoTime - startTime) / videoDuration;
+  else progressPosition = videoTime / videoDuration;
 
   return (
     <div
@@ -91,9 +96,7 @@ function TimeLine({
       ref={TimeLineRef}
       style={{
         "--preview-position": previewPosition,
-        "--progress-position": startTime
-          ? (videoTime - startTime) / videoDuration
-          : videoTime / videoDuration,
+        "--progress-position": progressPosition,
       }}
     >
       <div className="bar">

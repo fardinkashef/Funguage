@@ -123,6 +123,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
                 subtitleSrc={chapter.subtitle.url}
                 initialWordsPairList={chapter.wordsPairList}
                 chapterId={chapterId}
+                courseId={courseId}
               />
             )}
           </div>

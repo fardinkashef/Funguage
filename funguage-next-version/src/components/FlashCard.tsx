@@ -10,22 +10,28 @@ type FlashCardProps = {
 export default function FlashCard({ dbWord }: FlashCardProps) {
   const [flipped, setFlipped] = useState(false);
   return (
-    <div className="card" onClick={() => setFlipped(!flipped)}>
+    <div
+      className="relative w-56 h-56 rounded-md overflow-hidden shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg cursor-pointer"
+      onClick={() => setFlipped(!flipped)}
+    >
       <div
         className={`front ${
           flipped ? "front-flipped" : ""
-        } flex flex-col justify-center items-center rounded-lg border-solid border-2 bg-blue-300`}
+        } flex flex-col justify-center items-center gap-3 rounded-lg border-solid border-2 border-t-8 border-t-orange-500`}
       >
-        <h3>{dbWord.word}</h3>
-        <span>{dbWord.partOfSpeech}</span>
-        <span>{dbWord.meaning.index}</span>
+        <h2 className="text-2xl font-bold">{dbWord.word}</h2>
+        <span className="h-4">{dbWord.partOfSpeech}</span>
+        <span className="h-4">{dbWord.meaning.index}</span>
       </div>
       <div
         className={`back ${
           flipped ? "back-flipped" : ""
-        } flex justify-center items-center rounded-lg border-solid border-2 bg-green-300`}
+        } flex justify-center items-center rounded-lg border-solid border-2 p-6 relative`}
       >
-        <p>{dbWord.meaning.definition.text}</p>
+        <p className="first-letter:uppercase">
+          {dbWord.meaning.definition.text}
+        </p>
+        <span className="absolute w-32 h-2 bg-orange-500 -rotate-45 top-0 -left-7"></span>
       </div>
     </div>
   );

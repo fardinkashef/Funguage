@@ -4,6 +4,7 @@ import { connectToDatabase } from "@/lib/database/db-connection";
 import { chapter, wordsPair } from "../types";
 import Chapter from "../database/models/Chapter";
 import { extractDBWordIDs } from "../utils";
+import Course from "../database/models/Course";
 
 // import { revalidatePath } from "next/cache";
 
@@ -178,8 +179,10 @@ export async function updateChapterSubtitle(
 }
 export async function updateChapterWords(
   chapterId: string,
-  newChapterWords: wordsPair[]
+  newChapterWords: wordsPair[],
+  courseId: string
 ) {
+  // First update the chapter words
   let chapter;
   try {
     await connectToDatabase();
@@ -198,6 +201,39 @@ export async function updateChapterWords(
     chapter.wordsPairList = newChapterWords;
     chapter.usedDatabaseWordIds = extractDBWordIDs(newChapterWords);
     await chapter.save();
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+  // Then update the course words
+  let course;
+  let chapters;
+  try {
+    await connectToDatabase();
+    course = await Course.findById(courseId);
+    chapters = await Chapter.find({ course: courseId });
+  } catch (error) {
+    console.log("This error happened while updating the data:", error);
+    throw error;
+  }
+
+  if (!course || !chapters) {
+    const error = new Error(
+      "Could not find the course or the chapters for these ids."
+    );
+    throw error;
+  }
+  let chaptersWords: string[] = [];
+  chapters.forEach(
+    (chapter) =>
+      (chaptersWords = [...chaptersWords, ...chapter.usedDatabaseWordIds])
+  );
+  const newUsedDatabaseWordIds = Array.from(new Set(chaptersWords));
+  console.log("newused", newUsedDatabaseWordIds);
+
+  try {
+    course.usedDatabaseWordIds = newUsedDatabaseWordIds;
+    await course.save();
   } catch (error) {
     console.log("This error happened while updating the data:", error);
     throw error;

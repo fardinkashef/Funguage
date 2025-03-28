@@ -1,4 +1,10 @@
-import { Home, BookOpenCheck, LibraryBig, SquareLibrary } from "lucide-react";
+import {
+  Home,
+  LibraryBig,
+  SquareLibrary,
+  BookCheck,
+  FileVideo,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -33,12 +39,12 @@ const items = [
   {
     title: "Flash Card Review",
     href: "/learning/review/flashcard",
-    icon: BookOpenCheck,
+    icon: BookCheck,
   },
   {
     title: "Clip Review",
     href: "/learning/review/clip",
-    icon: BookOpenCheck,
+    icon: FileVideo,
   },
 ];
 
@@ -47,7 +53,7 @@ export default function LearningSideBar() {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Funguage</SidebarGroupLabel>
+          <SidebarGroupLabel>Learning</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

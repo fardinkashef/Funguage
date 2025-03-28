@@ -111,8 +111,14 @@ function Controls({
         </div>
         {/* Duration */}
         <div className="duration-container">
-          <div>{formatDuration(videoTime)}</div>/
-          <div>{formatDuration(videoDuration)}</div>
+          <div>
+            {formatDuration(
+              startTime && videoTime >= startTime
+                ? videoTime - startTime
+                : videoTime
+            )}
+          </div>
+          /<div>{formatDuration(videoDuration)}</div>
         </div>
 
         {/* Playback rate */}
