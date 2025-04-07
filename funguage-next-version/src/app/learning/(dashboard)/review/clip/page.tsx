@@ -1,8 +1,8 @@
 import { auth } from "@/auth";
+import ClipReviewItem from "@/components/ClipReviewItem";
 import { getUserByID } from "@/lib/server-actions/users";
 import { getWords } from "@/lib/server-actions/words";
 import { databaseWord, user } from "@/lib/types";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function ClipReview() {
@@ -14,16 +14,12 @@ export default async function ClipReview() {
   const dbWords = await getWords(userData.learntWordsIds);
 
   return (
-    <div>
-      <ul>
-        {dbWords.map((dbWord: databaseWord) => (
-          <li key={dbWord._id}>
-            <Link href={`/learning/review/clip/${dbWord._id}`}>
-              {dbWord.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="p-8 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-6">
+      {dbWords.map((dbWord: databaseWord) => (
+        <li key={dbWord._id}>
+          <ClipReviewItem word={dbWord} />
+        </li>
+      ))}
+    </ul>
   );
 }

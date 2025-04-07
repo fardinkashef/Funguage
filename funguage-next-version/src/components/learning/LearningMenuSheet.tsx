@@ -4,7 +4,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Link from "next/link";
 import {
   Menu,
   Home,
@@ -12,6 +11,7 @@ import {
   LibraryBig,
   SquareLibrary,
 } from "lucide-react";
+import NavLink from "../NavLink";
 
 const items = [
   {
@@ -21,8 +21,8 @@ const items = [
   },
 
   {
-    title: "Courses",
-    url: "/learning/courses",
+    title: "Browse",
+    url: "/learning/browse",
     icon: LibraryBig,
   },
   {
@@ -39,16 +39,16 @@ const items = [
 export default function LearningMenuSheet() {
   return (
     <Sheet>
-      <SheetTrigger asChild className="md:hidden">
+      <SheetTrigger asChild className="md:hidden cursor-pointer">
         <Menu />
       </SheetTrigger>
       <SheetContent side="left" className="w-full max-w-[400px] flex flex-col">
         {items.map((item) => (
           <SheetClose asChild key={item.title}>
-            <Link href={item.url} className="flex items-center gap-2">
+            <NavLink href={item.url} className="flex items-center gap-2">
               <item.icon size={22} />
               <span>{item.title}</span>
-            </Link>
+            </NavLink>
           </SheetClose>
         ))}
       </SheetContent>

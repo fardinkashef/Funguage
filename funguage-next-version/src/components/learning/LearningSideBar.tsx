@@ -1,10 +1,4 @@
-import {
-  Home,
-  LibraryBig,
-  SquareLibrary,
-  BookCheck,
-  FileVideo,
-} from "lucide-react";
+import { LibraryBig, SquareLibrary, BookCheck, FileVideo } from "lucide-react";
 
 import {
   Sidebar,
@@ -16,16 +10,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
+import NavLink from "../NavLink";
 
 // Menu items.
 const items = [
-  {
-    title: "Home",
-    href: "/",
-    icon: Home,
-  },
-
   {
     title: "Browse",
     href: "/learning/browse",
@@ -59,10 +47,10 @@ export default function LearningSideBar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.href}>
+                    <NavLink href={item.href}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </Link>
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

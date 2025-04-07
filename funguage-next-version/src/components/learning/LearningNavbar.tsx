@@ -6,7 +6,7 @@ import { sessionUser } from "@/lib/types";
 
 export default function LearningNavbar({ user }: { user: sessionUser }) {
   return (
-    <div className="flex justify-between bg-yellow-400 p-4">
+    <div className="flex justify-between items-center p-4 border-b-2">
       <LearningMenuSheet />
       <SidebarTrigger className="hidden md:flex" />
       <Link href="/" className="bg-black text-white p-2 rounded-md">

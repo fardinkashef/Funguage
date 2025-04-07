@@ -39,7 +39,9 @@ export default function UserDropdown({ user }: UserDropdownProps) {
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10">
             <AvatarImage src={imageUrl} alt={user.username} />
-            <AvatarFallback>{initials}</AvatarFallback>
+            <AvatarFallback className="bg-black text-white">
+              {initials}
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

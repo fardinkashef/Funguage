@@ -10,8 +10,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
 import { getChapters } from "@/lib/server-actions/chapters";
+import NavLink from "@/components/NavLink";
 
 export default async function CoursePageSideBar({
   courseId,
@@ -30,12 +30,12 @@ export default async function CoursePageSideBar({
               {chapters.map((chapter) => (
                 <SidebarMenuItem key={chapter.title}>
                   <SidebarMenuButton asChild>
-                    <Link
+                    <NavLink
                       href={`/learning/courses/${courseId}/chapters/${chapter._id}`}
                     >
                       <SquarePlay />
                       <span>{chapter.title}</span>
-                    </Link>
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

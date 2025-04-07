@@ -1,0 +1,11 @@
+.GreetingSection {
+  background: linear-gradient(darkslategrey, black);
+  padding: 100px 20px;
+  padding-bottom: 150px;
+  color: whitesmoke;
+  font-size: calc(1.5rem + 1vw);
+  text-align: center;
+  span {
+    color: salmon;
+  }
+}

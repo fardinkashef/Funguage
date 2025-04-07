@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -30,7 +32,7 @@ export default function CourseCard({
 }: CourseCardProps) {
   return (
     <Link href={`/learning/courses/${_id}`}>
-      <Card className="overflow-hidden transition-all duration-200 hover:scale-[1.03] hover:shadow-lg flex flex-col h-full">
+      <Card className="overflow-hidden transition-all duration-200 hover:scale-[1.03] hover:shadow-lg flex flex-col h-full w-full">
         <div className="aspect-video relative">
           <Image
             src={imageUrl || "/placeholder.svg?height=200&width=400"}
@@ -39,12 +41,15 @@ export default function CourseCard({
             className="object-cover"
           />
         </div>
-        <CardHeader>
-          <h3 className="text-lg font-semibold">{title}</h3>
+        <CardHeader className="grow flex flex-col">
+          <CardTitle className="text-lg">{title}</CardTitle>
+          <CardDescription className="grow first-letter:uppercase line-clamp-3">
+            {description}
+          </CardDescription>
         </CardHeader>
-        <CardContent className="grow">
+        {/* <CardContent className="grow">
           <p className="text-muted-foreground line-clamp-3">{description}</p>
-        </CardContent>
+        </CardContent> */}
         <CardFooter className="flex justify-between items-center">
           <Badge
             variant="outline"

@@ -1,0 +1,51 @@
+.Header {
+  background-color: snow;
+  padding: 20px;
+  padding-bottom: 50px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 70px;
+  // font-size: 1.5rem;
+  .welcome {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    padding: 2rem;
+    h3 {
+      color: darkslategray;
+      span {
+        display: inline-block; // To prevent the span's words from getting seperated into two lines.
+        white-space: pre; // To preserve the first white-space inside it.
+      }
+    }
+  }
+  .video-container {
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 6rem;
+  }
+  @media screen and (min-width: 1000px) {
+    // font-size: calc(1.2rem + 0.2vw);
+    flex-direction: row;
+    height: calc(100vh - 70px);
+    margin-top: 0;
+    padding-bottom: 20px;
+    .welcome {
+      text-align: start;
+      align-items: start;
+    }
+    .video-container {
+      margin-bottom: 0;
+    }
+    @media screen and (min-height: 700px) {
+      height: unset;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
+}

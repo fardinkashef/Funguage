@@ -7,5 +7,9 @@ export default async function LearningPage() {
 
   if (!user) redirect("/login?callbackUrl=/learning");
 
-  return <div>Learning page</div>;
+  return (
+    <div className="w-full flex justify-center items-center">
+      <h1 className="text-4xl font-bold mt-20">This is Learning page!</h1>
+    </div>
+  );
 }

@@ -1,0 +1,25 @@
+.SignUpSection {
+  // background-color: darkslategrey;
+  background: linear-gradient(darkslategrey, black);
+  padding: 20px 10px;
+  padding-bottom: 100px;
+  color: whitesmoke;
+  h3 {
+    text-align: center;
+    margin: 35px auto;
+  }
+  a {
+    background-color: green;
+    color: inherit;
+    display: block;
+    width: fit-content;
+    margin: 35px auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-align: center;
+    &:hover {
+      background-color: lightgreen;
+      color: green;
+    }
+  }
+}
