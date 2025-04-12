@@ -61,7 +61,11 @@ export async function getChaptersByWordID(wordID: string) {
     throw error;
   }
 }
-export async function createChapter(chapterData: chapter) {
+export async function createChapter(chapterData: {
+  title: string;
+  position: number;
+  course: string;
+}) {
   try {
     await connectToDatabase();
     const newChapter = new Chapter(chapterData);

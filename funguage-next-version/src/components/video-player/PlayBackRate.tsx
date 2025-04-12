@@ -1,13 +1,22 @@
 import { useState } from "react";
 import "./PlayBackRate.scss";
 const rates = [0.5, 0.75, 1, 1.5, 2];
-function PlayBackRate({ playBackRate, handleSetPlayBackRate }) {
+
+type PlayBackRateProps = {
+  playBackRate: number;
+  handleSetPlayBackRate: (rate: number) => void;
+};
+
+export default function PlayBackRate({
+  playBackRate,
+  handleSetPlayBackRate,
+}: PlayBackRateProps) {
   const [showVPRBox, setShowVPRBox] = useState(false);
 
   const toggleVPRBoxDisplay = () => {
     setShowVPRBox((previousState) => !previousState);
   };
-  const handleRateButtonSelect = (rate) => {
+  const handleRateButtonSelect = (rate: number) => {
     handleSetPlayBackRate(rate);
     toggleVPRBoxDisplay();
   };
@@ -31,5 +40,3 @@ function PlayBackRate({ playBackRate, handleSetPlayBackRate }) {
     </div>
   );
 }
-
-export default PlayBackRate;

@@ -16,7 +16,7 @@ type ControlsProps = {
   handleToggleFullscreen: () => void;
   videoTime: number;
   videoEnded: boolean;
-  startTime: number | null;
+  startTime?: number;
   handleSetVideoTime: (time: number) => void;
   videoDuration: number;
   theater: boolean;

@@ -1,8 +1,13 @@
 "use client";
 import { useState } from "react";
 import VideoPlayer from "./video-player/VideoPlayer";
+import { wordClip } from "@/lib/types";
 
-export default function WordClips({ clips }) {
+type WordClipsProps = {
+  clips: wordClip[];
+};
+
+export default function WordClips({ clips }: WordClipsProps) {
   const [clipNumber, setClipNumber] = useState(0);
   // console.log("clipNumber:", clipNumber);
   console.log("clips:", clips);

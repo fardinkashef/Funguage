@@ -101,3 +101,11 @@ export type sessionUser = {
   username: string;
   email: string;
 };
+
+export type wordClip = {
+  videoUrl: string;
+  subtitleUrl: string;
+  wordsPairList: wordsPair[];
+  startTime: number;
+  endTime: number;
+};

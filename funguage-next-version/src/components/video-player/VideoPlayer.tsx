@@ -16,8 +16,8 @@ type VideoPlayerProps = {
   videoSrc: string;
   subtitleSrc: string;
   wordsPairList: wordsPair[];
-  startTime?: number | null;
-  endTime?: number | null;
+  startTime?: number;
+  endTime?: number;
   handlePreviousVideo?: () => void;
   handleNextVideo?: () => void;
 };
@@ -26,8 +26,8 @@ export default function VideoPlayer({
   videoSrc,
   subtitleSrc,
   wordsPairList,
-  startTime = null,
-  endTime = null,
+  startTime,
+  endTime,
   handlePreviousVideo,
   handleNextVideo,
 }: VideoPlayerProps) {
@@ -49,10 +49,10 @@ export default function VideoPlayer({
   const [showWordModal, setShowWordModal] = useState(false);
   const [showLoadingModal, setShowLoadingModal] = useState(true);
 
-  const [AmericanPronunciationAudioSrc, setAmericanPronunciationAudioSrc] =
-    useState<string | null>(null);
-  const [BritishPronunciationAudioSrc, setBritishPronunciationAudioSrc] =
-    useState<string | null>(null);
+  // const [AmericanPronunciationAudioSrc, setAmericanPronunciationAudioSrc] =
+  //   useState<string | null>(null);
+  // const [BritishPronunciationAudioSrc, setBritishPronunciationAudioSrc] =
+  //   useState<string | null>(null);
   const [playBackRate, setPlayBackRate] = useState(1);
   const [videoPreviouslyPaused, setVideoPreviouslyPaused] = useState(true);
 
@@ -516,7 +516,7 @@ export default function VideoPlayer({
         )}
       </div>
       {/* //! Audio player part: */}
-      {AmericanPronunciationAudioSrc && (
+      {/* {AmericanPronunciationAudioSrc && (
         <audio
           src={AmericanPronunciationAudioSrc}
           hidden
@@ -535,7 +535,7 @@ export default function VideoPlayer({
           // play={pronunciationAudioSrc}
           // onEnded={() => setPronunciationAudioSrc(null)}
         />
-      )}
+      )} */}
       {/* //! WordModal part: */}
       {currentPairList.length > 0 && showWordModal && (
         <WordModal

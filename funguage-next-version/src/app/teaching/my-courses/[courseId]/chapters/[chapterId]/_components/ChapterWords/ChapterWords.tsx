@@ -104,10 +104,11 @@ export default function ChapterWords({
 
       let allWords: subtitleWord[] = [];
       const allCues = [];
+      const cues = video.textTracks[0].cues;
 
-      for (let i = 0; i < video.textTracks[0].cues.length; i++) {
+      for (let i = 0; i < cues.length; i++) {
         //* TS complains that "Property 'text' does not exist on type 'TextTrackCue'." so I asserted the more specific type of VTTCue 👇:
-        const cue = video.textTracks[0].cues[i] as VTTCue;
+        const cue = cues[i] as VTTCue;
         let text = cue.text;
         text = text
           .replaceAll(".", " .")
@@ -120,25 +121,17 @@ export default function ChapterWords({
         let cueWords = text.split(" ");
         cueWords = cueWords.map((word) => word.trim());
         cueWords = cueWords.filter((word) => !wordFilter.includes(word));
-
         const currentCueSubtitleWords = cueWords.map((word, index) => {
           return {
             title: word,
             cueId: cue.id,
             cueStartTime: cue.startTime,
             cueEndTime: cue.endTime,
-            previousCueStartTime:
-              i === 0 ? null : video.textTracks[0].cues[i - 1].startTime,
-            previousCueEndTime:
-              i === 0 ? null : video.textTracks[0].cues[i - 1].endTime,
+            previousCueStartTime: i === 0 ? null : cues[i - 1].startTime,
+            previousCueEndTime: i === 0 ? null : cues[i - 1].endTime,
             nextCueStartTime:
-              i === video.textTracks[0].cues.length - 1
-                ? null
-                : video.textTracks[0].cues[i + 1].startTime,
-            nextCueEndTime:
-              i === video.textTracks[0].cues.length - 1
-                ? null
-                : video.textTracks[0].cues[i + 1].endTime,
+              i === cues.length - 1 ? null : cues[i + 1].startTime,
+            nextCueEndTime: i === cues.length - 1 ? null : cues[i + 1].endTime,
             orderNumber:
               cueWords.slice(0, index).filter((cueWord) => cueWord === word)
                 .length + 1,

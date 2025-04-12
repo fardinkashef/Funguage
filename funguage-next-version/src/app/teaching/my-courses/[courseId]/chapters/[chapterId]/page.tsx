@@ -2,7 +2,7 @@ import React from "react";
 import { redirect } from "next/navigation";
 
 import Link from "next/link";
-import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
+import { ArrowLeft, LayoutDashboard, Video } from "lucide-react";
 import { IconBadge } from "@/components/IconBadge";
 import ChapterTitleForm from "./_components/ChapterTitleForm";
 import ChapterDescriptionForm from "./_components/ChapterDescriptionForm";
@@ -11,7 +11,6 @@ import { Banner } from "@/components/Banner";
 import { getChapterById } from "@/lib/server-actions/chapters";
 import ChapterSubtitleForm from "./_components/ChapterSubtitleForm";
 import ChapterWords from "./_components/ChapterWords/ChapterWords";
-import VideoPlayer from "@/components/video-player/VideoPlayer";
 
 type ChapterIdPageProps = {
   params: Promise<{
@@ -111,7 +110,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
               <h2 className="text-xl font-medium">Add a video</h2>
             </div>
             <ChapterVideoForm
-              initialVideoUrl={chapter.videoUrl}
+              initialVideoUrl={chapter.videoUrl as string}
               chapterId={chapterId}
             />
             <ChapterSubtitleForm

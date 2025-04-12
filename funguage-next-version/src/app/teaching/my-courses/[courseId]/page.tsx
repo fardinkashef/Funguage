@@ -9,7 +9,7 @@ import ChaptersForm from "./_components/ChaptersForm";
 import { getChapters } from "@/lib/server-actions/chapters";
 
 type MyCoursePageProps = {
-  params: Promise<{ courseId: string }> ;
+  params: Promise<{ courseId: string }>;
 };
 
 export default async function MyCoursePage({ params }: MyCoursePageProps) {
@@ -20,14 +20,13 @@ export default async function MyCoursePage({ params }: MyCoursePageProps) {
   if (!course || !course._id) {
     return redirect("/");
   }
-  console.log("This is the course:", course);
 
-  const requiredFields = [course.title, course.description, course.imageUrl];
+  // const requiredFields = [course.title, course.description, course.imageUrl];
 
-  const totalFields = requiredFields.length;
-  const completedFields = requiredFields.filter(Boolean).length;
-  const completionText = `(${completedFields} / ${totalFields})`;
-  const isComplete = requiredFields.every(Boolean);
+  // const totalFields = requiredFields.length;
+  // const completedFields = requiredFields.filter(Boolean).length;
+  // const completionText = `(${completedFields} / ${totalFields})`;
+  // const isComplete = requiredFields.every(Boolean);
 
   return (
     <div className="p-6">

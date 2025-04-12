@@ -10,16 +10,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { getChapters } from "@/lib/server-actions/chapters";
 import NavLink from "@/components/NavLink";
+import { chapter } from "@/lib/types";
 
-export default async function CoursePageSideBar({
+export default function CourseSideBar({
   courseId,
+  chapters,
 }: {
   courseId: string;
+  chapters: chapter[];
 }) {
-  const chapters = await getChapters(courseId);
-
   return (
     <Sidebar collapsible="offcanvas">
       <SidebarContent>

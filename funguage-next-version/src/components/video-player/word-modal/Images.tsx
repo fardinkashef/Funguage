@@ -1,6 +1,21 @@
+import { databaseWord } from "@/lib/types";
 import "./Images.scss";
-function Images({ currentWord, currentImageIndex, setCurrentImageIndex }) {
-  const { word, images } = currentWord;
+
+type ImagesProps = {
+  currentWord: databaseWord;
+  currentImageIndex: number;
+  setCurrentImageIndex: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export default function Images({
+  currentWord,
+  currentImageIndex,
+  setCurrentImageIndex,
+}: ImagesProps) {
+  const {
+    // word,
+    images,
+  } = currentWord;
 
   return (
     <div className="Images">
@@ -17,14 +32,12 @@ function Images({ currentWord, currentImageIndex, setCurrentImageIndex }) {
           disabled={currentImageIndex === images.length - 1}
         ></button>
       </div>
-      <img
+      {/* <img
         src={
           import.meta.env.VITE_BACKEND_URL +
           `/static-files/images/${word}_${images[currentImageIndex]}.jpg`
         }
-      />
+      /> */}
     </div>
   );
 }
-
-export default Images;

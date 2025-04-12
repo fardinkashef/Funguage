@@ -5,19 +5,37 @@ import Image from "next/image";
 import { BookOpen, PlaySquare, CircleGauge } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import { getUserByID } from "@/lib/server-actions/users";
+import { user } from "@/lib/types";
+import ProgressCircle from "@/components/ProgressCircle";
 
 type CoursePageProps = {
   params: Promise<{ courseId: string }>;
 };
 export default async function CoursePage({ params }: CoursePageProps) {
+  const session = await auth();
+  const user = session?.user;
   const { courseId } = await params;
+  if (!user) redirect(`/login?callbackUrl=/learning/courses/${courseId}`);
+
+  const userData = (await getUserByID(user._id as string)) as user;
+  // const dbWords = await getWords(userData.learntWordsIds);
+
   const course = await getCourseById(courseId);
   const chapters = await getChapters(courseId);
-  const enrolled = false;
+  const learnedWordsCount = (course.usedDatabaseWordIds as string[]).filter(
+    (id) => userData.learntWordsIds.includes(id)
+  ).length;
 
-  const handleEnroll = () => {
-    // In a real app, this would call your API to enroll the user
-  };
+  const enrolled = false;
+  const progressPercentage =
+    (learnedWordsCount * 100) / (course.usedDatabaseWordIds as string[]).length;
+
+  // Todo: Add course enroll handler
+  // const handleEnroll = () => {
+  // };
   return (
     <div className="mx-auto py-8 px-4 lg:max-w-3xl">
       <div className="flex flex-col gap-8 px-8 pb-16 justify-center lg:items-center lg:flex-row lg:gap-32">
@@ -64,20 +82,15 @@ export default async function CoursePage({ params }: CoursePageProps) {
           </div>
         </Card>
 
-        {/* {courseMockData.isEnrolled && (
-        <Card className="p-6 flex flex-col items-center justify-center">
-          <h2 className="text-xl font-semibold mb-4">Your Progress</h2>
-          <div className="relative w-40 h-40 mb-4">
-            <ProgressCircle percentage={courseMockData.progress} />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-2xl font-bold">{courseMockData.progress}%</span>
-            </div>
-          </div>
+        {/* User Progress */}
+        <Card className="p-6 flex flex-col items-center justify-center gap-8">
+          <h2 className="text-xl font-semibold">Your Progress</h2>
+          <ProgressCircle percentage={progressPercentage} />
           <p className="text-center text-gray-600">
-            You've learned {Math.round((courseMockData.progress * courseMockData.wordCount) / 100)} of {course.wordCount} words
+            {`You've already learned ${learnedWordsCount} of
+            ${course.usedDatabaseWordIds?.length} words`}
           </p>
         </Card>
-      )} */}
       </div>
     </div>
   );

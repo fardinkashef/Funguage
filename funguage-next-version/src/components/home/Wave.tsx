@@ -1,22 +1,24 @@
+import React from "react";
 import "./Wave.scss";
-function Wave({ topColor, bottomColor }) {
+
+type WaveProps = {
+  topColor: string;
+  bottomColor: string;
+};
+
+export default function Wave({ topColor, bottomColor }: WaveProps) {
   return (
     <div
       className="Wave"
-      style={{
-        "--top-color": `${topColor}`,
-        "--bottom-color": `${bottomColor}`,
-      }}
+      style={
+        {
+          "--top-color": topColor,
+          "--bottom-color": bottomColor,
+        } as React.CSSProperties
+      }
     >
-      <div
-        className="top"
-        //! Here we encounter a very very weird error. The next two lines are identical but the first line works just fine and if you comment the first one and uncomment the second one, we run into errors!!!
-        style={{ color: `${topColor}` }}
-        // style={{ color ∶ `${topColor}`}}
-      ></div>
+      <div className="top" style={{ color: topColor }}></div>
       <div className="bottom"></div>
     </div>
   );
 }
-
-export default Wave;

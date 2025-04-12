@@ -4,7 +4,7 @@ import { course } from "@/lib/types";
 import Link from "next/link";
 
 export default async function MyCoursesPage() {
-  const courses = await getCourses();
+  const courses = (await getCourses()) as course[];
   return (
     <div>
       My Courses page

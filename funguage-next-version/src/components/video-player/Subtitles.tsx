@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Subtitles.scss";
-import { wordsPairList } from "@/shared/types/wordDataTypes";
+import { wordsPair } from "@/lib/types";
 
 let counter = 0;
 const colorNumGenerator = () => {
@@ -10,7 +10,7 @@ const colorNumGenerator = () => {
 
 type SubtitlesProps = {
   activeCue: VTTCue | null;
-  currentPairList: wordsPairList;
+  currentPairList: wordsPair[];
   handleWordClick: (INDEX: number) => void;
 };
 

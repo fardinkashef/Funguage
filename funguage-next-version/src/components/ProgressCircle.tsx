@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-interface ProgressCircleProps {
+type ProgressCircleProps = {
   percentage: number;
   size?: "sm" | "md" | "lg" | "xl";
   showPercentage?: boolean;
   color?: "default" | "success" | "warning" | "danger";
   className?: string;
-}
+};
 
-export function ProgressCircle({
+export default function ProgressCircle({
   percentage: inputPercentage,
   size = "md",
   showPercentage = true,

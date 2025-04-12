@@ -40,7 +40,7 @@ WordAutoCompleteSearchProps) {
     });
   }, [value, itemsToSearchIn]);
 
-  const handleSelectSuggetion = (selectedSuggestion) => {
+  const handleSelectSuggetion = (selectedSuggestion:any) => {
     setValue("");
     if (!selectedSuggestion) return;
     const newSelectedItems = [...selectedItems, selectedSuggestion];

@@ -6,6 +6,7 @@ export default async function LearningPage() {
   const user = session?.user;
 
   if (!user) redirect("/login?callbackUrl=/learning");
+  redirect("/learning/browse");
 
   return (
     <div className="w-full flex justify-center items-center">

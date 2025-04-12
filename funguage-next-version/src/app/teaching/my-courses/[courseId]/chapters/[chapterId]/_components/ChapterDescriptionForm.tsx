@@ -31,7 +31,7 @@ const formSchema = z.object({
 
 export default function ChapterDescriptionForm({
   initialDescription,
-  courseId,
+  // courseId,
   chapterId,
 }: ChapterDescriptionFormProps) {
   const [isEditing, setIsEditing] = useState(false);

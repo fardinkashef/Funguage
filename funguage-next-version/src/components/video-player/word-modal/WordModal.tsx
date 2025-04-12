@@ -2,20 +2,16 @@ import { useEffect, useState } from "react";
 import "./WordModal.scss";
 import Images from "./Images";
 import Examples from "./Examples";
-
-import {
-  type databaseWord,
-  type databaseWordList,
-} from "@/shared/types/wordDataTypes";
+import { databaseWord } from "@/lib/types";
 
 type WordModalProps = {
-  data: databaseWordList;
+  data: databaseWord[];
   handleCloseModal: () => void;
   handleSetPronunciationAudioSrc: (word: string) => void;
   playPronunciation: (accent: string) => void;
 };
 
-function WordModal({
+export default function WordModal({
   data,
   handleCloseModal,
   handleSetPronunciationAudioSrc,
@@ -127,5 +123,3 @@ function WordModal({
     </div>
   );
 }
-
-export default WordModal;

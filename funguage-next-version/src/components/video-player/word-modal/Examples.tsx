@@ -1,9 +1,17 @@
+import { databaseWord } from "@/lib/types";
 import "./Examples.scss";
+
+type ExamplesProps = {
+  currentWord: databaseWord;
+  currentExampleIndex: number;
+  setCurrentExampleIndex: React.Dispatch<React.SetStateAction<number>>;
+};
+
 function Examples({
   currentWord,
   currentExampleIndex,
   setCurrentExampleIndex,
-}) {
+}: ExamplesProps) {
   const { meaning } = currentWord;
 
   return (

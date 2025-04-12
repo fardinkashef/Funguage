@@ -7,10 +7,8 @@ import Navbar from "@/components/home/navbar/NavBar";
 import SignUpSection from "@/components/home/SignUpSection";
 import Steps from "@/components/home/Steps";
 import Wave from "@/components/home/Wave";
-import { LogoutForm } from "@/components/logout/LogoutForm";
 import { sessionUser } from "@/lib/types";
 // import VideoPlayer from "@/components/video-player/VideoPlayer";
-import Link from "next/link";
 
 export default async function HomePage() {
   const session = await auth();

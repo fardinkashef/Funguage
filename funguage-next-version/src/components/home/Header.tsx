@@ -30,7 +30,12 @@ export default function Header() {
             fill
           />
         </div>
-        <video src="/home-page-assets/home-page-video.mp4" muted />
+        <video
+          src="/home-page-assets/home-page-video.mp4"
+          muted
+          // autoPlay
+          // loop
+        />
       </div>
     </section>
   );

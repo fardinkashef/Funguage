@@ -3,9 +3,9 @@ import { Play } from "lucide-react";
 import Link from "next/link";
 import {
   Card,
-  CardContent,
+  // CardContent,
   CardDescription,
-  CardFooter,
+  // CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
