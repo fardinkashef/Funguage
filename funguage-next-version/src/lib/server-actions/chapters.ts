@@ -2,9 +2,9 @@
 
 import { connectToDatabase } from "@/lib/database/db-connection";
 import { chapter, wordsPair } from "../types";
-import Chapter from "../database/models/Chapter";
 import { extractDBWordIDs } from "../utils";
 import Course from "../database/models/Course";
+import Chapter from "../database/models/Chapter";
 
 // import { revalidatePath } from "next/cache";
 
