@@ -8,7 +8,9 @@ export function cn(...inputs: ClassValue[]) {
 
 // To extract database word ids from a chapter's words pair list
 const extractFromDatabaseWordList = (databaseWordList: databaseWord[]) => {
-  const ids = databaseWordList.map((databaseWord) => databaseWord._id);
+  const ids = databaseWordList.map((databaseWord) =>
+    databaseWord._id.toString()
+  );
   return ids;
 };
 

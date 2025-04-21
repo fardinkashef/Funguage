@@ -7,6 +7,7 @@ import { DescriptionForm } from "./_components/DescriptionForm";
 import { ImageForm } from "./_components/ImageForm";
 import ChaptersForm from "./_components/ChaptersForm";
 import { getChapters } from "@/lib/server-actions/chapters";
+import LevelForm from "./_components/LevelForm";
 
 type MyCoursePageProps = {
   params: Promise<{ courseId: string }>;
@@ -17,7 +18,7 @@ export default async function MyCoursePage({ params }: MyCoursePageProps) {
   const course = await getCourseById(courseId);
   const chapters = await getChapters(courseId);
 
-  if (!course || !course._id) {
+  if (!course) {
     return redirect("/");
   }
 
@@ -53,6 +54,7 @@ export default async function MyCoursePage({ params }: MyCoursePageProps) {
             initialDescription={course.description}
             courseId={course._id}
           />
+          <LevelForm initialLevel={course.level} courseId={course._id} />
           <ImageForm initialImageUrl={course.imageUrl} courseId={course._id} />
           {/* <CategoryForm
             initialData={course}

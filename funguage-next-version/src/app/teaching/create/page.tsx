@@ -35,7 +35,7 @@ export default function CreatePage() {
 
   const submit: SubmitHandler<FormFields> = async (data) => {
     try {
-      const response = await createCourse(data);
+      const response = await createCourse(data.title);
       toast.success("Course created");
       router.push(`/teaching/my-courses/${response.newCourseId}`);
     } catch (error) {

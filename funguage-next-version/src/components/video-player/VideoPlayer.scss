@@ -1,12 +1,13 @@
 .VideoPlayer {
   margin: 20px auto;
   background-color: black;
-  width: 90%;
+  width: 100%;
   aspect-ratio: 16/9;
   max-width: 800px;
   display: flex;
   justify-content: center;
   position: relative;
+  border-radius: 0.5rem;
   // video part:
   video {
     width: 100%;

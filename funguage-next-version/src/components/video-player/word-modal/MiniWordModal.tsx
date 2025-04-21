@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
 import "./WordModal.scss";
-import Images from "./Images";
-import Examples from "./Examples";
 import { databaseWord } from "@/lib/types";
 
-type WordModalProps = {
+type MiniWordModalProps = {
   databaseWords: databaseWord[];
   handleCloseModal: () => void;
   handleSetPronunciationAudioSrc: (word: string) => void;
   playPronunciation: (accent: string) => void;
 };
 
-export default function WordModal({
+export default function MiniWordModal({
   databaseWords,
   handleCloseModal,
   handleSetPronunciationAudioSrc,
   playPronunciation,
-}: WordModalProps) {
+}: MiniWordModalProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentExampleIndex, setCurrentExampleIndex] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Handlers 👇:
 
@@ -31,7 +27,6 @@ export default function WordModal({
     // translation,
     // frequency,
     meaning,
-    images,
   }: databaseWord = databaseWords[currentWordIndex];
 
   useEffect(
@@ -53,8 +48,6 @@ export default function WordModal({
               className="back"
               onClick={() => {
                 setCurrentWordIndex(currentWordIndex - 1);
-                setCurrentExampleIndex(0);
-                setCurrentImageIndex(0);
               }}
               disabled={currentWordIndex === 0}
               title="Back to previous highlighted word"
@@ -64,8 +57,6 @@ export default function WordModal({
               className="forward"
               onClick={() => {
                 setCurrentWordIndex(currentWordIndex + 1);
-                setCurrentExampleIndex(0);
-                setCurrentImageIndex(0);
               }}
               disabled={currentWordIndex === databaseWords.length - 1}
               title="Forward to next highlighted word"
@@ -103,22 +94,6 @@ export default function WordModal({
           <span>{meaning.index ? meaning.index + ") " : ""}</span>
           {meaning.definition.text}
         </p>
-        <div className="examples-images-container">
-          {meaning.examples.length > 0 && (
-            <Examples
-              currentWord={databaseWords[currentWordIndex]}
-              currentExampleIndex={currentExampleIndex}
-              setCurrentExampleIndex={setCurrentExampleIndex}
-            />
-          )}
-          {images.length > 0 && (
-            <Images
-              currentWord={databaseWords[currentWordIndex]}
-              currentImageIndex={currentImageIndex}
-              setCurrentImageIndex={setCurrentImageIndex}
-            />
-          )}
-        </div>
       </div>
     </div>
   );

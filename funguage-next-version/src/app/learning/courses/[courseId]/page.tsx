@@ -25,8 +25,9 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
   const course = await getCourseById(courseId);
   const chapters = await getChapters(courseId);
-  const learnedWordsCount = (course.usedDatabaseWordIds as string[]).filter(
-    (id) => userData.learntWordsIds.includes(id)
+
+  const learnedWordsCount = course.usedDatabaseWordIds.filter((id) =>
+    userData.learntWordsIds.includes(id)
   ).length;
 
   const enrolled = false;
@@ -72,12 +73,12 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <div className="flex items-center">
               <BookOpen className="mr-2 h-5 w-5 text-primary" />
               <span className="font-medium">
-                {course.usedDatabaseWordIds?.length} Words to Learn
+                Teaches {course.usedDatabaseWordIds?.length} Words
               </span>
             </div>
             <div className="flex items-center">
               <CircleGauge className="mr-2 h-5 w-5 text-primary" />
-              <span className="font-medium">Level: {"beginner"}</span>
+              <span className="font-medium">{"beginner"} level</span>
             </div>
           </div>
         </Card>

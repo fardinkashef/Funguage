@@ -13,6 +13,7 @@ export default async function BrowsePage() {
             _id={course._id as string}
             title={course.title}
             description={course.description as string}
+            level={course.level}
             imageUrl={course.imageUrl as string}
             wordCount={course.usedDatabaseWordIds?.length || 0}
           />

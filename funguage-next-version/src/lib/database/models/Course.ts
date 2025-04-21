@@ -8,6 +8,7 @@ const CourseSchema = new Schema(
     isPublished: Boolean,
     // chapters: [{ type: Schema.Types.ObjectId, ref: "Chapter" }],
     usedDatabaseWordIds: [{ type: Schema.Types.ObjectId }],
+    level: String,
     // creator: { type: String, required: true, ref: "User" },
   },
   { timestamps: true }

@@ -55,7 +55,7 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
         <div className="flex items-center justify-between">
           <div className="w-full">
             <Link
-              href={`/teacher/courses/${courseId}`}
+              href={`/teaching/my-courses/${courseId}`}
               className="flex items-center text-sm hover:opacity-75 transition mb-6"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />

@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import WordClips from "@/components/WordClips";
 import { getChaptersByWordID } from "@/lib/server-actions/chapters";
-import { chapter, wordClip } from "@/lib/types";
+import { wordClip } from "@/lib/types";
 import { redirect } from "next/navigation";
 
 type WordClipPageProps = {
@@ -12,7 +12,7 @@ export default async function WordClipPage({ params }: WordClipPageProps) {
   const user = session?.user;
   if (!user) redirect("/login?callbackUrl=/learning/review/flashcard");
   const { wordId } = await params;
-  const chapters = (await getChaptersByWordID(wordId)) as chapter[];
+  const chapters = await getChaptersByWordID(wordId);
   const wordClips: wordClip[] = [];
 
   chapters.forEach((chapter) => {

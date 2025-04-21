@@ -53,7 +53,7 @@ export async function logout() {
 export async function getUser(email: string, password: string) {
   try {
     await connectToDatabase();
-    const user = await User.findOne({ email });
+    const user = (await User.findOne({ email }).lean()) as user;
     if (!user) {
       return null;
     }
@@ -68,12 +68,12 @@ export async function getUser(email: string, password: string) {
 export async function getUserByID(_id: string) {
   try {
     await connectToDatabase();
-    const user = await User.findOne({ _id });
+    const user = (await User.findOne({ _id }).lean()) as user;
     if (!user) {
       return null;
     }
 
-    return user as user;
+    return JSON.parse(JSON.stringify(user));
   } catch (error) {
     console.log("This error happened when getting a user from DB:", error);
     throw error;

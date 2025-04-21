@@ -8,53 +8,58 @@ import Chapter from "../database/models/Chapter";
 
 // import { revalidatePath } from "next/cache";
 
-export async function getChapters(courseId: string) {
+export async function getChapters(courseId: string): Promise<chapter[]> {
   try {
     await connectToDatabase();
-    const data = await Chapter.find({ course: courseId }).sort({
-      position: 1,
-    });
-    if (!data) {
+    const chapters = (await Chapter.find({ course: courseId })
+      .sort({
+        position: 1,
+      })
+      .lean()) as chapter[];
+    if (!chapters) {
       throw new Error("There's not any results to return.");
     }
-
-    //* From Mongoose docs: By default, Mongoose queries return an instance of the Mongoose Document class. Documents are much heavier than vanilla JavaScript objects, because they have a lot of internal state for change tracking. Enabling the lean option tells Mongoose to skip instantiating a full Mongoose document and just give you the POJO (plain old JavaScript objects): Results.find().lean()
-    //* The above solution didn't work for me here so I used the way we handle this problem in a MERN app. There in Express app we do "res.json(data)" to send data, so we convert the data into json and then in client side in React app we do JSON.parse (axios does this automatically), so I did the same thing here. I saw this solution in StackOverFlow bur I think there must be a better way to handle this problem here in Next.js.
-    const dataPOJO = JSON.parse(JSON.stringify(data));
-    return dataPOJO;
+    return chapters.map((chapter) => ({
+      ...chapter,
+      _id: chapter._id.toString(),
+    }));
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;
   }
 }
 
-export async function getChapterById(id: string) {
+export async function getChapterById(id: string): Promise<chapter> {
   try {
     await connectToDatabase();
-    const chapter = await Chapter.findById(id);
+    const chapter = (await Chapter.findById(id).lean()) as chapter;
     if (!chapter) {
       throw new Error("There's not any results to return.");
     }
-    const chapterPOJO: chapter = JSON.parse(JSON.stringify(chapter));
-    return chapterPOJO;
+    // return { ...chapter, _id: chapter._id.toString() };
+    return chapter;
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;
   }
 }
 
-export async function getChaptersByWordID(wordID: string) {
+export async function getChaptersByWordID(wordID: string): Promise<chapter[]> {
   try {
     await connectToDatabase();
-    const chapters = await Chapter.find(
+    const chapters = (await Chapter.find(
       {
         usedDatabaseWordIds: wordID,
       },
       { _id: 0 }
-    ).lean();
+    ).lean()) as chapter[];
     if (!chapters) {
       throw new Error("There's not any results to return.");
     }
+    // return chapters.map((chapter) => ({
+    //   ...chapter,
+    //   _id: chapter._id.toString(),
+    // }));
     return chapters;
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
@@ -65,7 +70,7 @@ export async function createChapter(chapterData: {
   title: string;
   position: number;
   course: string;
-}) {
+}): Promise<{ newChapterId: string }> {
   try {
     await connectToDatabase();
     const newChapter = new Chapter(chapterData);
@@ -232,8 +237,11 @@ export async function updateChapterWords(
     (chapter) =>
       (chaptersWords = [...chaptersWords, ...chapter.usedDatabaseWordIds])
   );
-  const newUsedDatabaseWordIds = Array.from(new Set(chaptersWords));
-  console.log("newused", newUsedDatabaseWordIds);
+
+  //* The chapter.usedDatabaseWordIds is an array consisting of these elements:"new ObjectId('66db08fc2c4345dc0e258cd1')", okay? So I had to convert these object ids to string because two "new ObjectId(...)" s with the same ids are considered different in JavaScript!
+
+  const chaptersWordsIdsAsString = chaptersWords.map((id) => id.toString());
+  const newUsedDatabaseWordIds = Array.from(new Set(chaptersWordsIdsAsString));
 
   try {
     course.usedDatabaseWordIds = newUsedDatabaseWordIds;

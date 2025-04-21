@@ -54,46 +54,47 @@ export type cue = {
 
 // course 👇:
 export type course = {
-  _id?: string;
+  _id: string;
   title: string;
-  description?: string;
-  imageUrl?: string;
-  isPublished?: boolean;
-  usedDatabaseWordIds?: string[];
-  createdAt?: Date;
-  updatedAt?: Date;
+  description: string;
+  imageUrl: string;
+  isPublished: boolean;
+  usedDatabaseWordIds: string[];
+  level: "beginner" | "intermediate" | "advanced";
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 // chapter 👇:
 export type chapter = {
-  _id?: string;
+  _id: string;
   title: string;
-  description?: string;
-  videoUrl?: string;
+  description: string;
+  videoUrl: string;
   subtitle: {
     url: string;
     name: string;
   };
   wordsPairList: wordsPair[];
   usedDatabaseWordIds: string[];
-  isPublished?: boolean;
-  position?: number;
-  course?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  isPublished: boolean;
+  position: number;
+  course: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 // user 👇:
 export type user = {
-  _id?: string;
+  _id: string;
   email: string;
   username: string;
   password: string;
   enrolledCourses: string[];
   //   createdCourses: string[],
   learntWordsIds: string[];
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type sessionUser = {

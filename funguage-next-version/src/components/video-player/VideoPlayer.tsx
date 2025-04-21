@@ -4,7 +4,7 @@ import "./VideoPlayer.scss";
 import Hls from "hls.js";
 import Controls from "./Controls";
 import Subtitles from "./Subtitles";
-import WordModal from "./word-modal/WordModal";
+import MiniWordModal from "./word-modal/MiniWordModal";
 
 import { wordsPair } from "@/lib/types";
 import LoadingModal from "./LoadingModal";
@@ -417,7 +417,6 @@ export default function VideoPlayer({
 
     setShowLoadingModal(true); // Video is buffering/loading
   };
-  console.log("video duration:", videoDuration);
 
   return (
     <figure
@@ -538,8 +537,14 @@ export default function VideoPlayer({
       )} */}
       {/* //! WordModal part: */}
       {currentPairList.length > 0 && showWordModal && (
-        <WordModal
-          data={currentPairList[currentPairIndex].databaseWordList}
+        // <WordModal
+        //   databaseWords={currentPairList[currentPairIndex].databaseWordList}
+        //   handleCloseModal={handleCloseWordModal}
+        //   handleSetPronunciationAudioSrc={handleSetPronunciationAudioSrc}
+        //   playPronunciation={playPronunciation}
+        // />
+        <MiniWordModal
+          databaseWords={currentPairList[currentPairIndex].databaseWordList}
           handleCloseModal={handleCloseWordModal}
           handleSetPronunciationAudioSrc={handleSetPronunciationAudioSrc}
           playPronunciation={playPronunciation}

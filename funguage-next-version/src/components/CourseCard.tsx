@@ -17,18 +17,18 @@ type CourseCardProps = {
   _id: string;
   title: string;
   description: string;
+  level: "beginner" | "intermediate" | "advanced";
   imageUrl: string;
   wordCount: number;
-  level?: "beginner" | "intermediate" | "advanced";
 };
 
 export default function CourseCard({
   _id,
   title,
   description,
+  level,
   imageUrl,
   wordCount,
-  level = "beginner",
 }: CourseCardProps) {
   return (
     <Link href={`/learning/courses/${_id}`}>
