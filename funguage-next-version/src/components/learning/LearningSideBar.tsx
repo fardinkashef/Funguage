@@ -1,4 +1,10 @@
-import { LibraryBig, SquareLibrary, BookCheck, FileVideo } from "lucide-react";
+import {
+  LibraryBig,
+  SquareLibrary,
+  BookCheck,
+  FileVideo,
+  BookHeart,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -22,6 +28,11 @@ const items = [
   {
     title: "Enrolled",
     href: "/learning/enrolled",
+    icon: BookHeart,
+  },
+  {
+    title: "My Vocabulary",
+    href: "/learning/my-vocabulary",
     icon: SquareLibrary,
   },
   {

@@ -10,6 +10,7 @@ import {
   BookOpenCheck,
   LibraryBig,
   SquareLibrary,
+  BookHeart,
 } from "lucide-react";
 import NavLink from "../NavLink";
 
@@ -28,6 +29,11 @@ const items = [
   {
     title: "Enrolled",
     url: "/learning/enrolled",
+    icon: BookHeart,
+  },
+  {
+    title: "My Vocabulary",
+    url: "/learning/my-vocabulary",
     icon: SquareLibrary,
   },
   {

@@ -9,7 +9,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,33 +19,7 @@ import { databaseWord } from "@/lib/types";
 import { addToUserWords } from "@/lib/server-actions/users";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
-// const items = [
-//   {
-//     id: "recents",
-//     label: "Recents",
-//   },
-//   {
-//     id: "home",
-//     label: "Home",
-//   },
-//   {
-//     id: "applications",
-//     label: "Applications",
-//   },
-//   {
-//     id: "desktop",
-//     label: "Desktop",
-//   },
-//   {
-//     id: "downloads",
-//     label: "Downloads",
-//   },
-//   {
-//     id: "documents",
-//     label: "Documents",
-//   },
-// ] as const;
+import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 const FormSchema = z.object({
   words: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -83,13 +56,6 @@ export default function WordsCheckForm({
           name="words"
           render={() => (
             <FormItem>
-              <div className="mb-4">
-                <FormLabel className="text-base">Words Check</FormLabel>
-                <FormDescription>
-                  Select the words you&apos;ve mastered. They won&apos;t be
-                  displayed in any course again.
-                </FormDescription>
-              </div>
               {words.map((word) => (
                 <FormField
                   key={word._id}
@@ -97,29 +63,35 @@ export default function WordsCheckForm({
                   name="words"
                   render={({ field }) => {
                     return (
-                      <FormItem
-                        key={word._id}
-                        className="flex flex-row items-start space-x-3 space-y-0 min-h-12 border-solid border-2"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(word._id)}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, word._id])
-                                : field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== word._id
-                                    )
-                                  );
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          <h2>{word.title}</h2>
-                          <p>{word.meaning.definition.text}</p>
-                        </FormLabel>
-                      </FormItem>
+                      <Card className="px-2">
+                        <FormItem
+                          key={word._id}
+                          className="flex items-center min-h-12"
+                        >
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value?.includes(word._id)}
+                              onCheckedChange={(checked) => {
+                                return checked
+                                  ? field.onChange([...field.value, word._id])
+                                  : field.onChange(
+                                      field.value?.filter(
+                                        (value) => value !== word._id
+                                      )
+                                    );
+                              }}
+                            />
+                          </FormControl>
+                          <FormLabel className="cursor-pointer">
+                            <CardHeader>
+                              <CardTitle>{word.title}</CardTitle>
+                              <CardDescription>
+                                {word.meaning.definition.text}
+                              </CardDescription>
+                            </CardHeader>
+                          </FormLabel>
+                        </FormItem>
+                      </Card>
                     );
                   }}
                 />
@@ -128,7 +100,9 @@ export default function WordsCheckForm({
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="bg-orange-500 hover:bg-orange-600">
+          Submit
+        </Button>
       </form>
     </Form>
   );

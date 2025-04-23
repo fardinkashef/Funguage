@@ -37,7 +37,7 @@ export async function getChapterById(id: string): Promise<chapter> {
       throw new Error("There's not any results to return.");
     }
     // return { ...chapter, _id: chapter._id.toString() };
-    return chapter;
+    return JSON.parse(JSON.stringify(chapter));
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;
