@@ -43,7 +43,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
         <div className="w-full max-w-96 md:max-w-lg">
           <h2 className="text-4xl font-bold mb-6">{course.title}</h2>
           <div className="flex gap-4">
-            <Link href="/" className="">
+            <Link href={`/learning/courses/${courseId}/vocabulary`} className="">
               <Button className="w-36">Check out Words</Button>
             </Link>
             {enrolled ? (

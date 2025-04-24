@@ -20,6 +20,7 @@ import { addToUserWords } from "@/lib/server-actions/users";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import WordsModalDialog from "./video-player/word-modal/WordsModalDialog";
 
 const FormSchema = z.object({
   words: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -27,13 +28,15 @@ const FormSchema = z.object({
   }),
 });
 
-export default function WordsCheckForm({
-  words,
+export default function SelectLearnedWordsForm({
+  databaseWords,
   userId,
 }: {
-  words: databaseWord[];
+  databaseWords: databaseWord[];
   userId: string;
 }) {
+  console.log("databaseWords.length:", databaseWords.length);
+
   const router = useRouter();
 
   const wordsForm = useForm<z.infer<typeof FormSchema>>({
@@ -56,7 +59,7 @@ export default function WordsCheckForm({
           name="words"
           render={() => (
             <FormItem>
-              {words.map((word) => (
+              {databaseWords.map((word, index) => (
                 <FormField
                   key={word._id}
                   control={wordsForm.control}
@@ -66,7 +69,7 @@ export default function WordsCheckForm({
                       <Card className="px-2">
                         <FormItem
                           key={word._id}
-                          className="flex items-center min-h-12"
+                          className="flex items-center gap-4 min-h-12"
                         >
                           <FormControl>
                             <Checkbox
@@ -82,7 +85,10 @@ export default function WordsCheckForm({
                               }}
                             />
                           </FormControl>
-                          <FormLabel className="cursor-pointer">
+                          {/* //Todo: Shadcn FormLabel component has a space-y-2 classname which makes it have a margin top and I don't know how to over-write it using classNames yet */}
+
+                          {/* //Todo: The border below should be removed and instead added on the left side of the following Dialog Trigger */}
+                          <FormLabel className="cursor-pointer grow border-r-2">
                             <CardHeader>
                               <CardTitle>{word.title}</CardTitle>
                               <CardDescription>
@@ -90,6 +96,12 @@ export default function WordsCheckForm({
                               </CardDescription>
                             </CardHeader>
                           </FormLabel>
+                          <WordsModalDialog
+                            databaseWords={databaseWords}
+                            wordIndex={index}
+                            // I needed to add the following key to prevent an error. Pay attention that just using word._id as the value for the key is not enough.
+                            key={word._id + databaseWords.length}
+                          />
                         </FormItem>
                       </Card>
                     );
