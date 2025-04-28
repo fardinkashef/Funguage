@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import Images from "./Images";
 import Examples from "./Examples";
@@ -12,7 +13,7 @@ import { ArrowLeft, ArrowRight, Ellipsis, Volume2 } from "lucide-react";
 
 type WordsModalDialogProps = {
   databaseWords: databaseWord[];
-  wordIndex: number;
+  wordIndex?: number;
 };
 
 export default function WordsModalDialog({

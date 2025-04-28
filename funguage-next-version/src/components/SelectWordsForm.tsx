@@ -16,7 +16,10 @@ import {
 } from "@/components/ui/form";
 
 import { databaseWord } from "@/lib/types";
-import { addToUserWords } from "@/lib/server-actions/users";
+import {
+  addToUserWords,
+  removeFromUserWords,
+} from "@/lib/server-actions/users";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -28,13 +31,16 @@ const FormSchema = z.object({
   }),
 });
 
-export default function SelectLearnedWordsForm({
-  databaseWords,
-  userId,
-}: {
+type SelectWordsFormProps = {
   databaseWords: databaseWord[];
   userId: string;
-}) {
+  action?: "add" | "remove";
+};
+export default function SelectWordsForm({
+  databaseWords,
+  userId,
+  action = "add",
+}: SelectWordsFormProps) {
   console.log("databaseWords.length:", databaseWords.length);
 
   const router = useRouter();
@@ -46,8 +52,13 @@ export default function SelectLearnedWordsForm({
     },
   });
   async function submit(data: z.infer<typeof FormSchema>) {
-    await addToUserWords(userId, data.words);
-    toast.success("New words added to your words bank!");
+    if (action === "add") {
+      await addToUserWords(userId, data.words);
+      toast.success("New words added to your words bank!");
+    } else {
+      await removeFromUserWords(userId, data.words);
+      toast.success("Selected words removes from your words bank!");
+    }
     router.refresh();
   }
 
@@ -88,7 +99,7 @@ export default function SelectLearnedWordsForm({
                           {/* //Todo: Shadcn FormLabel component has a space-y-2 classname which makes it have a margin top and I don't know how to over-write it using classNames yet */}
 
                           {/* //Todo: The border below should be removed and instead added on the left side of the following Dialog Trigger */}
-                          <FormLabel className="cursor-pointer grow border-r-2">
+                          <FormLabel className="cursor-pointer grow">
                             <CardHeader>
                               <CardTitle>{word.title}</CardTitle>
                               <CardDescription>

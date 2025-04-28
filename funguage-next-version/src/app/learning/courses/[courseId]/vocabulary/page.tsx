@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import SelectLearnedWordsForm from "@/components/SelectLearnedWordsForm";
+import SelectWordsForm from "@/components/SelectWordsForm";
 import { getCourseById } from "@/lib/server-actions/courses";
 import { getUserByID } from "@/lib/server-actions/users";
 import { getWords } from "@/lib/server-actions/words";
@@ -28,7 +28,7 @@ export default async function CourseVocabularyPage({
 
   return (
     <div className="p-4 max-w-3xl mx-auto">
-      <div className="mb-8 lg:flex gap-12">
+      <header className="mb-8 lg:flex gap-12">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Course Vocabulary List</h1>
           <p className="text-muted-foreground mt-2">
@@ -42,11 +42,8 @@ export default async function CourseVocabularyPage({
             {newDBWordIds.length} Words
           </span>
         </div>
-      </div>
-      <SelectLearnedWordsForm
-        databaseWords={newDBWords}
-        userId={user._id as string}
-      />
+      </header>
+      <SelectWordsForm databaseWords={newDBWords} userId={user._id as string} />
     </div>
   );
 }

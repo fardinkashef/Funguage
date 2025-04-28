@@ -166,6 +166,7 @@ export default function VideoPlayer({
       videoRef.current.play();
     }
     setShowWordModal(false);
+    if (VideoPlayerRef.current) VideoPlayerRef.current.focus();
   };
 
   const handleTimeUpdate = (
@@ -211,23 +212,29 @@ export default function VideoPlayer({
   //   setVideoDuration(videoRef.current.duration);
   // };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    console.log("key dooown");
-
     const tagName = document.activeElement
       ? document.activeElement.tagName.toLowerCase()
       : null;
 
     if (tagName === "input") return;
 
+    console.log("e.key.toLowerCase() from video player", e.key.toLowerCase());
+
     switch (e.key.toLowerCase()) {
-      case " ":
-        if (tagName === "button") return;
+      case " ": // Check if the pressed key is the spacebar
+        e.preventDefault(); // Prevent the default scrolling behavior
+        handleTogglePlayPause();
+        break;
+      case "enter":
+        if (currentPairList.length > 0) handleWordClick(0);
+        break;
       case "k":
         handleTogglePlayPause();
         break;
-      case "space":
-        handleTogglePlayPause();
-        break;
+      // case "space":
+      // e.preventDefault(); // Prevent the default scrolling behavior
+      // handleTogglePlayPause();
+      //   break;
       case "f":
         handleToggleFullscreen();
         break;
@@ -315,6 +322,16 @@ export default function VideoPlayer({
     },
     [startTime, endTime]
   );
+  // useEffect(
+  //   function () {
+  //     if (showWordModal && WordModalRef.current) {
+  //       console.log("i'm here");
+  //       console.log("WordModalRef.current", WordModalRef.current);
+  //       WordModalRef.current.focus();
+  //     }
+  //   },
+  //   [showWordModal]
+  // );
   //////////////////////////////////
   /////////////////////////////////
   //* Handling subtitles 👇:

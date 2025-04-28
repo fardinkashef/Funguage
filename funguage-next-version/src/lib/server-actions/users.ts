@@ -93,3 +93,19 @@ export async function addToUserWords(userId: string, newWordIds: string[]) {
     throw error;
   }
 }
+export async function removeFromUserWords(userId: string, wordIds: string[]) {
+  try {
+    await connectToDatabase();
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+      return null;
+    }
+    user.learntWordsIds = user.learntWordsIds.filter(
+      (id: string) => !wordIds.includes(id.toString())
+    );
+    user.save();
+  } catch (error) {
+    console.log("This error happened when getting a user from DB:", error);
+    throw error;
+  }
+}

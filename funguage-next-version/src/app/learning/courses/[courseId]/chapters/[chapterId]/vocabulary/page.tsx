@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import SelectLearnedWordsForm from "@/components/SelectLearnedWordsForm";
+import SelectWordsForm from "@/components/SelectWordsForm";
 import { getChapterById } from "@/lib/server-actions/chapters";
 import { getUserByID } from "@/lib/server-actions/users";
 import { getWords } from "@/lib/server-actions/words";
@@ -45,7 +45,7 @@ export default async function ChapterVocabularyPage({
           </span>
         </div>
       </div>
-      <SelectLearnedWordsForm
+      <SelectWordsForm
         databaseWords={newDBWords}
         userId={user._id as string}
       />
