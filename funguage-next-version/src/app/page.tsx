@@ -8,7 +8,6 @@ import SignUpSection from "@/components/home/SignUpSection";
 import Steps from "@/components/home/Steps";
 import Wave from "@/components/home/Wave";
 import { sessionUser } from "@/lib/types";
-import Image from "next/image";
 // import VideoPlayer from "@/components/video-player/VideoPlayer";
 
 export default async function HomePage() {

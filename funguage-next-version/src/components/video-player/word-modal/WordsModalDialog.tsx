@@ -43,6 +43,35 @@ export default function WordsModalDialog({
     if (open) setCurrentWordIndex(wordIndex);
     setOpen((prevState) => !prevState);
   };
+  const handlePrevious = () => {
+    if (currentWordIndex === 0) return;
+    setCurrentWordIndex(currentWordIndex - 1);
+    setCurrentExampleIndex(0);
+    setCurrentImageIndex(0);
+  };
+  const handleNext = () => {
+    if (currentWordIndex === databaseWords.length - 1) return;
+    setCurrentWordIndex(currentWordIndex + 1);
+    setCurrentExampleIndex(0);
+    setCurrentImageIndex(0);
+  };
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    e.stopPropagation();
+
+    switch (e.key.toLowerCase()) {
+      case "enter":
+        handleOpenChange();
+        break;
+      case "arrowleft":
+        if (currentWordIndex > 0) setCurrentWordIndex(currentWordIndex - 1);
+        break;
+      case "arrowright":
+        if (currentWordIndex < databaseWords.length - 1)
+          setCurrentWordIndex(currentWordIndex + 1);
+        break;
+    }
+  };
+
   return (
     // To use the Dialog component, we don't have to make it controlled using open and onOpenChange attributes like I've done. But I needed to reset currentWordIndex when modal is closed so I had to make it controlled.
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -52,17 +81,18 @@ export default function WordsModalDialog({
         </button>
       </DialogTrigger>
       {/* //Todo: This aspect-square is not appropriate for mobile landscape view. I read about making Dialog scrollable in RadixUI documentation. It said wrap your content in some component, I think it was OverLay. Just be aware that scrollable dialog is possible */}
-      <DialogContent className="aspect-square">
+      <DialogContent
+        className="aspect-square"
+        onKeyDown={handleKeyDown}
+        //* This is called a "Callback Ref" and one of it's great use cases is to focus on a conditionally rendered element on mount.
+        ref={(element) => element?.focus()}
+      >
         <div className="p-5 rounded-md flex flex-col gap-4">
           <div className="flex justify-between items-center">
             <div>
               <button
                 className="disabled:opacity-20 disabled:cursor-default"
-                onClick={() => {
-                  setCurrentWordIndex(currentWordIndex - 1);
-                  setCurrentExampleIndex(0);
-                  setCurrentImageIndex(0);
-                }}
+                onClick={handlePrevious}
                 disabled={currentWordIndex === 0}
                 title="Back to previous highlighted word"
               >
@@ -71,22 +101,13 @@ export default function WordsModalDialog({
 
               <button
                 className="disabled:opacity-20 disabled:cursor-default"
-                onClick={() => {
-                  setCurrentWordIndex(currentWordIndex + 1);
-                  setCurrentExampleIndex(0);
-                  setCurrentImageIndex(0);
-                }}
+                onClick={handleNext}
                 disabled={currentWordIndex === databaseWords.length - 1}
                 title="Forward to next highlighted word"
               >
                 <ArrowRight />
               </button>
             </div>
-            <button
-              className="close"
-              // onClick={handleCloseModal}
-              title="Close the modal"
-            />
           </div>
           <div className="flex justify-start items-center gap-5">
             {/* `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users. */}

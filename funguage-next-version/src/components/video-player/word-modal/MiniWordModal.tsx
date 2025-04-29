@@ -29,39 +29,40 @@ export default function MiniWordModal({
     meaning,
   }: databaseWord = databaseWords[currentWordIndex];
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    e.stopPropagation();
+    console.log("i'm here on modalllllllll", e.key.toLowerCase());
+
+    switch (e.key.toLowerCase()) {
+      case " ": // Check if the pressed key is the spacebar
+        e.preventDefault(); // Prevent the default scrolling behavior
+        break;
+      case "enter":
+        handleCloseModal();
+        break;
+      case "escape":
+        handleCloseModal();
+        break;
+      case "arrowleft":
+        if (currentWordIndex > 0) setCurrentWordIndex(currentWordIndex - 1);
+        break;
+      case "arrowright":
+        if (currentWordIndex < databaseWords.length - 1)
+          setCurrentWordIndex(currentWordIndex + 1);
+        break;
+    }
+  };
+
   useEffect(
     function () {
       handleSetPronunciationAudioSrc(word);
     },
     [word]
   );
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    e.stopPropagation();
-    // const tagName = document.activeElement
-    //   ? document.activeElement.tagName.toLowerCase()
-    //   : null;
 
-    // if (tagName === "input") return;
-
-    console.log("i'm here on modalllllllll", e.key.toLowerCase());
-
-    switch (e.key.toLowerCase()) {
-      case " ": // Check if the pressed key is the spacebar
-        e.preventDefault(); // Prevent the default scrolling behavior
-        // handleTogglePlayPause();
-        break;
-      case "enter":
-        // if (currentPairList.length > 0) handleWordClick(0);
-        break;
-      case "k":
-        // handleTogglePlayPause();
-        break;
-    }
-  };
   return (
     <div
       className="WordModal"
-      // onClick={handleCloseModal}
       onKeyDown={handleKeyDown}
       //* This is called a "Callback Ref" and one of it's great use cases is to focus on a conditionally rendered element on mount.
       ref={(element) => element?.focus()}
