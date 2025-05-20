@@ -9,6 +9,7 @@ const WordSchema = new Schema({
   register: { type: String, required: true },
   meaning: { type: Object, required: true },
   title: { type: String, required: true },
+  audio: { type: String },
   translation: { type: String, required: true },
   images: { type: Array, required: true },
 });

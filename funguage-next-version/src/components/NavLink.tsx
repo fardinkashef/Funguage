@@ -13,7 +13,7 @@ export default function NavLink(props: ComponentProps<typeof Link>) {
       className={cn(
         props.className,
         pathname === props.href &&
-          "font-bold text-orange-500 hover:text-orange-500"
+          "font-bold text-orange-700 bg-orange-100 hover:text-orange-500 hover:bg-orange-100"
       )}
     />
   );

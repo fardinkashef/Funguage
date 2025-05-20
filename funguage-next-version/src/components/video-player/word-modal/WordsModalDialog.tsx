@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import Images from "./Images";
-import Examples from "./Examples";
 import { databaseWord } from "@/lib/types";
 import {
   Dialog,
@@ -9,7 +7,14 @@ import {
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ArrowLeft, ArrowRight, Ellipsis, Volume2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Ellipsis,
+  Volume2,
+} from "lucide-react";
 
 type WordsModalDialogProps = {
   databaseWords: databaseWord[];
@@ -40,7 +45,11 @@ export default function WordsModalDialog({
 
   const handleOpenChange = () => {
     // When openChange event happens, if open state is true, this means the modal has been just closed, you get it? So we reset currentWordIndex
-    if (open) setCurrentWordIndex(wordIndex);
+    if (open) {
+      setCurrentWordIndex(wordIndex);
+      setCurrentExampleIndex(0);
+      setCurrentImageIndex(0);
+    }
     setOpen((prevState) => !prevState);
   };
   const handlePrevious = () => {
@@ -91,7 +100,7 @@ export default function WordsModalDialog({
           <div className="flex justify-between items-center">
             <div>
               <button
-                className="disabled:opacity-20 disabled:cursor-default"
+                className="opacity:80 hover:opacity-100 disabled:opacity-20 disabled:cursor-default"
                 onClick={handlePrevious}
                 disabled={currentWordIndex === 0}
                 title="Back to previous highlighted word"
@@ -100,7 +109,7 @@ export default function WordsModalDialog({
               </button>
 
               <button
-                className="disabled:opacity-20 disabled:cursor-default"
+                className="opacity:80 hover:opacity-100 disabled:opacity-20 disabled:cursor-default"
                 onClick={handleNext}
                 disabled={currentWordIndex === databaseWords.length - 1}
                 title="Forward to next highlighted word"
@@ -121,6 +130,7 @@ export default function WordsModalDialog({
               >
                 <Volume2 color="red" />
               </button>
+
               <button
                 // onClick={() => playPronunciation("Am")}
                 className="opacity-85 hover:opacity-100"
@@ -163,5 +173,86 @@ export default function WordsModalDialog({
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+type ExamplesProps = {
+  currentWord: databaseWord;
+  currentExampleIndex: number;
+  setCurrentExampleIndex: React.Dispatch<React.SetStateAction<number>>;
+};
+
+function Examples({
+  currentWord,
+  currentExampleIndex,
+  setCurrentExampleIndex,
+}: ExamplesProps) {
+  const { meaning } = currentWord;
+
+  return (
+    <div className="border-2 w-full max-w-80 min-h-52 flex flex-col gap-2 items-center rounded-lg">
+      <div className="w-fit flex items-center gap-5 my-2 py-1">
+        <button
+          className="opacity:80 hover:opacity-100 disabled:opacity-20"
+          onClick={() => setCurrentExampleIndex(currentExampleIndex - 1)}
+          disabled={currentExampleIndex === 0}
+          title="Back to previous example"
+        >
+          <ChevronLeft />
+        </button>
+        <h5> examples</h5>
+        <button
+          className="opacity:80 hover:opacity-100 disabled:opacity-20"
+          onClick={() => setCurrentExampleIndex(currentExampleIndex + 1)}
+          disabled={currentExampleIndex === meaning.examples.length - 1}
+          title="Go to next example"
+        >
+          <ChevronRight />
+        </button>
+      </div>
+      <p className="grow px-5 rounded-md">
+        {meaning.examples[currentExampleIndex].text}
+      </p>
+    </div>
+  );
+}
+
+type ImagesProps = {
+  currentWord: databaseWord;
+  currentImageIndex: number;
+  setCurrentImageIndex: React.Dispatch<React.SetStateAction<number>>;
+};
+
+// Todo: Complete the Images component when you handled storing images for each word.
+function Images({
+  currentWord,
+  currentImageIndex,
+  setCurrentImageIndex,
+}: ImagesProps) {
+  const { images } = currentWord;
+
+  return (
+    <div className="border-2 w-full max-w-80 min-h-52 flex flex-col gap-2 items-center rounded-lg">
+      <div className="w-fit flex items-center gap-5 my-2 py-1">
+        <button
+          className="opacity:80 hover:opacity-100 disabled:opacity-20"
+          onClick={() => setCurrentImageIndex(currentImageIndex - 1)}
+          disabled={currentImageIndex === 0}
+        >
+          <ChevronLeft />
+        </button>
+        <h5> images</h5>
+        <button
+          className="opacity:80 hover:opacity-100 disabled:opacity-20"
+          onClick={() => setCurrentImageIndex(currentImageIndex + 1)}
+          disabled={currentImageIndex === images.length - 1}
+        >
+          <ChevronRight />
+        </button>
+      </div>
+      <div>
+        {/* <Image src={images[currentImageIndex]} fill alt={word} /> */}
+      </div>
+    </div>
   );
 }

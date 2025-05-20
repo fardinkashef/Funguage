@@ -7,7 +7,7 @@ type ExamplesProps = {
   setCurrentExampleIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-function Examples({
+export default function Examples({
   currentWord,
   currentExampleIndex,
   setCurrentExampleIndex,
@@ -35,5 +35,3 @@ function Examples({
     </div>
   );
 }
-
-export default Examples;

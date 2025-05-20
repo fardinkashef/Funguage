@@ -6,7 +6,7 @@ import Controls from "./Controls";
 import Subtitles from "./Subtitles";
 import MiniWordModal from "./word-modal/MiniWordModal";
 
-import { wordsPair } from "@/lib/types";
+import { databaseWord, wordsPair } from "@/lib/types";
 import LoadingModal from "./LoadingModal";
 
 import { ChevronRight } from "lucide-react";
@@ -60,6 +60,9 @@ export default function VideoPlayer({
   // The part of the whole wordsPairList which we are currently dealing with in current specific cue:
   const [currentPairList, setCurrentPairList] = useState(wordsPairList);
   const [currentPairIndex, setCurrentPairIndex] = useState(0);
+  // There are two scenarios when the word modal will be displayed: 1) User clicks on a colored word 2) User presses Enter on the keyboard. This state variable determines if the user has pressed "Enter" while watching the video. If true, we will display ALL the DB words in currentPairList, not just the DB words in a single pair, okay? On the other hand, if the user clicks on a subtitle word, we only display the DB words in the related pair, get it?
+  const [pressedEnter, setPressedEnter] = useState(false);
+
   // Todo: Fix this. I commented out this line for now 👇:
   // const { loggedIn } = useAuthContext();
   ///////////////////////////////////////////////////////////////////////
@@ -67,8 +70,6 @@ export default function VideoPlayer({
   const VideoPlayerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   // const trackRef = useRef<HTMLTrackElement>(null);
-  const AmericanAudioRef = useRef<HTMLAudioElement>(null);
-  const BritishAudioRef = useRef<HTMLAudioElement>(null);
 
   //* Event handlers 👇:
 
@@ -167,6 +168,7 @@ export default function VideoPlayer({
     }
     setShowWordModal(false);
     if (VideoPlayerRef.current) VideoPlayerRef.current.focus();
+    if (pressedEnter) setPressedEnter(false);
   };
 
   const handleTimeUpdate = (
@@ -218,15 +220,16 @@ export default function VideoPlayer({
 
     if (tagName === "input") return;
 
-    console.log("e.key.toLowerCase() from video player", e.key.toLowerCase());
-
     switch (e.key.toLowerCase()) {
       case " ": // Check if the pressed key is the spacebar
         e.preventDefault(); // Prevent the default scrolling behavior
         handleTogglePlayPause();
         break;
       case "enter":
-        if (currentPairList.length > 0) handleWordClick(0);
+        if (currentPairList.length > 0) {
+          handleWordClick(0);
+          setPressedEnter(true);
+        }
         break;
       case "k":
         handleTogglePlayPause();
@@ -259,25 +262,6 @@ export default function VideoPlayer({
       //   toggleCaptions()
       //   break
     }
-  };
-  /////////
-  const handleSetPronunciationAudioSrc = (word: string) => {
-    // Todo: Fix this. I commented out these lines and return some silly thing to stop ts from complaining.
-    return word;
-    // const AmPronunciationAudioSrc =
-    //   import.meta.env.VITE_BACKEND_URL + `/static-files/audios/${word}_Am.mp3`;
-    // const BrPronunciationAudioSrc =
-    //   import.meta.env.VITE_BACKEND_URL + `/static-files/audios/${word}_Br.mp3`;
-
-    // setAmericanPronunciationAudioSrc(AmPronunciationAudioSrc);
-    // setBritishPronunciationAudioSrc(BrPronunciationAudioSrc);
-  };
-
-  const playPronunciation = (accent: string) => {
-    if (!AmericanAudioRef.current || !BritishAudioRef.current) return;
-
-    if (accent === "Am") AmericanAudioRef.current.play();
-    else BritishAudioRef.current.play();
   };
 
   ///////////
@@ -430,8 +414,6 @@ export default function VideoPlayer({
   };
 
   const handleWaiting = () => {
-    console.log("handlewaiting");
-
     setShowLoadingModal(true); // Video is buffering/loading
   };
 
@@ -466,7 +448,7 @@ export default function VideoPlayer({
         }}
         onVolumeChange={handleVolumeChange}
         // onLoadedData={handleLoadedData}
-        muted
+        // muted
         // src={videoSrc}
         // autoPlay
       >
@@ -560,11 +542,20 @@ export default function VideoPlayer({
         //   handleSetPronunciationAudioSrc={handleSetPronunciationAudioSrc}
         //   playPronunciation={playPronunciation}
         // />
+        // Todo: Fix the following. Ask AI for an array method in js which returns an array
         <MiniWordModal
-          databaseWords={currentPairList[currentPairIndex].databaseWordList}
+          databaseWords={
+            pressedEnter
+              ? currentPairList.reduce(
+                  (acc: databaseWord[], pair: wordsPair) => [
+                    ...acc,
+                    ...pair.databaseWordList,
+                  ],
+                  []
+                )
+              : currentPairList[currentPairIndex].databaseWordList
+          }
           handleCloseModal={handleCloseWordModal}
-          handleSetPronunciationAudioSrc={handleSetPronunciationAudioSrc}
-          playPronunciation={playPronunciation}
         />
       )}
       {showLoadingModal && <LoadingModal />}

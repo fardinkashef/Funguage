@@ -21,6 +21,7 @@ export type databaseWord = {
   register: string;
   inflections: string;
   title: string;
+  audio: null | "shared" | "specific";
   images: number[];
   geo: string;
   f2n: {

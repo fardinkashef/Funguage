@@ -59,6 +59,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
-
+  // An important question: I'm not using middleware to protect pages. On each page I want to protect, I check the user session and redirect the user to login page if there is no session, so the question is, what is the following line good for? It would be necessary if I used middleware to protect pages and redirect the user automatically, but when I'm doing it explicitly, I don't know if I need to use the following line
   pages: { signIn: "/login" },
 });

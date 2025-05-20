@@ -4,6 +4,7 @@ import {
   BookCheck,
   FileVideo,
   BookHeart,
+  BookOpen,
 } from "lucide-react";
 
 import {
@@ -52,12 +53,23 @@ export default function LearningSideBar() {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Learning</SidebarGroupLabel>
+          <SidebarGroupLabel className="flex h-20 items-center px-4 text-xl">
+            <div className="flex items-center gap-2 font-semibold">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                <BookOpen className="h-4 w-4" />
+              </div>
+              <span>Learning</span>
+            </div>
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton
+                    asChild
+                    tooltip={item.title}
+                    className="py-6"
+                  >
                     <NavLink href={item.href}>
                       <item.icon />
                       <span>{item.title}</span>

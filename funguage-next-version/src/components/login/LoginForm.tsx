@@ -26,9 +26,7 @@ export default function LoginForm({ callbackUrl }: { callbackUrl: string }) {
     resolver: zodResolver(loginFormSchema),
     // defaultValues: {
     //   email: "",
-    //   username: "",
     //   password: "",
-    //   confirmPassword: "",
     // },
   });
 

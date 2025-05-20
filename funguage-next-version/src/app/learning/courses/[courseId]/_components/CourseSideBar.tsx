@@ -1,4 +1,4 @@
-import { SquarePlay } from "lucide-react";
+import { BookOpen, SquarePlay } from "lucide-react";
 
 import {
   Sidebar,
@@ -24,12 +24,19 @@ export default function CourseSideBar({
     <Sidebar collapsible="offcanvas">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Course Name</SidebarGroupLabel>
+          <SidebarGroupLabel className="flex h-20 items-center px-1 text-xl">
+            <div className="flex items-center gap-2 font-semibold">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                <BookOpen className="h-4 w-4" />
+              </div>
+              <span>CourseName</span>
+            </div>
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {chapters.map((chapter) => (
                 <SidebarMenuItem key={chapter.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild tooltip={chapter.title} size="lg">
                     <NavLink
                       href={`/learning/courses/${courseId}/chapters/${chapter._id}`}
                     >

@@ -8,6 +8,9 @@ body {
 body {
   font-family: var(--font-geist-sans);
 }
+button {
+  cursor: pointer;
+}
 
 @layer base {
   :root {

@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import "./WordModal.scss";
 import { databaseWord } from "@/lib/types";
+import localFont from "next/font/local";
 
+const vazirFont = localFont({
+  src: "../../../app/fonts/Vazirmatn-Regular.woff2",
+});
 type MiniWordModalProps = {
   databaseWords: databaseWord[];
   handleCloseModal: () => void;
-  handleSetPronunciationAudioSrc: (word: string) => void;
-  playPronunciation: (accent: string) => void;
 };
 
 export default function MiniWordModal({
   databaseWords,
   handleCloseModal,
-  handleSetPronunciationAudioSrc,
-  playPronunciation,
 }: MiniWordModalProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
+  const BritishAudioRef = useRef<HTMLAudioElement>(null);
+  const AmericanAudioRef = useRef<HTMLAudioElement>(null);
   // Handlers 👇:
 
   const {
@@ -24,9 +26,9 @@ export default function MiniWordModal({
     pronunciation,
     partOfSpeech,
     register,
-    // translation,
     // frequency,
     meaning,
+    audio,
   }: databaseWord = databaseWords[currentWordIndex];
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -52,13 +54,12 @@ export default function MiniWordModal({
         break;
     }
   };
+  const playPronunciation = (accent: "Br" | "Am") => {
+    if (!AmericanAudioRef.current || !BritishAudioRef.current) return;
 
-  useEffect(
-    function () {
-      handleSetPronunciationAudioSrc(word);
-    },
-    [word]
-  );
+    if (accent === "Am") AmericanAudioRef.current.play();
+    else BritishAudioRef.current.play();
+  };
 
   return (
     <div
@@ -98,23 +99,28 @@ export default function MiniWordModal({
         <div className="head">
           <h2 className="word">{word}</h2>
           <p>{pronunciation}</p>
-          <div className="pronunciation">
-            <button
-              onClick={() => playPronunciation("Br")}
-              className="Br"
-              title="Play British pronunciation"
-            ></button>
-            <button
-              onClick={() => playPronunciation("Am")}
-              className="Am"
-              title="Play American pronunciation"
-            ></button>
-          </div>
+          {audio && (
+            <div className="pronunciation">
+              <button
+                onClick={() => playPronunciation("Br")}
+                className="Br"
+                title="Play British pronunciation"
+              />
+              <button
+                onClick={() => playPronunciation("Am")}
+                className="Am"
+                title="Play American pronunciation"
+              />
+            </div>
+          )}
         </div>
         <div className="other-info">
           {partOfSpeech && <p className="part-of-speech">{partOfSpeech}</p>}
           {register && <p className="register">{register}</p>}
           {/* {frequency.written && <p>{frequency?.written}</p> } */}
+          {meaning.translation && (
+            <p className={`${vazirFont.className}`}>{meaning.translation}</p>
+          )}
         </div>
 
         <p className="definition">
@@ -122,6 +128,28 @@ export default function MiniWordModal({
           {meaning.definition.text}
         </p>
       </div>
+
+      {/* //! Audio player part. This part is hidden: */}
+      {audio && (
+        <div key={word}>
+          <audio hidden ref={BritishAudioRef}>
+            <source
+              src={`/audios/${word}${
+                audio === "specific" ? "_" + partOfSpeech : ""
+              }_Br.mp3`}
+              type="audio/mpeg"
+            />
+          </audio>
+          <audio hidden ref={AmericanAudioRef}>
+            <source
+              src={`/audios/${word}${
+                audio === "specific" ? "_" + partOfSpeech : ""
+              }_Am.mp3`}
+              type="audio/mpeg"
+            />
+          </audio>
+        </div>
+      )}
     </div>
   );
 }

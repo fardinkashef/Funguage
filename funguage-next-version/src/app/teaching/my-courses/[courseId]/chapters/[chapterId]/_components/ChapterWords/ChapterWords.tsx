@@ -85,20 +85,7 @@ export default function ChapterWords({
       //* When using document.getElementById("some-id"), we need to assert the type. See "Type Assertions" pdf file in my notes 👇:
       const video = document.getElementById("video") as HTMLVideoElement;
       //   const track = document.getElementById("track") as HTMLTrackElement;
-      const wordFilter = [
-        "",
-        ".",
-        "?",
-        "!",
-        "a",
-        "I",
-        "an",
-        "on",
-        "that",
-        "to",
-        "is",
-        "-",
-      ];
+      const wordFilter = ["", ".", "?", "!", "I", "that", "is", "-"];
 
       if (!video.textTracks[0].cues) return;
 
