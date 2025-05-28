@@ -7,9 +7,11 @@ import WordItem from "./WordItem";
 import { Button } from "@/components/ui/button";
 import { updateChapterWords } from "@/lib/server-actions/chapters";
 import toast from "react-hot-toast";
+// import WordsVideoPlayer from "./words-video-player/WordsVideoPlayer";
 
 type ChapterWordsProps = {
   subtitleSrc: string;
+  // videoSrc: string;
   initialWordsPairList: wordsPair[];
   chapterId: string;
   courseId: string;
@@ -17,11 +19,14 @@ type ChapterWordsProps = {
 
 export default function ChapterWords({
   subtitleSrc,
+  // videoSrc,
   initialWordsPairList,
   chapterId,
   courseId,
 }: ChapterWordsProps) {
+  // I'll get all the database words using a useEffect and put them in here
   const [databaseWords, setDatabaseWords] = useState<databaseWord[]>([]);
+  // I'll get all the subtitle words using a useEffect and put them in here
   const [subtitleWords, setSubtitleWords] = useState<subtitleWord[]>([]);
   const [cues, setCues] = useState<cue[]>([]);
   const [wordsPairList, setWordsPairList] =
@@ -153,6 +158,14 @@ export default function ChapterWords({
           id="track"
         />
       </video>
+      {/* <div>
+        <WordsVideoPlayer
+          videoSrc={videoSrc}
+          subtitleSrc={subtitleSrc}
+          wordsPairList={wordsPairList}
+          setWordsPairList={setWordsPairList}
+        />
+      </div> */}
 
       <div className="w-full mx-auto my-2 p-4 rounded-md  bg-slate-100  dark:bg-gray-800">
         {wordsPairList.map((wordPair, index) => (

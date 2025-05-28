@@ -32,19 +32,42 @@ export default function WordAutoCompleteSearch({
 //   setSuggestionBoxClosed,
 WordAutoCompleteSearchProps) {
   const [value, setValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const searchSuggestions = useMemo(() => {
     if (!value) return [];
-    return matchSorter<databaseWord | subtitleWord>(itemsToSearchIn, value, {
-      keys: ["title"],
-    });
+
+    if (type === "database")
+      return matchSorter<databaseWord>(
+        itemsToSearchIn as databaseWord[],
+        value,
+        {
+          keys: ["title"],
+        }
+      );
+    else {
+      let filteredItemsToSearchIn;
+      if (selectedItems.length > 0)
+        filteredItemsToSearchIn = (itemsToSearchIn as subtitleWord[]).filter(
+          (item) => item.cueId === (selectedItems[0] as subtitleWord).cueId
+        );
+      else filteredItemsToSearchIn = itemsToSearchIn;
+      return matchSorter<subtitleWord>(
+        filteredItemsToSearchIn as subtitleWord[],
+        value,
+        {
+          keys: ["title"],
+        }
+      );
+    }
   }, [value, itemsToSearchIn]);
 
-  const handleSelectSuggetion = (selectedSuggestion:any) => {
+  const handleSelectSuggetion = (selectedSuggestion: any) => {
     setValue("");
     if (!selectedSuggestion) return;
     const newSelectedItems = [...selectedItems, selectedSuggestion];
     setSelectedItems(newSelectedItems);
+    inputRef.current?.focus();
   };
 
   const ref = useRef<HTMLDivElement>(null);
@@ -85,6 +108,7 @@ WordAutoCompleteSearchProps) {
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
         placeHolder={type === "subtitle" ? "subtitle word" : "database word"}
+        inputRef={inputRef}
       />
       {/* divider: 👇 */}
       <div className="bg-gray-500 self-stretch w-0.5" />
@@ -99,7 +123,14 @@ WordAutoCompleteSearchProps) {
         {searchSuggestions.map((item, index) => {
           let tooltipContent: string | (string | ReactNode)[];
           if (type === "database") {
-            tooltipContent = (item as databaseWord).meaning.definition.text;
+            tooltipContent = [
+              <div key={1}>
+                <h2 className="text-red-500">
+                  {(item as databaseWord).meaning.definition.lexUnit}
+                </h2>
+                <span>{(item as databaseWord).meaning.definition.text}</span>
+              </div>,
+            ];
           } else {
             if (!cues) return;
             const cue = cues.filter(

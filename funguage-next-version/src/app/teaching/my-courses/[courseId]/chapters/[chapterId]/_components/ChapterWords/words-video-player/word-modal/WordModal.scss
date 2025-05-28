@@ -1,0 +1,128 @@
+.WordModal {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  z-index: 20;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  .content {
+    background-color: #faebd7;
+    color: #383838;
+    width: calc(100% - 1rem);
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    z-index: 2;
+    border-radius: 10px;
+    font-weight: 400;
+    & > * {
+      margin-bottom: 15px;
+    }
+    // All buttons in modal will have these properties:
+    button {
+      background: transparent;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      border-radius: 10px;
+      vertical-align: middle;
+      &:enabled:hover {
+        background-color: orange;
+      }
+      &:disabled {
+        opacity: 0.2;
+        cursor: initial;
+      }
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .back {
+        background-image: url(./modal-icons/arrow_back.svg);
+      }
+      .forward {
+        background-image: url(./modal-icons/arrow_forward.svg);
+        margin-left: 10px;
+      }
+      .close {
+        background-image: url(./modal-icons/close.svg);
+      }
+    }
+    .head {
+      * {
+        display: inline-block;
+        margin-right: 20px;
+      }
+      .word {
+        color: red;
+        font-size: 160%;
+      }
+      .pronunciation {
+        button {
+          width: 2.3rem;
+          height: 2.3rem;
+          opacity: 0.8;
+          background-color: transparent;
+          &:hover {
+            opacity: 1;
+          }
+        }
+        .Br {
+          background-image: url(./modal-icons/pronunciation_Br.svg);
+          margin-right: 10px;
+          &:hover {
+            border: solid 3px red;
+          }
+        }
+        .Am {
+          background-image: url(./modal-icons/pronunciation_Am.svg);
+          &:hover {
+            border: solid 3px blue;
+          }
+        }
+      }
+    }
+    .other-info {
+      * {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .part-of-speech {
+        color: green;
+      }
+      .register {
+        color: purple;
+        font-style: italic;
+      }
+    }
+
+    .definition {
+      padding: 5px;
+    }
+    .examples-images-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      @media screen and (min-width: 700px) {
+        & {
+          flex-direction: row;
+          align-items: stretch;
+          // * {
+          //   margin-bottom: 0;
+          // }
+        }
+      }
+    }
+  }
+}

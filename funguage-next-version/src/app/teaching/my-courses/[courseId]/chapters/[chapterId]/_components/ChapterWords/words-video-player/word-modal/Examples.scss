@@ -1,0 +1,42 @@
+.Examples {
+  width: 100%;
+  max-width: 350px;
+  min-height: 200px;
+  background-color: #fff9f0;
+  color: grey;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  .examples-nav {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 10px auto;
+    padding: 5px 0;
+
+    button {
+      width: 1.3rem;
+      height: 2rem;
+      background-size: contain;
+      background-position-y: center;
+      border-radius: 5px;
+    }
+    .previous {
+      background-image: url("./modal-icons/navigate_before.svg");
+    }
+    .next {
+      background-image: url("./modal-icons/navigate_next.svg");
+    }
+  }
+  p {
+    flex-grow: 1;
+    width: calc(100% - 20px);
+    background-color: #fffefd;
+    color: grey;
+    margin: 10px auto;
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+}

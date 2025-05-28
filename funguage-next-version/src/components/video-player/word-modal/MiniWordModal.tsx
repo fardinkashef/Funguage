@@ -122,9 +122,16 @@ export default function MiniWordModal({
             <p className={`${vazirFont.className}`}>{meaning.translation}</p>
           )}
         </div>
-
+        {/* LexUnit (which is sth like "be not worth it" for the word "worth") */}
+        {/* {meaning.definition.lexUnit && <p>{meaning.definition.lexUnit}</p>} */}
         <p className="definition">
           <span>{meaning.index ? meaning.index + ") " : ""}</span>
+          {meaning.definition.lexUnit && (
+            <>
+              <span className="font-bold">{meaning.definition.lexUnit}</span>
+              <span>: </span>
+            </>
+          )}
           {meaning.definition.text}
         </p>
       </div>

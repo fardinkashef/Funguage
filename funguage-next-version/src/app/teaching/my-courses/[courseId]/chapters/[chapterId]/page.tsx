@@ -117,16 +117,17 @@ export default async function ChapterIdPage({ params }: ChapterIdPageProps) {
               initialSubtitle={chapter.subtitle}
               chapterId={chapterId}
             />
-            {chapter?.subtitle?.url && (
-              <ChapterWords
-                subtitleSrc={chapter.subtitle.url}
-                initialWordsPairList={chapter.wordsPairList}
-                chapterId={chapterId}
-                courseId={courseId}
-              />
-            )}
           </div>
         </div>
+        {chapter?.subtitle?.url && (
+          <ChapterWords
+            subtitleSrc={chapter.subtitle.url}
+            // videoSrc={chapter.videoUrl}
+            initialWordsPairList={chapter.wordsPairList}
+            chapterId={chapterId}
+            courseId={courseId}
+          />
+        )}
         {/* <VideoPlayer
           wordsPairList={chapter.wordsPairList}
           videoSrc={chapter.videoUrl}

@@ -1,5 +1,9 @@
 //! Attention: When importing a .json file, the JSON content automatically gets parsed, so there's no need to use JSON.parse() and if we do, we get an error that the thing you want to parse is not a string.
 
+import AddAudioPropToWords from "./utils/add-audio-prop-to-words/AddAudioPropToWords";
+import FilterDuplicateWords from "./utils/filter-duplicate-words/FilterDuplicateWords";
+import RemoveDuplicateWords from "./utils/remove-duplicate-words/RemoveDuplicateWords";
+
 // import { s1e1Words } from "./assets/Friends/Season1/s1e1-words-final";
 // import { s1e2Words } from "./assets/Friends/Season1/s1e2-words-final";
 // import { s1e3Words } from "./assets/Friends/Season1/s1e3-words-final";
@@ -26,21 +30,15 @@
 // import { TearsOfSteel2Words } from "./assets/Tears Of Steel/section2";
 // import TearsOfSteel1 from "./assets/Tears Of Steel/section1.json";
 // import TearsOfSteel2 from "./assets/Tears Of Steel/section2.json";
-import data from "./funguage-local.words.json";
-import { wordsAudioData } from "./wordsAudioObject";
-function App() {
-  // console.log(JSON.stringify(TearsOfSteel2Words));
-  // const x = JSON.stringify(Sintel2);
-  // console.log(JSON.parse(x));
-  // console.log(TearsOfSteel2);
-  const words = data.map((word) => {
-    if (!wordsAudioData[word.word]) {
-      return { ...word, audio: null };
-    } else return { ...word, audio: wordsAudioData[word.word] };
-  });
-  console.log("this is data:", words);
 
-  return <h1>hello</h1>;
+function App() {
+  return (
+    <div>
+      {/* <AddAudioPropToWords /> */}
+      {/* <FilterDuplicateWords /> */}
+      <RemoveDuplicateWords />
+    </div>
+  );
 }
 
 export default App;

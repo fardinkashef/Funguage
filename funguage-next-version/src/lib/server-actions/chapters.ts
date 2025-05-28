@@ -19,10 +19,11 @@ export async function getChapters(courseId: string): Promise<chapter[]> {
     if (!chapters) {
       throw new Error("There's not any results to return.");
     }
-    return chapters.map((chapter) => ({
-      ...chapter,
-      _id: chapter._id.toString(),
-    }));
+    // return chapters.map((chapter) => ({
+    //   ...chapter,
+    //   _id: chapter._id.toString(),
+    // }));
+    return JSON.parse(JSON.stringify(chapters));
   } catch (error) {
     console.log("This error happened when getting all the results:", error);
     throw error;

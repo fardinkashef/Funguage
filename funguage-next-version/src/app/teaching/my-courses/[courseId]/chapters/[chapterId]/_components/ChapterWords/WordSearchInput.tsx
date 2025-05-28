@@ -6,6 +6,7 @@ type WordSearchInputProps = {
   selectedItems: subtitleWord[] | databaseWord[];
   setSelectedItems: (newSelectedItems: any) => void;
   placeHolder: "subtitle word" | "database word";
+  inputRef: React.RefObject<HTMLInputElement>;
 };
 
 function WordSearchInput({
@@ -14,6 +15,7 @@ function WordSearchInput({
   selectedItems,
   setSelectedItems,
   placeHolder,
+  inputRef,
 }: WordSearchInputProps) {
   // Handlers 👇:
   const handleRemoveSelectedItem = (index: number) => {
@@ -44,6 +46,7 @@ function WordSearchInput({
         type="search"
         onChange={(event) => setValue(event.target.value)}
         placeholder={placeHolder}
+        ref={inputRef}
       />
     </div>
   );

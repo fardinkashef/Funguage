@@ -230,7 +230,6 @@ let data = [
   "be all over somebody",
   "big deal",
   "break up",
-  //Todo: I came upto here for downloading pronunciation audios.
 
   //////////////
   //// s1e4 :
@@ -304,8 +303,8 @@ let data = [
   "apron",
   //////////////
   //// s1e5 :
-  "accent",
   // "agree with sb",
+  "accent",
   "as/so far as I’m concerned",
   "audition",
   "awful",
@@ -389,6 +388,7 @@ let data = [
   "weasel",
   "wound",
   "you don’t say!",
+  //Todo: I came upto here for downloading pronunciation audios.
   //////////////
   //// s1e6 :
   "attachment",
@@ -715,6 +715,7 @@ let data = [
   "salary",
   "Thanksgiving",
   "advance",
+  // Blender animations 👇
   "blade",
   "past",
   "shed",
