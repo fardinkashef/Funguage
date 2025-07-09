@@ -67,7 +67,7 @@ export default function CourseCard({
           </Badge>
           <Badge variant="secondary" className="flex items-center gap-1">
             <BookOpen className="h-3 w-3" />
-            {wordCount} words
+            <span className="w-max">{wordCount} words</span>
           </Badge>
         </CardFooter>
       </Card>

@@ -25,6 +25,10 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
   const course = await getCourseById(courseId);
   const chapters = await getChapters(courseId);
+  console.log("this is user", user);
+  console.log("process.env.NODE_ENV:", process.env.NODE_ENV);
+
+  console.log("this is user data:", userData);
 
   const learnedWordsCount = course.usedDatabaseWordIds.filter((id) =>
     userData.learntWordsIds.includes(id)
@@ -43,7 +47,10 @@ export default async function CoursePage({ params }: CoursePageProps) {
         <div className="w-full max-w-96 md:max-w-lg">
           <h2 className="text-4xl font-bold mb-6">{course.title}</h2>
           <div className="flex gap-4">
-            <Link href={`/learning/courses/${courseId}/vocabulary`} className="">
+            <Link
+              href={`/learning/courses/${courseId}/vocabulary`}
+              className=""
+            >
               <Button className="w-36">Check out Words</Button>
             </Link>
             {enrolled ? (
