@@ -33,7 +33,7 @@ export default function Header() {
         <video
           src="/home-page-assets/home-page-video.mp4"
           muted
-          // autoPlay
+          autoPlay
           // loop
         />
       </div>

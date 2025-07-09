@@ -25,6 +25,7 @@ export async function register(values: RegisterFormFields) {
       learntWordsIds: [],
     });
     await newUser.save();
+    return { status: "success" };
     // return { newUserId: newUser._id.toString() };
   } catch (error) {
     console.log("This error happened while creating new user:", error);

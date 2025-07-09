@@ -16,8 +16,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { RegisterFormFields, registerFormSchema } from "@/lib/zodSchemas";
 import { register } from "@/lib/server-actions/users";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
+  const router = useRouter();
+
   // 1. Define your form.
   const registerForm = useForm<RegisterFormFields>({
     resolver: zodResolver(registerFormSchema),
@@ -30,10 +33,11 @@ export default function RegisterForm() {
   });
 
   // 2. Define a submit handler.
-  const submit = (values: RegisterFormFields) => {
+  const submit = async (values: RegisterFormFields) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    register(values);
+    const res = await register(values);
+    if (res.status === "success") router.push("/login");
   };
 
   return (

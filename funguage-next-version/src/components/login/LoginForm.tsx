@@ -35,7 +35,7 @@ export default function LoginForm({ callbackUrl }: { callbackUrl: string }) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     const loginResult = await login(values);
-    if (loginResult?.success) router.push(callbackUrl);
+    if (loginResult?.success) router.push(callbackUrl || "/");
   };
 
   return (
