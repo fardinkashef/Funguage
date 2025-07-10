@@ -8,7 +8,7 @@ export default function Navbar({ user }: { user: sessionUser }) {
     <div className="flex justify-between items-center p-4 border-t-8 border-t-orange-500 border-b-2">
       <Link
         href="/"
-        className="text-black text-2xl font-bold p-2 rounded-md grow max-w-fit"
+        className="text-black text-3xl font-bold p-2 rounded-md grow max-w-fit"
       >
         <span className="text-orange-500">Fun</span>
         guage

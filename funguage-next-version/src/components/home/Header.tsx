@@ -15,10 +15,10 @@ export default function Header() {
           <span> simpler life</span>
         </h3>
         <Link
-          href="/"
-          className="bg-orange-500 rounded-full w-fit font-bold px-16 py-4 text-white hover:bg-orange-700"
+          href="/learning"
+          className="bg-orange-500 rounded-full w-fit text-lg font-semibold px-10 py-4 text-white hover:bg-orange-700"
         >
-          Take a tour
+          Start Learning
         </Link>
       </div>
 
